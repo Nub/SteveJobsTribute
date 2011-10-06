@@ -2,17 +2,17 @@
 //  main.m
 //  SteveJobsTribute
 //
-//  Created by Zachry Thayer on 10/5/11.
-//  Copyright (c) 2011 Zachry Thayer. All rights reserved.
+//  Created by Jack Perry on 6/10/11.
+//  Copyright (c) 2011 Yoshimi Robotics. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-#import "SJTAppDelegate.h"
+#import "YRAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([SJTAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([YRAppDelegate class]));
     }
 }
