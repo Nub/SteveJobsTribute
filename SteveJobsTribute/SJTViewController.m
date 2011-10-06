@@ -8,8 +8,11 @@
 
 #import "SJTViewController.h"
 
+@interface SJTViewController (Private)
+    - (void)introVideoFinished:(MPMoviePlayerController *)finishedPlayer;
+@end
+
 @implementation SJTViewController
-@synthesize slideShowView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -23,17 +26,37 @@
 {
     [super viewDidLoad];
     
-    UIImage *a = [UIImage imageNamed:@"thankyou"];
+    /*UIColor *backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
+    self.view.backgroundColor = backgroundColor;*/
     
-    [slideShowView.slides addObject:a];
+    NSNumber *didLaunchBefore = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstLaunch"]; 
     
-    [slideShowView play];
+    if(!didLaunchBefore){
+        
+        // Set first launch to true
+        NSNumber *hasLaunched = [NSNumber numberWithBool:YES];
+        [[NSUserDefaults standardUserDefaults] setValue:hasLaunched forKey:@"FirstLaunch"];
+        
+        
+        NSURL *movieUrl = [[NSBundle mainBundle] URLForResource:@"theCrazyOnes" withExtension:@"mp4"];
+        
+        player = [[MPMoviePlayerController alloc] initWithContentURL: movieUrl];
+        [player.view setFrame: self.view.bounds];  // player's frame must match parent's
+        [self.view addSubview: player.view];
+    
+        player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+        [player play];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(introVideoFinished:) name:@"MPMoviePlayerPlaybackDidFinishNotification" object:player];
+        
+     }
+    
 
 }
 
 - (void)viewDidUnload
 {
-    [self setSlideShowView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -61,12 +84,24 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+ 
+    
+    return YES;
 }
+
+
+#pragma mark - Private
+
+- (void)introVideoFinished:(MPMoviePlayerController *)finishedPlayer{
+    
+    [player.view removeFromSuperview];
+    
+    //[player release];
+    
+    //Now really load the view
+    [self viewDidLoad];
+    
+}
+
 
 @end

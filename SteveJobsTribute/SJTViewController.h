@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SJTSlideShowView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SJTViewController : UIViewController
+{
+    MPMoviePlayerController *player; 
+}
 
-@property (weak, nonatomic) IBOutlet SJTSlideShowView *slideShowView;
 
 @end

@@ -16,10 +16,10 @@
 		4BC91B97143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91B95143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard */; };
 		4BC91B9A143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91B98143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard */; };
 		4BC91B9D143D4DA1001E3A41 /* SJTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91B9C143D4DA1001E3A41 /* SJTViewController.m */; };
-		4BC91BA8143D4FC4001E3A41 /* SJTSlideShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BA7143D4FC4001E3A41 /* SJTSlideShowView.m */; };
 		4BC91BAA143D510B001E3A41 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC91BA9143D510B001E3A41 /* QuartzCore.framework */; };
-		4BC91BB3143D5521001E3A41 /* thankyou in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BB2143D5521001E3A41 /* thankyou */; };
 		4BC91BB5143D5867001E3A41 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BB4143D5867001E3A41 /* background.png */; };
+		4BC91BC4143E5414001E3A41 /* theCrazyOnes.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BC3143E5414001E3A41 /* theCrazyOnes.mp4 */; };
+		4BC91BC6143E5565001E3A41 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC91BC5143E5565001E3A41 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +37,10 @@
 		4BC91B99143D4DA1001E3A41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4BC91B9B143D4DA1001E3A41 /* SJTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTViewController.h; sourceTree = "<group>"; };
 		4BC91B9C143D4DA1001E3A41 /* SJTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTViewController.m; sourceTree = "<group>"; };
-		4BC91BA6143D4FC4001E3A41 /* SJTSlideShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJTSlideShowView.h; path = ../SJTSlideShowView.h; sourceTree = "<group>"; };
-		4BC91BA7143D4FC4001E3A41 /* SJTSlideShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJTSlideShowView.m; path = ../SJTSlideShowView.m; sourceTree = "<group>"; };
 		4BC91BA9143D510B001E3A41 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4BC91BB2143D5521001E3A41 /* thankyou */ = {isa = PBXFileReference; lastKnownFileType = file; name = thankyou; path = Resources/Slides/thankyou; sourceTree = SOURCE_ROOT; };
 		4BC91BB4143D5867001E3A41 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4BC91BC3143E5414001E3A41 /* theCrazyOnes.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = theCrazyOnes.mp4; sourceTree = "<group>"; };
+		4BC91BC5143E5565001E3A41 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC91BC6143E5565001E3A41 /* MediaPlayer.framework in Frameworks */,
 				4BC91BAA143D510B001E3A41 /* QuartzCore.framework in Frameworks */,
 				4BC91B84143D4DA1001E3A41 /* UIKit.framework in Frameworks */,
 				4BC91B86143D4DA1001E3A41 /* Foundation.framework in Frameworks */,
@@ -62,6 +62,7 @@
 		4BC91B74143D4DA1001E3A41 = {
 			isa = PBXGroup;
 			children = (
+				4BC91BC5143E5565001E3A41 /* MediaPlayer.framework */,
 				4BC91BA9143D510B001E3A41 /* QuartzCore.framework */,
 				4BC91B89143D4DA1001E3A41 /* SteveJobsTribute */,
 				4BC91B82143D4DA1001E3A41 /* Frameworks */,
@@ -105,6 +106,7 @@
 		4BC91B8A143D4DA1001E3A41 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4BC91BC3143E5414001E3A41 /* theCrazyOnes.mp4 */,
 				4BC91B8B143D4DA1001E3A41 /* SteveJobsTribute-Info.plist */,
 				4BC91B8C143D4DA1001E3A41 /* InfoPlist.strings */,
 				4BC91B8F143D4DA1001E3A41 /* main.m */,
@@ -125,8 +127,6 @@
 		4BC91BB0143D5508001E3A41 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4BC91BA6143D4FC4001E3A41 /* SJTSlideShowView.h */,
-				4BC91BA7143D4FC4001E3A41 /* SJTSlideShowView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -135,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				4BC91BB4143D5867001E3A41 /* background.png */,
-				4BC91BB2143D5521001E3A41 /* thankyou */,
 			);
 			name = Art;
 			sourceTree = "<group>";
@@ -194,8 +193,8 @@
 				4BC91B8E143D4DA1001E3A41 /* InfoPlist.strings in Resources */,
 				4BC91B97143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4BC91B9A143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard in Resources */,
-				4BC91BB3143D5521001E3A41 /* thankyou in Resources */,
 				4BC91BB5143D5867001E3A41 /* background.png in Resources */,
+				4BC91BC4143E5414001E3A41 /* theCrazyOnes.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +208,6 @@
 				4BC91B90143D4DA1001E3A41 /* main.m in Sources */,
 				4BC91B94143D4DA1001E3A41 /* SJTAppDelegate.m in Sources */,
 				4BC91B9D143D4DA1001E3A41 /* SJTViewController.m in Sources */,
-				4BC91BA8143D4FC4001E3A41 /* SJTSlideShowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +329,7 @@
 				4BC91BA2143D4DA1001E3A41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
