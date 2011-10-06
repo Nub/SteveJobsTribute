@@ -37,6 +37,7 @@
 - (void)loadView {
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
     
     [self.navigationController setNavigationBarHidden:YES];
@@ -65,8 +66,13 @@
     /* Steve Jobs Tribute */
     UIImage *steveJobs = [UIImage imageNamed:@"TributePhoto"];
     tributeImageView = [[UIImageView alloc] initWithImage:steveJobs];
-    tributeImageView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-    tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
+    
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    CGFloat x = (UIInterfaceOrientationIsPortrait(orientation))?-128:0;
+    CGFloat y = (UIInterfaceOrientationIsLandscape(orientation))?-128:0;
+    
+    tributeImageView.frame = CGRectMake(x, y, 1024, 1024);
+    tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;  
     
     [self.view addSubview:tributeImageView];
     
@@ -100,32 +106,22 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
-    
-    
+       
     if ([self tributeVideoHasBeenPlayed] == YES) {
         [UIView animateWithDuration:2.0 delay:3.0 options:UIViewAnimationCurveEaseInOut animations:^(void) {
         
             tributeImageView.alpha = 0;
+
         
         } completion:^(BOOL finished) {
         
-            [self.navigationController setNavigationBarHidden:NO];
+            [self.navigationController setNavigationBarHidden:NO animated:YES];
         
         }];
         
     }
     
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -155,47 +151,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
