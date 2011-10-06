@@ -1,0 +1,338 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BC91B84143D4DA1001E3A41 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC91B83143D4DA1001E3A41 /* UIKit.framework */; };
+		4BC91B86143D4DA1001E3A41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC91B85143D4DA1001E3A41 /* Foundation.framework */; };
+		4BC91B88143D4DA1001E3A41 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC91B87143D4DA1001E3A41 /* CoreGraphics.framework */; };
+		4BC91B8E143D4DA1001E3A41 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91B8C143D4DA1001E3A41 /* InfoPlist.strings */; };
+		4BC91B90143D4DA1001E3A41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91B8F143D4DA1001E3A41 /* main.m */; };
+		4BC91B94143D4DA1001E3A41 /* SJTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91B93143D4DA1001E3A41 /* SJTAppDelegate.m */; };
+		4BC91B97143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91B95143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard */; };
+		4BC91B9A143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91B98143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard */; };
+		4BC91B9D143D4DA1001E3A41 /* SJTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91B9C143D4DA1001E3A41 /* SJTViewController.m */; };
+		4BC91BA8143D4FC4001E3A41 /* SJTSlideShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BA7143D4FC4001E3A41 /* SJTSlideShowView.m */; };
+		4BC91BAA143D510B001E3A41 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC91BA9143D510B001E3A41 /* QuartzCore.framework */; };
+		4BC91BB3143D5521001E3A41 /* thankyou in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BB2143D5521001E3A41 /* thankyou */; };
+		4BC91BB5143D5867001E3A41 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BB4143D5867001E3A41 /* background.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4BC91B7F143D4DA1001E3A41 /* SteveJobsTribute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteveJobsTribute.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BC91B83143D4DA1001E3A41 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4BC91B85143D4DA1001E3A41 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4BC91B87143D4DA1001E3A41 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4BC91B8B143D4DA1001E3A41 /* SteveJobsTribute-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SteveJobsTribute-Info.plist"; sourceTree = "<group>"; };
+		4BC91B8D143D4DA1001E3A41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4BC91B8F143D4DA1001E3A41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4BC91B91143D4DA1001E3A41 /* SteveJobsTribute-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SteveJobsTribute-Prefix.pch"; sourceTree = "<group>"; };
+		4BC91B92143D4DA1001E3A41 /* SJTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTAppDelegate.h; sourceTree = "<group>"; };
+		4BC91B93143D4DA1001E3A41 /* SJTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTAppDelegate.m; sourceTree = "<group>"; };
+		4BC91B96143D4DA1001E3A41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		4BC91B99143D4DA1001E3A41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		4BC91B9B143D4DA1001E3A41 /* SJTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTViewController.h; sourceTree = "<group>"; };
+		4BC91B9C143D4DA1001E3A41 /* SJTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTViewController.m; sourceTree = "<group>"; };
+		4BC91BA6143D4FC4001E3A41 /* SJTSlideShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJTSlideShowView.h; path = ../SJTSlideShowView.h; sourceTree = "<group>"; };
+		4BC91BA7143D4FC4001E3A41 /* SJTSlideShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJTSlideShowView.m; path = ../SJTSlideShowView.m; sourceTree = "<group>"; };
+		4BC91BA9143D510B001E3A41 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4BC91BB2143D5521001E3A41 /* thankyou */ = {isa = PBXFileReference; lastKnownFileType = file; name = thankyou; path = Resources/Slides/thankyou; sourceTree = SOURCE_ROOT; };
+		4BC91BB4143D5867001E3A41 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4BC91B7C143D4DA1001E3A41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BC91BAA143D510B001E3A41 /* QuartzCore.framework in Frameworks */,
+				4BC91B84143D4DA1001E3A41 /* UIKit.framework in Frameworks */,
+				4BC91B86143D4DA1001E3A41 /* Foundation.framework in Frameworks */,
+				4BC91B88143D4DA1001E3A41 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4BC91B74143D4DA1001E3A41 = {
+			isa = PBXGroup;
+			children = (
+				4BC91BA9143D510B001E3A41 /* QuartzCore.framework */,
+				4BC91B89143D4DA1001E3A41 /* SteveJobsTribute */,
+				4BC91B82143D4DA1001E3A41 /* Frameworks */,
+				4BC91B80143D4DA1001E3A41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4BC91B80143D4DA1001E3A41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91B7F143D4DA1001E3A41 /* SteveJobsTribute.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4BC91B82143D4DA1001E3A41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91B83143D4DA1001E3A41 /* UIKit.framework */,
+				4BC91B85143D4DA1001E3A41 /* Foundation.framework */,
+				4BC91B87143D4DA1001E3A41 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BC91B89143D4DA1001E3A41 /* SteveJobsTribute */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91BAF143D54F2001E3A41 /* UI */,
+				4BC91B92143D4DA1001E3A41 /* SJTAppDelegate.h */,
+				4BC91B93143D4DA1001E3A41 /* SJTAppDelegate.m */,
+				4BC91B95143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard */,
+				4BC91B98143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard */,
+				4BC91B9B143D4DA1001E3A41 /* SJTViewController.h */,
+				4BC91B9C143D4DA1001E3A41 /* SJTViewController.m */,
+				4BC91B8A143D4DA1001E3A41 /* Supporting Files */,
+			);
+			path = SteveJobsTribute;
+			sourceTree = "<group>";
+		};
+		4BC91B8A143D4DA1001E3A41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91B8B143D4DA1001E3A41 /* SteveJobsTribute-Info.plist */,
+				4BC91B8C143D4DA1001E3A41 /* InfoPlist.strings */,
+				4BC91B8F143D4DA1001E3A41 /* main.m */,
+				4BC91B91143D4DA1001E3A41 /* SteveJobsTribute-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BC91BAF143D54F2001E3A41 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91BB1143D5512001E3A41 /* Art */,
+				4BC91BB0143D5508001E3A41 /* Classes */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		4BC91BB0143D5508001E3A41 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91BA6143D4FC4001E3A41 /* SJTSlideShowView.h */,
+				4BC91BA7143D4FC4001E3A41 /* SJTSlideShowView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		4BC91BB1143D5512001E3A41 /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91BB4143D5867001E3A41 /* background.png */,
+				4BC91BB2143D5521001E3A41 /* thankyou */,
+			);
+			name = Art;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4BC91B7E143D4DA1001E3A41 /* SteveJobsTribute */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BC91BA0143D4DA1001E3A41 /* Build configuration list for PBXNativeTarget "SteveJobsTribute" */;
+			buildPhases = (
+				4BC91B7B143D4DA1001E3A41 /* Sources */,
+				4BC91B7C143D4DA1001E3A41 /* Frameworks */,
+				4BC91B7D143D4DA1001E3A41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SteveJobsTribute;
+			productName = SteveJobsTribute;
+			productReference = 4BC91B7F143D4DA1001E3A41 /* SteveJobsTribute.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4BC91B76143D4DA1001E3A41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Zachry Thayer";
+			};
+			buildConfigurationList = 4BC91B79143D4DA1001E3A41 /* Build configuration list for PBXProject "SteveJobsTribute" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4BC91B74143D4DA1001E3A41;
+			productRefGroup = 4BC91B80143D4DA1001E3A41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4BC91B7E143D4DA1001E3A41 /* SteveJobsTribute */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4BC91B7D143D4DA1001E3A41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BC91B8E143D4DA1001E3A41 /* InfoPlist.strings in Resources */,
+				4BC91B97143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard in Resources */,
+				4BC91B9A143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard in Resources */,
+				4BC91BB3143D5521001E3A41 /* thankyou in Resources */,
+				4BC91BB5143D5867001E3A41 /* background.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4BC91B7B143D4DA1001E3A41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BC91B90143D4DA1001E3A41 /* main.m in Sources */,
+				4BC91B94143D4DA1001E3A41 /* SJTAppDelegate.m in Sources */,
+				4BC91B9D143D4DA1001E3A41 /* SJTViewController.m in Sources */,
+				4BC91BA8143D4FC4001E3A41 /* SJTSlideShowView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4BC91B8C143D4DA1001E3A41 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BC91B8D143D4DA1001E3A41 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4BC91B95143D4DA1001E3A41 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BC91B96143D4DA1001E3A41 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		4BC91B98143D4DA1001E3A41 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BC91B99143D4DA1001E3A41 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4BC91B9E143D4DA1001E3A41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4BC91B9F143D4DA1001E3A41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4BC91BA1143D4DA1001E3A41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SteveJobsTribute/SteveJobsTribute-Prefix.pch";
+				INFOPLIST_FILE = "SteveJobsTribute/SteveJobsTribute-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4BC91BA2143D4DA1001E3A41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SteveJobsTribute/SteveJobsTribute-Prefix.pch";
+				INFOPLIST_FILE = "SteveJobsTribute/SteveJobsTribute-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4BC91B79143D4DA1001E3A41 /* Build configuration list for PBXProject "SteveJobsTribute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BC91B9E143D4DA1001E3A41 /* Debug */,
+				4BC91B9F143D4DA1001E3A41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BC91BA0143D4DA1001E3A41 /* Build configuration list for PBXNativeTarget "SteveJobsTribute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BC91BA1143D4DA1001E3A41 /* Debug */,
+				4BC91BA2143D4DA1001E3A41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4BC91B76143D4DA1001E3A41 /* Project object */;
+}
