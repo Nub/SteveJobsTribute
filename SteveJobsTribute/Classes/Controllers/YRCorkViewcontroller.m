@@ -64,14 +64,31 @@
     
     
     /* Steve Jobs Tribute */
-    UIImage *steveJobs = [UIImage imageNamed:@"TributePhoto"];
-    tributeImageView = [[UIImageView alloc] initWithImage:steveJobs];
+    tributeImageView = [[UIImageView alloc] init];
     
+    NSString *deviceModel = [[UIDevice currentDevice] model];
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    CGFloat x = (UIInterfaceOrientationIsPortrait(orientation))?-128:0;
-    CGFloat y = (UIInterfaceOrientationIsLandscape(orientation))?-128:0;
+    CGFloat x,y;
     
-    tributeImageView.frame = CGRectMake(x, y, 1024, 1024);
+    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"]) {
+        
+        x = (UIInterfaceOrientationIsPortrait(orientation))?-128:0;
+        y = (UIInterfaceOrientationIsLandscape(orientation))?-128:0;
+        tributeImageView.frame = CGRectMake(x, y, 1024, 1024);
+        
+        tributeImageView.image = [UIImage imageNamed:@"TributePhoto@2"];//Force Highres
+        
+    }else{
+        
+        x = (UIInterfaceOrientationIsPortrait(orientation))?-80:0;
+        y = (UIInterfaceOrientationIsLandscape(orientation))?-80:0;
+        tributeImageView.frame = CGRectMake(x, y, 480, 480);
+        
+        tributeImageView.image = [UIImage imageNamed:@"TributePhoto"];//Autoselect
+        
+    }
+    
+    
     tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;  
     
     [self.view addSubview:tributeImageView];
