@@ -12,4 +12,6 @@
 
 @interface YRCorkViewController : UIViewController
 
+
+- (void)testFocus:(UIBarButtonItem *)sender;
 @end

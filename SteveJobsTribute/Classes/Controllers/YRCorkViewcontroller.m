@@ -9,6 +9,8 @@
 #import "YRCorkViewcontroller.h"
 #import "PostsContentView.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface YRCorkViewController () {
 @private
     
@@ -53,6 +55,7 @@
         
     postsContentView = [[PostsContentView alloc] initWithFrame:self.view.frame];
     postsContentView.backgroundColor = [UIColor clearColor];
+    [postsContentView addPosts:100];
     postsContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [postsScrollView addSubview:postsContentView];
@@ -79,7 +82,11 @@
     
     
     /* Create new Tribute Button */
+    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithTitle:@"Test Focus" style:UIBarButtonItemStyleBordered target:self action:@selector(testFocus:)];
+
     
+    self.navigationItem.rightBarButtonItem = focusTest;
+    // self.navigationController.navigationItem.rightBarButtonItem = focusTest;
     
     
     
@@ -120,6 +127,17 @@
     
 }
 
+- (void)testFocus:(UIBarButtonItem *)sender{
+    
+    UIView *focusView = [postsContentView getPost:7];
+    //[focusView setHidden:YES];
+    
+    [self.view addSubview:focusView];
+    [self.view bringSubviewToFront:focusView];
+    
+    focusView.frame = CGRectMake(100, 100, 640, 480);
+    focusView.layer.transform = CATransform3DIdentity;
+}
 
 - (void)viewDidLoad {
     
@@ -257,8 +275,8 @@
     
     CGRect newContentFrame = CGRectMake(0, 0, w, h);
     
-    postsContentView.frame = newContentFrame;
-    postsScrollView.contentSize = newContentFrame.size;
+    postsScrollView.frame = newContentFrame;
+    postsScrollView.contentSize = [postsContentView postsContentSize];
     
 }
 

@@ -11,15 +11,16 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#define kPostSquareSize 200.f
-#define kPostSquarePadding 25.f
+#define kPostSquareSize 100.f
+#define kPostSquarePadding 5.f
 
 
 @interface PostsContentView (){
     @private
     NSInteger postCount;
     
-    CALayer *contentLayer;
+    
+    UIImage *postIt;
     
 }
 
@@ -33,58 +34,42 @@
     if (self) {
         
         postCount = 0;
-                
-        contentLayer = [CALayer layer];
-        contentLayer.frame = CGRectMake(kPostSquarePadding, kPostSquarePadding, self.frame.size.width - (kPostSquarePadding * 2), self.frame.size.height - (kPostSquarePadding * 2));
-        contentLayer.backgroundColor = [[UIColor clearColor] CGColor];
         
-        [self.layer addSublayer:contentLayer];
-        
-        [self addPosts:10];
-
+        postIt = [UIImage imageNamed:@"postIt"];
         
     }
     return self;
 }
 
 - (void)layoutSubviews{
+        
+     [super layoutSubviews];
     
-    [self layoutSublayersOfLayer:contentLayer];
-    
-    [super layoutSubviews];
-    
-}
-
-- (void)layoutSublayersOfLayer:(CALayer *)parentLayer{
-    
-    NSInteger rows = floorf(self.frame.size.height / (kPostSquareSize + (kPostSquarePadding * 2)));
-    
-    NSLog(@"%@", self);
+    NSInteger rows = floorf((self.frame.size.height - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
     
     NSInteger i = 0;
     
-    for (CALayer *layer in parentLayer.sublayers) {
+    for (UIView *view in self.subviews) {
         
-        CGFloat x = ((i - (i%rows))/rows) * (kPostSquareSize + kPostSquarePadding);
-        CGFloat y = (i % rows) * (kPostSquareSize + kPostSquarePadding);
+        CGFloat x = kPostSquarePadding + ((i - (i%rows))/rows) * (kPostSquareSize + kPostSquarePadding);
+        CGFloat y = kPostSquarePadding + (i % rows) * (kPostSquareSize + kPostSquarePadding);
         
         CGRect newFrame = CGRectMake(x, y, kPostSquareSize, kPostSquareSize);
         
-        layer.frame = newFrame;
+        view.frame = newFrame;
         
         i ++;
     }
-    
-    [super layoutSublayersOfLayer:parentLayer];
-    
+        
 }
 
 #pragma mark - Public Methods
+#define ARC4RANDOM_MAX      0x100000000
 
 - (void)addPost{
         
     
-    CALayer *newLayer = [CALayer layer];
+    UIView *newView = [[UIView alloc] init];
     
     NSInteger rows = ceilf(self.frame.size.height / (kPostSquareSize + (kPostSquarePadding * 2)));
     
@@ -93,11 +78,34 @@
     
     CGRect newFrame = CGRectMake(x, y, kPostSquareSize, kPostSquareSize);
     
-    newLayer.frame = newFrame;
-    newLayer.backgroundColor = [[UIColor randomColor] CGColor];
-    newLayer.cornerRadius = 10.f;
+    CGFloat rot = (((CGFloat)arc4random() / ARC4RANDOM_MAX) * 0.1) - 0.05;
     
-    [contentLayer addSublayer:newLayer];
+    CATransform3D newTransform = CATransform3DMakeRotation(rot, 0, 0, 1);
+    newTransform.m34 = -1.0f/500.f;
+    
+    newView.frame = newFrame;
+    newView.layer.transform = newTransform;
+
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postIt"]];
+    backgroundView.frame = newView.bounds;
+    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [newView addSubview:backgroundView];
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kPostSquareSize - 20, 25)];
+    title.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|
+    UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|
+    UIViewAutoresizingFlexibleBottomMargin;
+    title.backgroundColor = [UIColor clearColor];
+    title.font = [UIFont fontWithName:@"Bradley Hand" size:10];
+    title.adjustsFontSizeToFitWidth = YES;
+    title.minimumFontSize = 10;
+    title.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+    title.text = [NSString stringWithFormat:@"Title #%i", postCount];
+    title.numberOfLines = 3;
+    
+    [newView addSubview:title];
+    
+    [self addSubview:newView];
     
     postCount ++;
 
@@ -109,6 +117,27 @@
     for (NSInteger i = 0; i < count; i++) {
         [self addPost];
     }
+    
+}
+
+- (UIView *)getPost:(NSInteger)postIndex{
+    
+    UIView *focusView = [[self subviews] objectAtIndex:postIndex];
+    
+    if (!focusView)
+        return nil;
+    else
+        return focusView;
+    
+    
+}
+
+- (CGSize)postsContentSize{
+    
+    NSInteger rows = ceilf(self.frame.size.height / (kPostSquareSize + (kPostSquarePadding * 2)));
+    NSInteger columns = floorf(postCount / rows);
+    
+    return CGSizeMake(kPostSquarePadding + (columns * kPostSquareSize) + (columns * kPostSquarePadding), kPostSquarePadding + (rows * kPostSquareSize) + (rows * kPostSquarePadding));
     
 }
 

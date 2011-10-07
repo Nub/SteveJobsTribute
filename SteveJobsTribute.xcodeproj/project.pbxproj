@@ -33,6 +33,7 @@
 		4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */; };
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
 		4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */; };
+		4BCDDA21143ED79D002C966C /* postIt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDDA20143ED79D002C966C /* postIt.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		4BCDDA19143EC40F002C966C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4BCDDA1C143ECCF1002C966C /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
+		4BCDDA20143ED79D002C966C /* postIt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postIt.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		04A125B9143D8FE80094CEDA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4BCDDA1F143ED79D002C966C /* Corkboard */,
 				04ADE688143E5E2800B204BD /* Tribute Intro */,
 				04A125BD143D92E50094CEDA /* Backgrounds */,
 				04A125BA143D8FF60094CEDA /* Navigation Bar */,
@@ -263,6 +266,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		4BCDDA1F143ED79D002C966C /* Corkboard */ = {
+			isa = PBXGroup;
+			children = (
+				4BCDDA20143ED79D002C966C /* postIt.png */,
+			);
+			name = Corkboard;
+			path = SteveJobsTribute/Resources/Corkboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,6 +335,7 @@
 				04ADE68A143E5E2800B204BD /* TributeVideo.mp4 in Resources */,
 				04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */,
 				4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */,
+				4BCDDA21143ED79D002C966C /* postIt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

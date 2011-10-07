@@ -17,4 +17,9 @@
 //Add a count of post representations
 - (void)addPosts:(NSInteger)count;
 
+// front and center marine!
+- (UIView *)getPost:(NSInteger)postIndex;
+
+- (CGSize)postsContentSize;
+
 @end
