@@ -28,6 +28,14 @@
 @synthesize tributeObjects;
 
 
+- (id)init {
+    
+    self = [super init];
+    
+    return self;
+}
+
+
 - (void)collectTributes {
     
     NSData *JSONBody = [self generateJSONBody];
@@ -54,10 +62,14 @@
     NSString *apiKey = [[[[NSBundle mainBundle] bundleIdentifier] reverse] MD5EncryptString];
     
     NSDictionary *jsonDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    @"YRSteveTributes", "Action",
-                                    apiKey, @"APIKey", nil];
+                                    apiKey, @"APIKey",
+                                    @"YRListTributes", @"Action",
+                                    @"", @"Data",
+                                    nil];
     
     NSData *jsonData = [jsonDictionary JSONData];
+    
+    NSString *jsonDataString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     return jsonData;
 }
@@ -78,6 +90,9 @@
 }
                                                             
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+    
+    NSString *connectionBufferString = [[NSString alloc] initWithData:connectionBuffer encoding:NSUTF8StringEncoding];
     
     NSDictionary *jsonDictionary = [connectionBuffer objectFromJSONData];
     

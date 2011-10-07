@@ -10,6 +10,7 @@
 #import "YRCorkViewcontroller.h"
 
 #import "NSString+Additions.h"
+#import "YRTributeCollector.h"
 #import "UINavigationBar+CustomImage.h"
 
 @implementation YRAppDelegate
@@ -33,6 +34,11 @@
     
     [self.window addSubview:navigationController.view];
     [self.window makeKeyAndVisible];
+    
+    
+    /* Tribute Collector */
+    YRTributeCollector *tributeCollector = [[YRTributeCollector alloc] init];
+    [tributeCollector collectTributes];
     
     
     /* Analytics */

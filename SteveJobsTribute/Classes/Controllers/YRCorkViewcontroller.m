@@ -8,7 +8,6 @@
 
 #import "YRCorkViewcontroller.h"
 
-
 @interface YRCorkViewController () {
 @private
     
@@ -69,7 +68,7 @@
     tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
     
     [self.view addSubview:tributeImageView];
-    
+
     
 }
 
