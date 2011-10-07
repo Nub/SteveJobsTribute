@@ -29,6 +29,8 @@
 		04DB3B62143D7FA100BD957B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B61143D7FA100BD957B /* main.m */; };
 		04DB3B66143D7FA100BD957B /* YRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B65143D7FA100BD957B /* YRAppDelegate.m */; };
 		04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DBAE143E64CB0031781B /* TributePhoto.png */; };
+		4BC91BD3143E7A1D001E3A41 /* PostsContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BD2143E7A1D001E3A41 /* PostsContentView.m */; };
+		4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,9 @@
 		04DB3B64143D7FA100BD957B /* YRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YRAppDelegate.h; sourceTree = "<group>"; };
 		04DB3B65143D7FA100BD957B /* YRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YRAppDelegate.m; sourceTree = "<group>"; };
 		04E0DBAE143E64CB0031781B /* TributePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TributePhoto.png; sourceTree = "<group>"; };
+		4BC91BD1143E7A1D001E3A41 /* PostsContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostsContentView.h; path = Classes/Views/PostsContentView.h; sourceTree = "<group>"; };
+		4BC91BD2143E7A1D001E3A41 /* PostsContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostsContentView.m; path = Classes/Views/PostsContentView.m; sourceTree = "<group>"; };
+		4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TributePhoto@2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +180,7 @@
 		04ADE688143E5E2800B204BD /* Tribute Intro */ = {
 			isa = PBXGroup;
 			children = (
+				4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */,
 				04ADE689143E5E2800B204BD /* TributeVideo.mp4 */,
 				04E0DBAE143E64CB0031781B /* TributePhoto.png */,
 			);
@@ -215,6 +221,7 @@
 		04DB3B5B143D7FA100BD957B /* SteveJobsTribute */ = {
 			isa = PBXGroup;
 			children = (
+				4BC91BCF143E79B8001E3A41 /* Views */,
 				04ADE65D143E44BA00B204BD /* Models */,
 				04A125AD143D8C730094CEDA /* Controllers */,
 				04A125AB143D8C630094CEDA /* Interface Builder */,
@@ -236,6 +243,15 @@
 				04DB3B63143D7FA100BD957B /* SteveJobsTribute-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BC91BCF143E79B8001E3A41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4BC91BD1143E7A1D001E3A41 /* PostsContentView.h */,
+				4BC91BD2143E7A1D001E3A41 /* PostsContentView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +313,7 @@
 				04ADE674143E547300B204BD /* README.md in Resources */,
 				04ADE68A143E5E2800B204BD /* TributeVideo.mp4 in Resources */,
 				04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */,
+				4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +333,7 @@
 				04ADE662143E450100B204BD /* YRTribute.m in Sources */,
 				04ADE665143E4A3900B204BD /* YRTributeCollector.m in Sources */,
 				04ADE673143E547300B204BD /* JSONKit.m in Sources */,
+				4BC91BD3143E7A1D001E3A41 /* PostsContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

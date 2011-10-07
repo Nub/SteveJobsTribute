@@ -8,6 +8,7 @@
 
 #import "YRCorkViewcontroller.h"
 
+#import "PostsContentView.h"
 
 @interface YRCorkViewController () {
 @private
@@ -15,6 +16,11 @@
     
     UIImageView                 *tributeImageView;
     MPMoviePlayerController     *tributeMoviePlayer;
+    
+    UIScrollView *postsScrollView;
+    PostsContentView *postsContentView;
+    
+    BOOL deviceIsIPad;
     
 }
 
@@ -40,8 +46,20 @@
     //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
     
-    [self.navigationController setNavigationBarHidden:YES];
     
+    postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    postsScrollView.backgroundColor = [UIColor clearColor];
+        
+    postsContentView = [[PostsContentView alloc] initWithFrame:self.view.frame];
+    postsContentView.backgroundColor = [UIColor clearColor];
+    
+    [postsScrollView addSubview:postsContentView];
+    [postsScrollView setContentSize:postsContentView.frame.size];
+    //Propogate with posts
+    
+    
+    
+    [self.navigationController setNavigationBarHidden:YES];
     
     /* Custom Navigation Bar Title/Label */
     float width = self.navigationController.navigationBar.bounds.size.width;
@@ -72,6 +90,8 @@
     
     if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"]) {
         
+        deviceIsIPad = YES;
+        
         x = (UIInterfaceOrientationIsPortrait(orientation))?-128:0;
         y = (UIInterfaceOrientationIsLandscape(orientation))?-128:0;
         tributeImageView.frame = CGRectMake(x, y, 1024, 1024);
@@ -79,6 +99,8 @@
         tributeImageView.image = [UIImage imageNamed:@"TributePhoto@2"];//Force Highres
         
     }else{
+        
+        deviceIsIPad = NO;
         
         x = (UIInterfaceOrientationIsPortrait(orientation))?-80:0;
         y = (UIInterfaceOrientationIsLandscape(orientation))?-80:0;
@@ -133,6 +155,7 @@
         } completion:^(BOOL finished) {
         
             [self.navigationController setNavigationBarHidden:NO animated:YES];
+            [self.view addSubview:postsScrollView];
         
         }];
         
