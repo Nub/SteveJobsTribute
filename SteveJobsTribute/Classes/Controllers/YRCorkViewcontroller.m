@@ -7,7 +7,6 @@
 //
 
 #import "YRCorkViewcontroller.h"
-
 #import "PostsContentView.h"
 
 @interface YRCorkViewController () {
@@ -84,7 +83,6 @@
     /* Steve Jobs Tribute */
     tributeImageView = [[UIImageView alloc] init];
 
-    
     NSString *deviceModel = [[UIDevice currentDevice] model];
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     CGFloat x,y;
