@@ -7,6 +7,7 @@
 //
 
 #import "YRCorkViewcontroller.h"
+#import "PostsContentView.h"
 
 @interface YRCorkViewController () {
 @private
@@ -14,6 +15,11 @@
     
     UIImageView                 *tributeImageView;
     MPMoviePlayerController     *tributeMoviePlayer;
+    
+    UIScrollView *postsScrollView;
+    PostsContentView *postsContentView;
+    
+    BOOL deviceIsIPad;
     
 }
 
@@ -36,10 +42,23 @@
 - (void)loadView {
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
     
-    [self.navigationController setNavigationBarHidden:YES];
     
+    postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    postsScrollView.backgroundColor = [UIColor clearColor];
+        
+    postsContentView = [[PostsContentView alloc] initWithFrame:self.view.frame];
+    postsContentView.backgroundColor = [UIColor clearColor];
+    
+    [postsScrollView addSubview:postsContentView];
+    [postsScrollView setContentSize:postsContentView.frame.size];
+    //Propogate with posts
+    
+    
+    
+    [self.navigationController setNavigationBarHidden:YES];
     
     /* Custom Navigation Bar Title/Label */
     float width = self.navigationController.navigationBar.bounds.size.width;
@@ -62,10 +81,36 @@
     
     
     /* Steve Jobs Tribute */
-    UIImage *steveJobs = [UIImage imageNamed:@"TributePhoto"];
-    tributeImageView = [[UIImageView alloc] initWithImage:steveJobs];
-    tributeImageView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-    tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
+    tributeImageView = [[UIImageView alloc] init];
+    
+    NSString *deviceModel = [[UIDevice currentDevice] model];
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    CGFloat x,y;
+    
+    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"]) {
+        
+        deviceIsIPad = YES;
+        
+        x = (UIInterfaceOrientationIsPortrait(orientation))?-128:0;
+        y = (UIInterfaceOrientationIsLandscape(orientation))?-128:0;
+        tributeImageView.frame = CGRectMake(x, y, 1024, 1024);
+        
+        tributeImageView.image = [UIImage imageNamed:@"TributePhoto@2"];//Force Highres
+        
+    }else{
+        
+        deviceIsIPad = NO;
+        
+        x = (UIInterfaceOrientationIsPortrait(orientation))?-80:0;
+        y = (UIInterfaceOrientationIsLandscape(orientation))?-80:0;
+        tributeImageView.frame = CGRectMake(x, y, 480, 480);
+        
+        tributeImageView.image = [UIImage imageNamed:@"TributePhoto"];//Autoselect
+        
+    }
+    
+    
+    tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;  
     
     [self.view addSubview:tributeImageView];
 
@@ -99,32 +144,23 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
-    
-    
+       
     if ([self tributeVideoHasBeenPlayed] == YES) {
         [UIView animateWithDuration:2.0 delay:3.0 options:UIViewAnimationCurveEaseInOut animations:^(void) {
         
             tributeImageView.alpha = 0;
+
         
         } completion:^(BOOL finished) {
         
-            [self.navigationController setNavigationBarHidden:NO];
+            [self.navigationController setNavigationBarHidden:NO animated:YES];
+            [self.view addSubview:postsScrollView];
         
         }];
         
     }
     
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -154,47 +190,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
