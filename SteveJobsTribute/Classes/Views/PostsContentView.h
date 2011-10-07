@@ -10,4 +10,11 @@
 
 @interface PostsContentView : UIView
 
+
+//Add a post representation
+- (void)addPost;
+
+//Add a count of post representations
+- (void)addPosts:(NSInteger)count;
+
 @end

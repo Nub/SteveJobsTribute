@@ -48,9 +48,12 @@
     
     postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     postsScrollView.backgroundColor = [UIColor clearColor];
+    postsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
         
     postsContentView = [[PostsContentView alloc] initWithFrame:self.view.frame];
     postsContentView.backgroundColor = [UIColor clearColor];
+    postsContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [postsScrollView addSubview:postsContentView];
     [postsScrollView setContentSize:postsContentView.frame.size];
@@ -238,6 +241,25 @@
 {
     // Return YES for supported orientations
     return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    
+    CGFloat w,h;
+    
+    if (!UIInterfaceOrientationIsLandscape(fromInterfaceOrientation)) {
+        w = (deviceIsIPad)?1024:480;
+        h = (deviceIsIPad)?768:320;
+    }else{
+        w = (deviceIsIPad)?768:321;
+        h = (deviceIsIPad)?1024:480;
+    }
+    
+    CGRect newContentFrame = CGRectMake(0, 0, w, h);
+    
+    postsContentView.frame = newContentFrame;
+    postsScrollView.contentSize = newContentFrame.size;
+    
 }
 
 @end
