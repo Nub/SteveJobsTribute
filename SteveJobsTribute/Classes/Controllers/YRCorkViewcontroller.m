@@ -83,6 +83,7 @@
     
     /* Steve Jobs Tribute */
     tributeImageView = [[UIImageView alloc] init];
+
     
     NSString *deviceModel = [[UIDevice currentDevice] model];
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
@@ -114,7 +115,7 @@
     tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;  
     
     [self.view addSubview:tributeImageView];
-    
+
     
 }
 
