@@ -7,7 +7,7 @@
 //
 
 #import "YRCorkViewcontroller.h"
-#import "PostsContentView.h"
+#import "CorkboardContentView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -19,7 +19,7 @@
     MPMoviePlayerController     *tributeMoviePlayer;
     
     UIScrollView *postsScrollView;
-    PostsContentView *postsContentView;
+    CorkboardContentView *corkboardContentView;
     
     BOOL deviceIsIPad;
     
@@ -47,19 +47,26 @@
     //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
     
-    
     postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    postsScrollView.backgroundColor = [UIColor clearColor];
-    postsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    postsScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
 
-        
-    postsContentView = [[PostsContentView alloc] initWithFrame:self.view.frame];
-    postsContentView.backgroundColor = [UIColor clearColor];
-    [postsContentView addPosts:100];
-    postsContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    postsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    [postsScrollView addSubview:postsContentView];
-    [postsScrollView setContentSize:postsContentView.frame.size];
+    corkboardContentView = [[CorkboardContentView alloc] initWithFrame:self.view.frame];
+    corkboardContentView.backgroundColor = [UIColor clearColor];
+    [corkboardContentView setLayoutOrientation:[[UIDevice currentDevice] orientation]];
+    
+    NSMutableArray *testPostArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 100; i++) {
+        [testPostArray addObject:[NSString stringWithFormat:@"Test Tribute Title #%i", i]];
+    }
+    
+    [corkboardContentView addPosts:testPostArray];
+    corkboardContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [postsScrollView addSubview:corkboardContentView];
+    [postsScrollView setContentSize:corkboardContentView.frame.size];
     //Propogate with posts
     
     
@@ -128,15 +135,9 @@
 }
 
 - (void)testFocus:(UIBarButtonItem *)sender{
-    
-    UIView *focusView = [postsContentView getPost:7];
-    //[focusView setHidden:YES];
-    
-    [self.view addSubview:focusView];
-    [self.view bringSubviewToFront:focusView];
-    
-    focusView.frame = CGRectMake(100, 100, 640, 480);
-    focusView.layer.transform = CATransform3DIdentity;
+   
+    [corkboardContentView focusPost:7 completion:^(BOOL finished){}];
+   
 }
 
 - (void)viewDidLoad {
@@ -276,7 +277,8 @@
     CGRect newContentFrame = CGRectMake(0, 0, w, h);
     
     postsScrollView.frame = newContentFrame;
-    postsScrollView.contentSize = [postsContentView postsContentSize];
+    corkboardContentView.layoutOrientation = [[UIDevice currentDevice] orientation];
+    postsScrollView.contentSize = corkboardContentView.bounds.size;
     
 }
 

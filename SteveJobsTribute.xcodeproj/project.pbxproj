@@ -29,7 +29,8 @@
 		04DB3B62143D7FA100BD957B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B61143D7FA100BD957B /* main.m */; };
 		04DB3B66143D7FA100BD957B /* YRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B65143D7FA100BD957B /* YRAppDelegate.m */; };
 		04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DBAE143E64CB0031781B /* TributePhoto.png */; };
-		4BC91BD3143E7A1D001E3A41 /* PostsContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BD2143E7A1D001E3A41 /* PostsContentView.m */; };
+		4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B399DD114418ED600DAEA1C /* UIView+Additions.m */; };
+		4BC91BD3143E7A1D001E3A41 /* CorkboardContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */; };
 		4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */; };
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
 		4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */; };
@@ -70,8 +71,10 @@
 		04DB3B64143D7FA100BD957B /* YRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YRAppDelegate.h; sourceTree = "<group>"; };
 		04DB3B65143D7FA100BD957B /* YRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YRAppDelegate.m; sourceTree = "<group>"; };
 		04E0DBAE143E64CB0031781B /* TributePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TributePhoto.png; sourceTree = "<group>"; };
-		4BC91BD1143E7A1D001E3A41 /* PostsContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostsContentView.h; path = Classes/Views/PostsContentView.h; sourceTree = "<group>"; };
-		4BC91BD2143E7A1D001E3A41 /* PostsContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostsContentView.m; path = Classes/Views/PostsContentView.m; sourceTree = "<group>"; };
+		4B399DD014418ED600DAEA1C /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		4B399DD114418ED600DAEA1C /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		4BC91BD1143E7A1D001E3A41 /* CorkboardContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorkboardContentView.h; path = Classes/Views/CorkboardContentView.h; sourceTree = "<group>"; };
+		4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CorkboardContentView.m; path = Classes/Views/CorkboardContentView.m; sourceTree = "<group>"; };
 		4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TributePhoto@2.png"; sourceTree = "<group>"; };
 		4BCDDA19143EC40F002C966C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4BCDDA1C143ECCF1002C966C /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				04A125B7143D8E980094CEDA /* UINavigationBar+CustomImage.m */,
 				4BCDDA1C143ECCF1002C966C /* UIColor+Additions.h */,
 				4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */,
+				4B399DD014418ED600DAEA1C /* UIView+Additions.h */,
+				4B399DD114418ED600DAEA1C /* UIView+Additions.m */,
 			);
 			name = Categories;
 			path = Classes/Additions;
@@ -260,8 +265,8 @@
 		4BC91BCF143E79B8001E3A41 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4BC91BD1143E7A1D001E3A41 /* PostsContentView.h */,
-				4BC91BD2143E7A1D001E3A41 /* PostsContentView.m */,
+				4BC91BD1143E7A1D001E3A41 /* CorkboardContentView.h */,
+				4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -355,8 +360,9 @@
 				04ADE662143E450100B204BD /* YRTribute.m in Sources */,
 				04ADE665143E4A3900B204BD /* YRTributeCollector.m in Sources */,
 				04ADE673143E547300B204BD /* JSONKit.m in Sources */,
-				4BC91BD3143E7A1D001E3A41 /* PostsContentView.m in Sources */,
+				4BC91BD3143E7A1D001E3A41 /* CorkboardContentView.m in Sources */,
 				4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */,
+				4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
