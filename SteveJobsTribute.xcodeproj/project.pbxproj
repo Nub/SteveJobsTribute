@@ -207,7 +207,6 @@
 		04DB3B46143D7FA100BD957B = {
 			isa = PBXGroup;
 			children = (
-				4BCDDA19143EC40F002C966C /* QuartzCore.framework */,
 				04DB3B5B143D7FA100BD957B /* SteveJobsTribute */,
 				04A125B9143D8FE80094CEDA /* Resources */,
 				04DB3B54143D7FA100BD957B /* Frameworks */,
@@ -231,6 +230,7 @@
 				04DB3B55143D7FA100BD957B /* UIKit.framework */,
 				04DB3B57143D7FA100BD957B /* Foundation.framework */,
 				04DB3B59143D7FA100BD957B /* CoreGraphics.framework */,
+				4BCDDA19143EC40F002C966C /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -241,7 +241,6 @@
 				4BC91BCF143E79B8001E3A41 /* Views */,
 				04ADE65D143E44BA00B204BD /* Models */,
 				04A125AD143D8C730094CEDA /* Controllers */,
-				04A125AB143D8C630094CEDA /* Interface Builder */,
 				04DB3B64143D7FA100BD957B /* YRAppDelegate.h */,
 				04DB3B65143D7FA100BD957B /* YRAppDelegate.m */,
 				04DB3B5C143D7FA100BD957B /* Supporting Files */,
@@ -252,6 +251,7 @@
 		04DB3B5C143D7FA100BD957B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04A125AB143D8C630094CEDA /* Interface Builder */,
 				04ADE66D143E547300B204BD /* JSONKit */,
 				04A125B5143D8E980094CEDA /* Categories */,
 				04DB3B5D143D7FA100BD957B /* SteveJobsTribute-Info.plist */,
