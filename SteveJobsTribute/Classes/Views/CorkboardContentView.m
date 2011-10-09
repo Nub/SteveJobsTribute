@@ -94,13 +94,17 @@
     
     CATransform3D newTransform = CATransform3DMakeRotation(rot, 0, 0, 1);
     newTransform.m34 = -1.0f/500.f;
-    
     newView.layer.transform = newTransform;
 
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postIt"]];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"post"]];
     backgroundView.frame = newView.bounds;
     backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [newView addSubview:backgroundView];
+    
+    UIImageView *pin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pin"]];
+    pin.frame = CGRectMake((kPostSquareSize*0.5f - 15) - ((rot/0.2f)*kPostSquareSize*0.35f), -5, 32, 32);
+    pin.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [newView addSubview:pin];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, kPostSquareSize - 30, kPostSquareSize2 - 40)];
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|
@@ -188,8 +192,8 @@
         
         NSInteger rows = floorf(([self superview].frame.size.height - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
             
-        CGFloat x = arc4randPM(kPostSquarePadding) + kPostSquarePadding - 10 + ((i - (i%rows))/rows) * (kPostSquareSize + kPostSquarePadding);
-        CGFloat y = arc4randPM(kPostSquarePadding) + kPostSquarePadding + (i % rows) * (kPostSquareSize + kPostSquarePadding);
+        CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding - 10 + ((i - (i%rows))/rows) * (kPostSquareSize + kPostSquarePadding);
+        CGFloat y = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % rows) * (kPostSquareSize + kPostSquarePadding);
         
         return CGRectMake(x, y, kPostSquareSize, kPostSquareSize);
          
@@ -199,8 +203,8 @@
         
         NSInteger columns = floorf(([self superview].frame.size.width - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
         
-        CGFloat x = arc4randPM(kPostSquarePadding) + kPostSquarePadding + (i % columns) * (kPostSquareSize2 + kPostSquarePadding);
-        CGFloat y = arc4randPM(kPostSquarePadding) + kPostSquarePadding + ((i - (i%columns))/columns) * (kPostSquareSize2 + kPostSquarePadding);
+        CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % columns) * (kPostSquareSize2 + kPostSquarePadding);
+        CGFloat y = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + ((i - (i%columns))/columns) * (kPostSquareSize2 + kPostSquarePadding);
         
         return CGRectMake(x, y, kPostSquareSize2, kPostSquareSize2);
             

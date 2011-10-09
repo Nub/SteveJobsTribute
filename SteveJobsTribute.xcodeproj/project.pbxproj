@@ -30,6 +30,9 @@
 		04DB3B66143D7FA100BD957B /* YRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B65143D7FA100BD957B /* YRAppDelegate.m */; };
 		04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DBAE143E64CB0031781B /* TributePhoto.png */; };
 		4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B399DD114418ED600DAEA1C /* UIView+Additions.m */; };
+		4B399DD51442425100DAEA1C /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DD31442425100DAEA1C /* pin.png */; };
+		4B399DD61442425100DAEA1C /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DD41442425100DAEA1C /* post.png */; };
+		4B399DD914424BE400DAEA1C /* TributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B399DD814424BE400DAEA1C /* TributeView.m */; };
 		4BC91BD3143E7A1D001E3A41 /* CorkboardContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */; };
 		4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */; };
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
@@ -73,6 +76,10 @@
 		04E0DBAE143E64CB0031781B /* TributePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TributePhoto.png; sourceTree = "<group>"; };
 		4B399DD014418ED600DAEA1C /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		4B399DD114418ED600DAEA1C /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		4B399DD31442425100DAEA1C /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		4B399DD41442425100DAEA1C /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
+		4B399DD714424BE400DAEA1C /* TributeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TributeView.h; sourceTree = "<group>"; };
+		4B399DD814424BE400DAEA1C /* TributeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TributeView.m; sourceTree = "<group>"; };
 		4BC91BD1143E7A1D001E3A41 /* CorkboardContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorkboardContentView.h; path = Classes/Views/CorkboardContentView.h; sourceTree = "<group>"; };
 		4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CorkboardContentView.m; path = Classes/Views/CorkboardContentView.m; sourceTree = "<group>"; };
 		4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TributePhoto@2.png"; sourceTree = "<group>"; };
@@ -267,6 +274,8 @@
 			children = (
 				4BC91BD1143E7A1D001E3A41 /* CorkboardContentView.h */,
 				4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */,
+				4B399DD714424BE400DAEA1C /* TributeView.h */,
+				4B399DD814424BE400DAEA1C /* TributeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -274,6 +283,8 @@
 		4BCDDA1F143ED79D002C966C /* Corkboard */ = {
 			isa = PBXGroup;
 			children = (
+				4B399DD31442425100DAEA1C /* pin.png */,
+				4B399DD41442425100DAEA1C /* post.png */,
 				4BCDDA20143ED79D002C966C /* postIt.png */,
 			);
 			name = Corkboard;
@@ -341,6 +352,8 @@
 				04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */,
 				4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */,
 				4BCDDA21143ED79D002C966C /* postIt.png in Resources */,
+				4B399DD51442425100DAEA1C /* pin.png in Resources */,
+				4B399DD61442425100DAEA1C /* post.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +376,7 @@
 				4BC91BD3143E7A1D001E3A41 /* CorkboardContentView.m in Sources */,
 				4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */,
 				4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */,
+				4B399DD914424BE400DAEA1C /* TributeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +415,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -433,6 +448,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SteveJobsTribute/SteveJobsTribute-Prefix.pch";
 				INFOPLIST_FILE = "SteveJobsTribute/SteveJobsTribute-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SteveJobsTribute/Resources/Analytics\"",
@@ -450,6 +466,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SteveJobsTribute/SteveJobsTribute-Prefix.pch";
 				INFOPLIST_FILE = "SteveJobsTribute/SteveJobsTribute-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SteveJobsTribute/Resources/Analytics\"",
