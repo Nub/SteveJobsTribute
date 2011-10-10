@@ -47,6 +47,8 @@
 #pragma mark - View Lifecycle
 - (void)loadView {
     
+    
+    
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
