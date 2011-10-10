@@ -37,6 +37,7 @@
 @implementation CorkboardContentView
 
 @synthesize layoutOrientation;
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -45,7 +46,7 @@
         
         postCount = 0;
         focusedPost = -1;
-        layoutOrientation = UIDeviceOrientationLandscapeLeft;
+        layoutOrientation = [[UIDevice currentDevice] orientation];
         
     }
     return self;
@@ -84,7 +85,7 @@
     UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|
     UIViewAutoresizingFlexibleBottomMargin;
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont fontWithName:@"Bradley Hand" size:18];
+    titleLabel.font = [UIFont fontWithName:@"Noteworthy-Bold" size:18];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.minimumFontSize = 10;
     titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
@@ -97,7 +98,10 @@
     [self addSubview:newView];
     
     postCount ++;
-
+    
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(respondToTapGesture:)];
+    [newView addGestureRecognizer:tapRecognizer];
     
 }
 
@@ -111,42 +115,67 @@
         
 }
 
-- (UIView *)focusPost:(NSInteger)postIndex completion:(void (^)(BOOL finished))completionBlock{
+- (CGRect)postRect:(NSInteger)postIndex{
     
-    UIView *focusView = [self.subviews  objectAtIndex:postIndex];
+    UIView *post = [[self subviews] objectAtIndex:postIndex];
+    if (!post)
+        return CGRectZero;
+    else
+        return [self convertRect:post.frame toView:self.superview.superview];
+#warning Ugly heirarchy access.
+}
+
+- (CATransform3D)postTransform:(NSInteger)postIndex{
     
-    if (focusView){
-        
-        CGRect newFrame = focusView.frame;
-        newFrame.size.width = 480;
-        newFrame.size.height = 640;
-        
-        if (UIDeviceOrientationIsLandscape(layoutOrientation)){
-            
-            newFrame.origin.x = 272;
-            newFrame.origin.y = 64;
+    UIView *post = [[self subviews] objectAtIndex:postIndex];
+    if (!post)
+        return post.layer.transform;
+    else
+        return CATransform3DIdentity;
 
-        }else{
-            
-            newFrame.origin.x = 144;
-            newFrame.origin.y = 192;
-
-        }
-        
-        
-        [UIView animateWithDuration:2 animations:^(void){
-            
-            focusView.frame = newFrame;
-            
-        } completion:completionBlock];
-        
-
-    }else
-        return nil;
-    
-    return focusView;
     
 }
+
+
+- (void)hidePost:(NSInteger)postIndex{
+    
+    UIView *post = [[self subviews] objectAtIndex:postIndex];
+    if (post){
+        
+        [UIView animateWithDuration:0.5 animations:^(){
+            post.alpha = 0;
+        }];
+        
+    }
+    
+}
+
+- (void)showPost:(NSInteger)postIndex{
+    
+    UIView *post = [[self subviews] objectAtIndex:postIndex];
+    if (post){
+        
+        [UIView animateWithDuration:0.5 animations:^(){
+            post.alpha = 1;
+        }];
+        
+    }
+    
+}
+
+
+#pragma mark - UITGestureRecognizerDelegate
+
+- (void)respondToTapGesture:(UITapGestureRecognizer*)gestureRecognizer{
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
+        
+        [delegate tappedPostAtIndex:[self.subviews indexOfObject:gestureRecognizer.view]];
+        
+    }
+    
+}
+
 
 #pragma mark - Setters / Getters
 

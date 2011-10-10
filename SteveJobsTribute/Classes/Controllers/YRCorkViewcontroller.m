@@ -7,7 +7,6 @@
 //
 
 #import "YRCorkViewcontroller.h"
-#import "CorkboardContentView.h"
 #import "TributeViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -53,14 +52,14 @@
     //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
     
-    postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     postsScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
 
     postsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     corkboardContentView = [[CorkboardContentView alloc] initWithFrame:self.view.frame];
+    corkboardContentView.delegate = self;
     corkboardContentView.backgroundColor = [UIColor clearColor];
-    [corkboardContentView setLayoutOrientation:[[UIDevice currentDevice] orientation]];
     
     NSMutableArray *testPostArray = [NSMutableArray array];
     
@@ -72,7 +71,23 @@
     // corkboardContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [postsScrollView addSubview:corkboardContentView];
-    [postsScrollView setContentSize:corkboardContentView.frame.size];    
+    [postsScrollView setContentSize:corkboardContentView.frame.size];  
+    
+    CGFloat w,h;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        w = (deviceIsIPad)?1024:480;
+        h = (deviceIsIPad)?768:320;
+    }else{
+        w = (deviceIsIPad)?768:321;
+        h = (deviceIsIPad)?1024:480;
+    }
+    
+    CGRect newContentFrame = CGRectMake(0, 0, w, h);
+    
+    postsScrollView.frame = newContentFrame;
+    corkboardContentView.layoutOrientation = [[UIDevice currentDevice] orientation];
+    postsScrollView.contentSize = corkboardContentView.bounds.size;
     
     
     [self.navigationController setNavigationBarHidden:YES];
@@ -136,24 +151,19 @@
     
     
     tributeViewController = [[TributeViewController alloc] init];
-
     
 }
 
 - (void)testFocus:(UIBarButtonItem *)sender{
    
-    // [corkboardContentView focusPost:7 completion:^(BOOL finished){}];
-    
-    if ([self modalViewController]) {
-        
-        [self dismissModalViewControllerAnimated:YES];
-        
+    if ([tributeViewController isPresenting]) {
+        [tributeViewController hideViewToRect:[corkboardContentView postRect:7]];
+        [corkboardContentView showPost:7];
     }else{
-        
-        [tributeViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-        [self presentModalViewController:tributeViewController animated:YES];
-    
+        [tributeViewController presentViewFromRect:[corkboardContentView postRect:7] withTransform:[corkboardContentView postTransform:7] inView:self.view];
+        [corkboardContentView hidePost:7];
     }
+    
 }
 
 - (void)viewDidLoad {
@@ -200,6 +210,16 @@
     
 }
 
+#pragma mark - CorkboardPostDelegate
+
+- (void)tappedPostAtIndex:(NSInteger)index{
+    
+    if (![tributeViewController isPresenting]){
+        [tributeViewController presentViewFromRect:[corkboardContentView postRect:index] withTransform:[corkboardContentView postTransform:index] inView:self.view];
+        [corkboardContentView hidePost:index];
+    }
+    
+}
 
 
 #pragma mark - Private Methods

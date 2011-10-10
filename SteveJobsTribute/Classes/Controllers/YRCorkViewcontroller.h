@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "CorkboardContentView.h"
 
 
-@interface YRCorkViewController : UIViewController
+@interface YRCorkViewController : UIViewController <CorkboardPostDelegate>
 
 
 - (void)testFocus:(UIBarButtonItem *)sender;
