@@ -11,13 +11,35 @@
 
 #define kAnimationTime 0.5
 
+@interface TributeViewController (){
+    @private
+    CGRect presentRect;
+    
+}
+
+- (void)closeTribute:(UIButton *)sender;
+
+@end
+
 @implementation TributeViewController
 
 @synthesize presenting;
+@synthesize delegate;
 
 - (void)loadView{
     
     self.view = [[TributeView alloc] initWithFrame:CGRectMake(0, 0, 480, 640)];
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButton setFrame:CGRectMake(15, 15, 64, 32)];
+
+    UIImage *closeButtonImage = [UIImage imageNamed:@"tribute-close"];
+    [closeButton setBackgroundImage:closeButtonImage forState:UIControlStateNormal];
+    
+    [closeButton addTarget:self action:@selector(closeTribute:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:closeButton];
+    
     presenting = NO;
     
 }
@@ -29,8 +51,10 @@
     
 }
 
-- (void)presentViewFromRect:(CGRect)fromRect withTransform:(CATransform3D)transform inView:(UIView*)aView{
-                    
+- (void)presentViewFromRect:(CGRect)fromRect inView:(UIView*)aView{
+               
+    presentRect = fromRect;
+    
     [aView addSubview:self.view];
     [aView bringSubviewToFront:self.view];
     
@@ -54,7 +78,6 @@
 
     self.view.frame = fromRect;
     self.view.alpha = 0;
-    self.view.layer.transform = transform;
 
     [UIView animateWithDuration:kAnimationTime animations:^(void){
         
@@ -84,6 +107,26 @@
         presenting = NO;
         
     }];
+    
+}
+
+- (void)setPresenting:(BOOL)newPresenting{
+    
+    if (presenting && !newPresenting) {
+    
+        [self hideViewToRect:presentRect];
+        
+    }
+    
+}
+
+#pragma mark - Private Helpers
+
+- (void)closeTribute:(UIButton *)sender{
+    
+    [self setPresenting:NO];
+    
+    [delegate didCloseTribute];
     
 }
 

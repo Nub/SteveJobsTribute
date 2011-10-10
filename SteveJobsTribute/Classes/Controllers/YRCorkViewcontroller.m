@@ -7,7 +7,6 @@
 //
 
 #import "YRCorkViewcontroller.h"
-#import "TributeViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -23,6 +22,7 @@
     
     TributeViewController *tributeViewController;
     
+    NSInteger presentingIndex;
     
     BOOL deviceIsIPad;
     
@@ -32,6 +32,8 @@
 - (void)setTributeVideoHasBeenPlayed:(BOOL)status;
 
 - (void)tributeVideoFinished:(MPMoviePlayerController *)finishedPlayer;
+
+- (void)addTribute:(UIBarButtonItem *)sender;
 
 @end
 
@@ -108,7 +110,7 @@
     
     
     /* Create new Tribute Button */
-    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithTitle:@"Test Modal" style:UIBarButtonItemStyleBordered target:self action:@selector(testFocus:)];
+    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithTitle:@"Add Tribute" style:UIBarButtonItemStylePlain target:self action:@selector(addTribute:)];
 
     
     self.navigationItem.rightBarButtonItem = focusTest;
@@ -151,18 +153,7 @@
     
     
     tributeViewController = [[TributeViewController alloc] init];
-    
-}
-
-- (void)testFocus:(UIBarButtonItem *)sender{
-   
-    if ([tributeViewController isPresenting]) {
-        [tributeViewController hideViewToRect:[corkboardContentView postRect:7]];
-        [corkboardContentView showPost:7];
-    }else{
-        [tributeViewController presentViewFromRect:[corkboardContentView postRect:7] withTransform:[corkboardContentView postTransform:7] inView:self.view];
-        [corkboardContentView hidePost:7];
-    }
+    tributeViewController.delegate = self;
     
 }
 
@@ -210,14 +201,30 @@
     
 }
 
-#pragma mark - CorkboardPostDelegate
+- (void)addTribute:(UIBarButtonItem *)sender{
+    
+    //TODO: present create tribute modal
+    
+}
+
+#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate
 
 - (void)tappedPostAtIndex:(NSInteger)index{
     
+    //TODO: [tributeViewController setTribute:tributeObject];
+    
     if (![tributeViewController isPresenting]){
-        [tributeViewController presentViewFromRect:[corkboardContentView postRect:index] withTransform:[corkboardContentView postTransform:index] inView:self.view];
+        [tributeViewController presentViewFromRect:[corkboardContentView postRect:index] inView:self.view];
         [corkboardContentView hidePost:index];
+        
+        presentingIndex = index;
     }
+    
+}
+
+- (void)didCloseTribute{
+    
+    [corkboardContentView showPost:presentingIndex];
     
 }
 

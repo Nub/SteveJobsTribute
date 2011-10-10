@@ -12,16 +12,26 @@
 
 #import "YRTribute.h"
 
+@protocol TributeViewControllerDelegate
+
+- (void)didCloseTribute;
+
+@end
+
 @interface TributeViewController : UIViewController{
     
     BOOL presenting;
+    
+    id <TributeViewControllerDelegate> delegate;
 }
 
 @property (nonatomic, getter = isPresenting) BOOL presenting;
 
+@property (nonatomic, retain) id <TributeViewControllerDelegate> delegate;
+
 - (void)setTribute:(YRTribute*)tribute;
 
-- (void)presentViewFromRect:(CGRect)fromRect withTransform:(CATransform3D)transform inView:(UIView*)aView;
+- (void)presentViewFromRect:(CGRect)fromRect inView:(UIView*)aView;
 
 - (void)hideViewToRect:(CGRect)toRect;
 

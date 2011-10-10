@@ -52,6 +52,8 @@
         message = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec sapien justo, vel sollicitudin lacus. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis risus convallis est adipiscing tempus egestas ligula viverra. In hac habitasse platea dictumst. Donec nibh leo, scelerisque vitae ornare et, laoreet at ante. Donec eget venenatis massa. Morbi nec blandit elit. Aenean bibendum feugiat lectus. ";
         image = nil;
         
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        
         [self setupSubviews];
         
         
@@ -71,9 +73,9 @@
     [self addSubview:backgroundView];
 
     
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kContentPadding, kContentPadding, self.frame.size.width - kContentDoublePadding, 50)];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kContentPadding, kContentDoublePadding, self.frame.size.width - kContentDoublePadding, 45)];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont fontWithName:@"Noteworthy-Bold" size:40];
+    titleLabel.font = [UIFont fontWithName:@"Noteworthy-Bold" size:36];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.minimumFontSize = 10;
     titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
@@ -81,7 +83,7 @@
     titleLabel.text = title;
     titleLabel.numberOfLines = 5;
     [self addSubview:titleLabel];
-    lastBottom = kContentPadding + 50;
+    lastBottom = kContentDoublePadding + 45;
 
     
     
