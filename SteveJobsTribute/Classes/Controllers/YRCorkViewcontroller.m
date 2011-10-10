@@ -97,7 +97,6 @@
 
     
     self.navigationItem.rightBarButtonItem = focusTest;
-    // self.navigationController.navigationItem.rightBarButtonItem = focusTest;
     
     
     
@@ -150,8 +149,8 @@
         [self dismissModalViewControllerAnimated:YES];
         
     }else{
-#warning Presents fullscreen WTF!
-        [self setModalPresentationStyle:UIModalPresentationFormSheet];
+        
+        [tributeViewController setModalPresentationStyle:UIModalPresentationFormSheet];
         [self presentModalViewController:tributeViewController animated:YES];
     
     }
