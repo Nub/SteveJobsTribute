@@ -33,8 +33,6 @@
 		4B399DD51442425100DAEA1C /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DD31442425100DAEA1C /* pin.png */; };
 		4B399DD61442425100DAEA1C /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DD41442425100DAEA1C /* post.png */; };
 		4B399DD914424BE400DAEA1C /* TributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B399DD814424BE400DAEA1C /* TributeView.m */; };
-		4B399DE314429F8F00DAEA1C /* tribute-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DE214429F8F00DAEA1C /* tribute-background.png */; };
-		4B399DE71442A13900DAEA1C /* TributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B399DE61442A13900DAEA1C /* TributeViewController.m */; };
 		4BC91BD3143E7A1D001E3A41 /* CorkboardContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */; };
 		4BC91BD5143E7BEF001E3A41 /* TributePhoto@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */; };
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
@@ -82,9 +80,6 @@
 		4B399DD41442425100DAEA1C /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
 		4B399DD714424BE400DAEA1C /* TributeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TributeView.h; sourceTree = "<group>"; };
 		4B399DD814424BE400DAEA1C /* TributeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TributeView.m; sourceTree = "<group>"; };
-		4B399DE214429F8F00DAEA1C /* tribute-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-background.png"; sourceTree = "<group>"; };
-		4B399DE51442A13900DAEA1C /* TributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TributeViewController.h; path = Classes/Controllers/TributeViewController.h; sourceTree = "<group>"; };
-		4B399DE61442A13900DAEA1C /* TributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TributeViewController.m; path = Classes/Controllers/TributeViewController.m; sourceTree = "<group>"; };
 		4BC91BD1143E7A1D001E3A41 /* CorkboardContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorkboardContentView.h; path = Classes/Views/CorkboardContentView.h; sourceTree = "<group>"; };
 		4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CorkboardContentView.m; path = Classes/Views/CorkboardContentView.m; sourceTree = "<group>"; };
 		4BC91BD4143E7BEF001E3A41 /* TributePhoto@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TributePhoto@2.png"; sourceTree = "<group>"; };
@@ -124,8 +119,6 @@
 			children = (
 				04A125AE143D8D3D0094CEDA /* YRCorkViewcontroller.h */,
 				04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */,
-				4B399DE51442A13900DAEA1C /* TributeViewController.h */,
-				4B399DE61442A13900DAEA1C /* TributeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -170,7 +163,6 @@
 		04A125BD143D92E50094CEDA /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				4B399DE214429F8F00DAEA1C /* tribute-background.png */,
 				04A125BE143D92E50094CEDA /* cork-background~ipad.png */,
 			);
 			name = Backgrounds;
@@ -362,7 +354,6 @@
 				4BCDDA21143ED79D002C966C /* postIt.png in Resources */,
 				4B399DD51442425100DAEA1C /* pin.png in Resources */,
 				4B399DD61442425100DAEA1C /* post.png in Resources */,
-				4B399DE314429F8F00DAEA1C /* tribute-background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +377,6 @@
 				4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */,
 				4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */,
 				4B399DD914424BE400DAEA1C /* TributeView.m in Sources */,
-				4B399DE71442A13900DAEA1C /* TributeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

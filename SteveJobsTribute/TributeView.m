@@ -11,18 +11,9 @@
 #define kContentPadding 20.f
 #define kContentDoublePadding kContentPadding*2.f
 
-@interface TributeView (){
-    @private
-    
-    UIImageView *backgroundView;
-    
-    UILabel *titleLabel;
-    
-}
+@interface TributeView ()
 
 - (void)setupSubviews;
-
-
 
 @end
 
@@ -39,12 +30,7 @@
     if (self) {
         
         
-        title = @"Title";
-        author = @"Author";
-        tribute = @"Tribute";
-        image = nil;
         
-        [self setupSubviews];
         
         
     }
@@ -52,13 +38,8 @@
 }
 
 - (void)setupSubviews{
-    
-    backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tribute-background"]];
-    backgroundView.frame = self.bounds;
-    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    [self addSubview:backgroundView];
 
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kContentPadding, kContentPadding, self.frame.size.width - kContentDoublePadding, self.frame.size.height - kContentDoublePadding)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kContentPadding, kContentPadding, self.frame.size.width - kContentDoublePadding, self.frame.size.height - kContentDoublePadding)];
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|
     UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|
     UIViewAutoresizingFlexibleBottomMargin;
@@ -70,6 +51,7 @@
     titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.text = title;
     titleLabel.numberOfLines = 5;
+    
     [self addSubview:titleLabel];
     
 }
