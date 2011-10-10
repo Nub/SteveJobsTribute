@@ -8,6 +8,7 @@
 
 #import "YRCorkViewcontroller.h"
 #import "CorkboardContentView.h"
+#import "TributeViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -20,6 +21,9 @@
     
     UIScrollView *postsScrollView;
     CorkboardContentView *corkboardContentView;
+    
+    TributeViewController *tributeViewController;
+    
     
     BOOL deviceIsIPad;
     
@@ -43,6 +47,8 @@
 #pragma mark - View Lifecycle
 - (void)loadView {
     
+    
+    
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     //!!! bad..... the cork, isn't a pattern.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
@@ -63,12 +69,10 @@
     }
     
     [corkboardContentView addPosts:testPostArray];
-    corkboardContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    // corkboardContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [postsScrollView addSubview:corkboardContentView];
-    [postsScrollView setContentSize:corkboardContentView.frame.size];
-    //Propogate with posts
-    
+    [postsScrollView setContentSize:corkboardContentView.frame.size];    
     
     
     [self.navigationController setNavigationBarHidden:YES];
@@ -89,7 +93,7 @@
     
     
     /* Create new Tribute Button */
-    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithTitle:@"Test Focus" style:UIBarButtonItemStyleBordered target:self action:@selector(testFocus:)];
+    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithTitle:@"Test Modal" style:UIBarButtonItemStyleBordered target:self action:@selector(testFocus:)];
 
     
     self.navigationItem.rightBarButtonItem = focusTest;
@@ -130,14 +134,27 @@
     tributeImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;  
     
     [self.view addSubview:tributeImageView];
+    
+    
+    tributeViewController = [[TributeViewController alloc] init];
 
     
 }
 
 - (void)testFocus:(UIBarButtonItem *)sender{
    
-    [corkboardContentView focusPost:7 completion:^(BOOL finished){}];
-   
+    // [corkboardContentView focusPost:7 completion:^(BOOL finished){}];
+    
+    if ([self modalViewController]) {
+        
+        [self dismissModalViewControllerAnimated:YES];
+        
+    }else{
+#warning Presents fullscreen WTF!
+        [self setModalPresentationStyle:UIModalPresentationFormSheet];
+        [self presentModalViewController:tributeViewController animated:YES];
+    
+    }
 }
 
 - (void)viewDidLoad {

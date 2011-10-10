@@ -30,6 +30,7 @@
 }
 
 - (CGRect)frameForIndex:(NSInteger)index;
+- (void)buildGrid;
 
 @end
 
@@ -50,34 +51,6 @@
     return self;
 }
 
-- (void)layoutSubviews{
-        
-     [super layoutSubviews];
-
-        
-    NSInteger i = 0;
-    
-    for (UIView *view in self.subviews) {
-        
-        if(i == focusedPost) continue;//skip layout of focused view
-        
-        [UIView animateWithDuration:0.5 animations:^(void){
-            view.frame = [self frameForIndex:i];
-        }];
-                
-        i ++;
-    }
-    
-    
-    CGRect contentsFrame = [self subviewContainerRect];
-    contentsFrame.size.width += kPostSquarePadding;
-    contentsFrame.size.height += kPostSquarePadding;
-    contentsFrame.origin = self.frame.origin;
-    
-    self.frame = contentsFrame;
-    
-        
-}
 
 #pragma mark - Public Methods
 
@@ -133,6 +106,8 @@
     for (NSString *title in titles) {
         [self addPost:title];
     }
+    
+    [self buildGrid];
         
 }
 
@@ -179,7 +154,7 @@
     
     layoutOrientation = newOrientation;
     
-    [self layoutSubviews];
+    [self buildGrid];
     
     
 }
@@ -193,7 +168,7 @@
         NSInteger rows = floorf(([self superview].frame.size.height - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
             
         CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding - 10 + ((i - (i%rows))/rows) * (kPostSquareSize + kPostSquarePadding);
-        CGFloat y = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % rows) * (kPostSquareSize + kPostSquarePadding);
+        CGFloat y = arc4randPM(kPostSquarePadding - 5) + (kPostSquarePadding*2) + (i % rows) * (kPostSquareSize + kPostSquarePadding);
         
         return CGRectMake(x, y, kPostSquareSize, kPostSquareSize);
          
@@ -209,6 +184,43 @@
         return CGRectMake(x, y, kPostSquareSize2, kPostSquareSize2);
             
     }
+    
+}
+
+- (void)buildGrid{
+    
+    NSInteger i = 0;
+    
+    for (UIView *view in self.subviews) {
+        
+        if(i == focusedPost) continue;//skip layout of focused view
+        
+        [UIView animateWithDuration:0.5 animations:^(void){
+            view.frame = [self frameForIndex:i];
+        }];
+        
+        i ++;
+    }
+    
+    
+    CGRect contentsFrame = [self subviewContainerRect];
+    
+    if (UIDeviceOrientationIsLandscape(layoutOrientation)) {
+        
+        contentsFrame.size.width += kPostSquarePadding;
+        contentsFrame.size.height += kPostSquarePadding;
+        
+    }else{
+        
+        contentsFrame.size.width = 768;
+        //contentsFrame.size.height += kPostSquarePadding;
+        
+    }
+    
+
+    contentsFrame.origin = self.frame.origin;
+    
+    self.frame = contentsFrame;
     
 }
 
