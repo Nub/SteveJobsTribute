@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041382641443B5C4004BDDE6 /* YRTributeMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 041382631443B5C4004BDDE6 /* YRTributeMessages.m */; };
 		04A125B0143D8D3D0094CEDA /* YRCorkViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */; };
 		04A125B8143D8E980094CEDA /* UINavigationBar+CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A125B7143D8E980094CEDA /* UINavigationBar+CustomImage.m */; };
 		04A125BC143D908F0094CEDA /* YRCorkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A125BB143D908F0094CEDA /* YRCorkView.xib */; };
@@ -16,7 +17,6 @@
 		04A125CF143DA12A0094CEDA /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A125CE143DA12A0094CEDA /* NSData+Additions.m */; };
 		04A125D1143DA1440094CEDA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A125D0143DA1440094CEDA /* libz.dylib */; };
 		04ADE662143E450100B204BD /* YRTribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADE661143E450100B204BD /* YRTribute.m */; };
-		04ADE665143E4A3900B204BD /* YRTributeCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADE664143E4A3900B204BD /* YRTributeCollector.m */; };
 		04ADE672143E547300B204BD /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 04ADE66E143E547300B204BD /* CHANGELOG.md */; };
 		04ADE673143E547300B204BD /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADE670143E547300B204BD /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04ADE674143E547300B204BD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04ADE671143E547300B204BD /* README.md */; };
@@ -44,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041382621443B5C4004BDDE6 /* YRTributeMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRTributeMessages.h; path = Classes/Models/YRTributeMessages.h; sourceTree = "<group>"; };
+		041382631443B5C4004BDDE6 /* YRTributeMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRTributeMessages.m; path = Classes/Models/YRTributeMessages.m; sourceTree = "<group>"; };
 		04A125AE143D8D3D0094CEDA /* YRCorkViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRCorkViewcontroller.h; path = Classes/Controllers/YRCorkViewcontroller.h; sourceTree = "<group>"; };
 		04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRCorkViewcontroller.m; path = Classes/Controllers/YRCorkViewcontroller.m; sourceTree = "<group>"; };
 		04A125B6143D8E980094CEDA /* UINavigationBar+CustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomImage.h"; sourceTree = "<group>"; };
@@ -58,8 +60,6 @@
 		04A125D0143DA1440094CEDA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		04ADE660143E450100B204BD /* YRTribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRTribute.h; path = Classes/Models/Objects/YRTribute.h; sourceTree = "<group>"; };
 		04ADE661143E450100B204BD /* YRTribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRTribute.m; path = Classes/Models/Objects/YRTribute.m; sourceTree = "<group>"; };
-		04ADE663143E4A3900B204BD /* YRTributeCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRTributeCollector.h; path = Classes/Models/YRTributeCollector.h; sourceTree = "<group>"; };
-		04ADE664143E4A3900B204BD /* YRTributeCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRTributeCollector.m; path = Classes/Models/YRTributeCollector.m; sourceTree = "<group>"; };
 		04ADE66E143E547300B204BD /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		04ADE66F143E547300B204BD /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		04ADE670143E547300B204BD /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				04ADE65F143E44D800B204BD /* Objects */,
-				04ADE663143E4A3900B204BD /* YRTributeCollector.h */,
-				04ADE664143E4A3900B204BD /* YRTributeCollector.m */,
+				041382621443B5C4004BDDE6 /* YRTributeMessages.h */,
+				041382631443B5C4004BDDE6 /* YRTributeMessages.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -384,13 +384,13 @@
 				04A125CC143DA0F20094CEDA /* NSString+Additions.m in Sources */,
 				04A125CF143DA12A0094CEDA /* NSData+Additions.m in Sources */,
 				04ADE662143E450100B204BD /* YRTribute.m in Sources */,
-				04ADE665143E4A3900B204BD /* YRTributeCollector.m in Sources */,
 				04ADE673143E547300B204BD /* JSONKit.m in Sources */,
 				4BC91BD3143E7A1D001E3A41 /* CorkboardContentView.m in Sources */,
 				4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */,
 				4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */,
 				4B399DD914424BE400DAEA1C /* TributeView.m in Sources */,
 				4B399DE71442A13900DAEA1C /* TributeViewController.m in Sources */,
+				041382641443B5C4004BDDE6 /* YRTributeMessages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

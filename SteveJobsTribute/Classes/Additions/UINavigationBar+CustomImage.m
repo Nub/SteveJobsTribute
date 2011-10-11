@@ -22,6 +22,36 @@
     }
 }
 
+
+- (void)setBackgroundImage:(UIImage *)image withSize:(CGSize)aSize {
+    
+    if (image == nil) return;
+    
+    
+    if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+        [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    else {
+        
+        UIGraphicsBeginImageContext(aSize);
+        
+        CGRect aRect = CGRectMake(0, 0, aSize.width, 48);
+        [image drawAsPatternInRect:aRect];
+        
+        UIImage *backgroundPattern = UIGraphicsGetImageFromCurrentImageContext();
+        
+        
+        UIImageView *background = [[UIImageView alloc] initWithImage:backgroundPattern];
+        background.frame = aRect;
+        [self insertSubview:background atIndex:0];
+        
+        
+    }
+    
+}
+
+
+
+
 - (void) clearBackgroundImage {
     NSArray *subviews = [self subviews];
     for (int i=0; i<[subviews count]; i++) {

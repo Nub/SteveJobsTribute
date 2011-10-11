@@ -8,9 +8,8 @@
 
 #import "YRAppDelegate.h"
 #import "YRCorkViewcontroller.h"
-
+#import "YRTributeMessages.h"
 #import "NSString+Additions.h"
-#import "YRTributeCollector.h"
 #import "UINavigationBar+CustomImage.h"
 
 @implementation YRAppDelegate
@@ -29,7 +28,7 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:corkViewcontroller];
     UINavigationBar *navigationBar = navigationController.navigationBar;
     
-    [navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar-background"]];
+    [navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar-background"] withSize:navigationBar.bounds.size];
     self.navController = navigationController;
     
     [self.window addSubview:navigationController.view];
@@ -37,8 +36,8 @@
     
     
     /* Tribute Collector */
-    YRTributeCollector *tributeCollector = [[YRTributeCollector alloc] init];
-    [tributeCollector collectTributes];
+    YRTributeMessages *tributeMessages = [[YRTributeMessages alloc] init];
+    [tributeMessages tributeMessagesFromOffset:0 withRange:20];
     
     
     /* Analytics */

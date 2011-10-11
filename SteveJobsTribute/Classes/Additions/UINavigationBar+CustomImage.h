@@ -10,6 +10,7 @@
 
 @interface UINavigationBar (CustomImage)
 
+- (void)setBackgroundImage:(UIImage *)image withSize:(CGSize)aSize;
 - (void) setBackgroundImage:(UIImage*)image;
 - (void) clearBackgroundImage;
 

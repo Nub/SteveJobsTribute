@@ -20,6 +20,8 @@
     NSURL               *image;
     NSDate              *posted;
     
+    BOOL                flagged;
+    int                 databaseRow;
     
 }
 
@@ -32,6 +34,8 @@
 @property (nonatomic, retain) NSURL *image;
 @property (nonatomic, retain) NSDate *posted;
 
+@property (nonatomic) BOOL flagged;
+@property (nonatomic) int databaseRow;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (id)tributeWithDictionary:(NSDictionary *)dictionary;
