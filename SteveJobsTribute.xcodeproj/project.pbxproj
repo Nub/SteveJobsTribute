@@ -47,6 +47,11 @@
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
 		4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */; };
 		4BCDDA21143ED79D002C966C /* postIt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDDA20143ED79D002C966C /* postIt.png */; };
+		4BD5C29C14440F8E0084C0A3 /* CreateTributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */; };
+		4BD5C29F144410230084C0A3 /* tribute-input-boxes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C29E144410230084C0A3 /* tribute-input-boxes.png */; };
+		4BD5C2A11444102C0084C0A3 /* tribute-create-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */; };
+		4BD5C2A41444105E0084C0A3 /* CreateTributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */; };
+		4BD5C2A614441E470084C0A3 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A514441E470084C0A3 /* flag.png */; };
 		4BE239871443400200686F01 /* tribute-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE239861443400200686F01 /* tribute-close.png */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +112,13 @@
 		4BCDDA1C143ECCF1002C966C /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
 		4BCDDA20143ED79D002C966C /* postIt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postIt.png; sourceTree = "<group>"; };
+		4BD5C29A14440F8E0084C0A3 /* CreateTributeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeView.h; path = Classes/Views/CreateTributeView.h; sourceTree = "<group>"; };
+		4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeView.m; path = Classes/Views/CreateTributeView.m; sourceTree = "<group>"; };
+		4BD5C29E144410230084C0A3 /* tribute-input-boxes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-input-boxes.png"; sourceTree = "<group>"; };
+		4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-create-background.png"; sourceTree = "<group>"; };
+		4BD5C2A21444105E0084C0A3 /* CreateTributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeViewController.h; path = Classes/Controllers/CreateTributeViewController.h; sourceTree = "<group>"; };
+		4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeViewController.m; path = Classes/Controllers/CreateTributeViewController.m; sourceTree = "<group>"; };
+		4BD5C2A514441E470084C0A3 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4BE239861443400200686F01 /* tribute-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-close.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +168,8 @@
 				04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */,
 				4B399DE51442A13900DAEA1C /* TributeViewController.h */,
 				4B399DE61442A13900DAEA1C /* TributeViewController.m */,
+				4BD5C2A21444105E0084C0A3 /* CreateTributeViewController.h */,
+				4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +215,7 @@
 		04A125BD143D92E50094CEDA /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */,
 				4B399DE214429F8F00DAEA1C /* tribute-background.png */,
 				04A125BE143D92E50094CEDA /* cork-background~ipad.png */,
 			);
@@ -315,6 +330,8 @@
 				4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */,
 				4B399DD714424BE400DAEA1C /* TributeView.h */,
 				4B399DD814424BE400DAEA1C /* TributeView.m */,
+				4BD5C29A14440F8E0084C0A3 /* CreateTributeView.h */,
+				4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -322,6 +339,8 @@
 		4BCDDA1F143ED79D002C966C /* Corkboard */ = {
 			isa = PBXGroup;
 			children = (
+				4BD5C2A514441E470084C0A3 /* flag.png */,
+				4BD5C29E144410230084C0A3 /* tribute-input-boxes.png */,
 				4BE239861443400200686F01 /* tribute-close.png */,
 				4B399DD31442425100DAEA1C /* pin.png */,
 				4B399DD41442425100DAEA1C /* post.png */,
@@ -403,6 +422,9 @@
 				0413827C1443EC4D004BDDE6 /* Icon.png in Resources */,
 				0413827D1443EC4D004BDDE6 /* Icon@2x.png in Resources */,
 				0413827E1443EC4D004BDDE6 /* iTunesArtwork in Resources */,
+				4BD5C29F144410230084C0A3 /* tribute-input-boxes.png in Resources */,
+				4BD5C2A11444102C0084C0A3 /* tribute-create-background.png in Resources */,
+				4BD5C2A614441E470084C0A3 /* flag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +449,8 @@
 				4B399DD914424BE400DAEA1C /* TributeView.m in Sources */,
 				4B399DE71442A13900DAEA1C /* TributeViewController.m in Sources */,
 				041382641443B5C4004BDDE6 /* YRTributeMessages.m in Sources */,
+				4BD5C29C14440F8E0084C0A3 /* CreateTributeView.m in Sources */,
+				4BD5C2A41444105E0084C0A3 /* CreateTributeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

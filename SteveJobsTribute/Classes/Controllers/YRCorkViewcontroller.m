@@ -21,10 +21,13 @@
     CorkboardContentView *corkboardContentView;
     
     TributeViewController *tributeViewController;
+    CreateTributeViewController *createTributeViewController;
     
     NSInteger presentingIndex;
     
     BOOL deviceIsIPad;
+    
+    BOOL presentingCustomModal;
     
 }
 
@@ -163,6 +166,9 @@
     tributeViewController = [[TributeViewController alloc] init];
     tributeViewController.delegate = self;
     
+    createTributeViewController = [[CreateTributeViewController alloc] init];
+    createTributeViewController.delegate = self;
+    
 }
 
 - (void)viewDidLoad {
@@ -211,13 +217,23 @@
 
 - (void)addTribute:(UIBarButtonItem *)sender{
     
-    //TODO: present create tribute modal
+    if (presentingCustomModal) 
+        [tributeViewController setPresenting:NO];
+    
+    presentingCustomModal = YES;
+    
+    [createTributeViewController presentViewFromRect:CGRectZero inView:self.view];
     
 }
 
-#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate
+#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate, CreateTributeViewControllerDelegate
 
 - (void)tappedPostAtIndex:(NSInteger)index{
+    
+    if (presentingCustomModal) 
+        return;
+    
+    presentingCustomModal = YES;
     
     //TODO: [tributeViewController setTribute:tributeObject];
 
@@ -235,7 +251,23 @@
 
 - (void)didCloseTribute{
     
+    presentingCustomModal = NO;
+    
     [corkboardContentView showPost:presentingIndex];
+    
+}
+
+- (void)didCancelCreateTribute{
+    
+    presentingCustomModal = NO;
+    
+}
+
+- (void)didSendTribute:(YRTribute *)tribute{
+    
+    presentingCustomModal = NO;
+    
+    //TODO: upload tribute code
     
 }
 

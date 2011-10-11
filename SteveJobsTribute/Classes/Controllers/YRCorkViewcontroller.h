@@ -10,10 +10,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "CorkboardContentView.h"
 #import "TributeViewController.h"
+#import "CreateTributeViewController.h"
 
 
-
-@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate> {
+@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate, CreateTributeViewControllerDelegate> {
     
     NSArray         *tributeObjects;
     

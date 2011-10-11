@@ -1,68 +1,60 @@
 //
-//  TributeViewController.m
+//  CreateTributeViewController.m
 //  SteveJobsTribute
 //
-//  Created by Zachry Thayer on 10/9/11.
+//  Created by Zachry Thayer on 10/10/11.
 //  Copyright (c) 2011 Yoshimi Robotics. All rights reserved.
 //
 
-#import "TributeViewController.h"
-#import "TributeView.h"
+#import "CreateTributeViewController.h"
 
 #define kAnimationTime 0.5
 
-@interface TributeViewController (){
+@interface CreateTributeViewController ()
+{
     @private
     CGRect presentRect;
     
 }
 
-- (void)closeTribute:(UIButton *)sender;
 
 @end
 
-@implementation TributeViewController
+@implementation CreateTributeViewController
 
-@synthesize presenting;
 @synthesize delegate;
+@synthesize presenting;
 
-- (void)loadView{
-    
-    self.view = [[TributeView alloc] initWithFrame:CGRectMake(0, 0, 480, 640)];
-    
-    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButton setFrame:CGRectMake(15, 15, 64, 32)];
-
-    UIImage *closeButtonImage = [UIImage imageNamed:@"tribute-close"];
-    [closeButton setBackgroundImage:closeButtonImage forState:UIControlStateNormal];
-    
-    [closeButton addTarget:self action:@selector(closeTribute:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:closeButton];
-    
-    
-    UIButton *flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [flagButton setFrame:CGRectMake(443, 22, 17, 20)];
-    
-    UIImage *flagButtonImage = [UIImage imageNamed:@"flag"];
-    [flagButton setBackgroundImage:flagButtonImage forState:UIControlStateNormal];
-    
-    [self.view addSubview:flagButton];
-
-    
-    presenting = NO;
-    
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
-- (void)setTribute:(YRTribute*)tribute{
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
     
-    TributeView *tributeView = (id)self.view;
-    [tributeView setTribute:tribute];
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+    
+    self.view = [[CreateTributeView alloc] initWithFrame:CGRectMake(0, 0, 640, 480)];
     
 }
 
 - (void)presentViewFromRect:(CGRect)fromRect inView:(UIView*)aView{
-               
+    
     presentRect = fromRect;
     
     [aView addSubview:self.view];
@@ -71,7 +63,7 @@
     CGRect newFrame = self.view.frame;
     newFrame.size.width = 480;
     newFrame.size.height = 640;
-
+    
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     
     if (UIDeviceOrientationIsLandscape(orientation)){
@@ -85,10 +77,10 @@
         newFrame.origin.y = 192;
         
     }
-
+    
     self.view.frame = fromRect;
     self.view.alpha = 0;
-
+    
     [UIView animateWithDuration:kAnimationTime animations:^(void){
         
         self.view.alpha = 1;
@@ -112,7 +104,7 @@
     } completion:^(BOOL finished){
         
         [self.view removeFromSuperview];
-
+        
         presenting = NO;
         
     }];
@@ -122,7 +114,7 @@
 - (void)setPresenting:(BOOL)newPresenting{
     
     if (presenting && !newPresenting) {
-    
+        
         [self hideViewToRect:presentRect];
         
     }
@@ -131,12 +123,11 @@
 
 #pragma mark - Private Helpers
 
-- (void)closeTribute:(UIButton *)sender{
+- (void)cancelTribute:(UIButton *)sender{
     
     [self setPresenting:NO];
     
-    [delegate didCloseTribute];
+    [delegate didCancelCreateTribute];
     
 }
-
 @end
