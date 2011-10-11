@@ -8,6 +8,7 @@
 
 #import "TributeViewController.h"
 #import "TributeView.h"
+#import "SVProgressHUD.h"
 
 #define kAnimationTime 0.5
 
@@ -17,14 +18,14 @@
     
 }
 
+- (void)flagTribute:(UIButton *)sender;
 - (void)closeTribute:(UIButton *)sender;
 
 @end
 
 @implementation TributeViewController
 
-@synthesize presenting;
-@synthesize delegate;
+@synthesize presenting, delegate;
 
 - (void)loadView{
     
@@ -41,23 +42,29 @@
     [self.view addSubview:closeButton];
     
     
+
     UIButton *flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [flagButton setFrame:CGRectMake(443, 22, 17, 20)];
     
     UIImage *flagButtonImage = [UIImage imageNamed:@"flag"];
     [flagButton setBackgroundImage:flagButtonImage forState:UIControlStateNormal];
     
-    [self.view addSubview:flagButton];
 
+    [flagButton addTarget:self action:@selector(flagTribute:) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.view addSubview:flagButton];
+    
+        
     presenting = NO;
     
 }
 
-- (void)setTribute:(YRTribute*)tribute{
+- (void)setTribute:(YRTribute *)tribute {
+    
+    aTribute = tribute;
     
     TributeView *tributeView = (id)self.view;
-    [tributeView setTribute:tribute];
+    [tributeView setTribute:aTribute];
     
 }
 
@@ -138,5 +145,28 @@
     [delegate didCloseTribute];
     
 }
+
+- (void)flagTribute:(UIButton *)sender {
+    
+    YRReportMessage *reportMessage = [[YRReportMessage alloc] init];
+    [reportMessage setDelegate:self];
+    [reportMessage reportTribute:aTribute];
+    
+    [SVProgressHUD showInView:self.view status:@"Please wait.." networkIndicator:YES];
+    
+}
+
+- (void)didFinishReportingTribute {
+    
+    [SVProgressHUD dismissWithSuccess:@"Completed!"];
+    
+}
+
+- (void)didFailToReportTribute:(NSError *)error {
+    
+    [SVProgressHUD dismissWithError:[error localizedDescription]];
+    
+}
+
 
 @end

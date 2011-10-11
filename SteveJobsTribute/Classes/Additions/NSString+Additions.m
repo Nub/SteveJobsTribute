@@ -219,6 +219,8 @@ static char encodingTable[64] = {
 
 - (BOOL)containsString:(NSString *)string {
     
+    if (string == nil) return NO;
+    
     NSRange range = [[self lowercaseString] rangeOfString:[string lowercaseString]];
     return range.location != NSNotFound;
     

@@ -7,6 +7,7 @@
 //
 
 #import "TributeView.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 #define kContentPadding 20.0
@@ -24,10 +25,12 @@
     
     UITextView *messageView;
     
+    BOOL imageIsCurrentlyDownloading;
+    
 }
 
 - (void)setupSubviews;
-
+- (void)downloadImageFromTribute:(YRTribute *)tribute;
 
 
 @end
@@ -51,6 +54,7 @@
         author = tribute.author;
         message = tribute.message;
         image = tribute.image;
+        
         
         /*title = @"Title";
         author = @"Author";
@@ -106,6 +110,8 @@
 
     
     CGFloat imageViewHeight = 0;
+
+    
     
     messageView = [[UITextView alloc] initWithFrame:CGRectMake(kContentPadding, lastBottom + imageViewHeight, self.frame.size.width - kContentDoublePadding, self.frame.size.height - lastBottom - kContentPadding)];
     messageView.backgroundColor = [UIColor clearColor];
@@ -128,7 +134,12 @@
     [self setTitle:   tribute.title];
     [self setAuthor:  tribute.author];
     [self setMessage: tribute.message];
-    [self setImage:   tribute.image];
+    
+    if (tribute.image != nil)
+        [self setImage:   tribute.image];
+    else 
+        [self downloadImageFromTribute:tribute];
+    
     
     [self setNeedsDisplay];
     
@@ -155,12 +166,35 @@
     
 }
 
-- (void)setImage:(NSURL *)newImage{
+#pragma mark - Image Downloading
+- (void)setImage:(UIImage *)newImage{
     
     image = newImage;
-    //TODO: Implement async image download
     
 }
 
+
+- (void)downloadImageFromTribute:(YRTribute *)aTribute {
+    
+    if (imageIsCurrentlyDownloading != YES) {
+        
+        YRImageDownloader *imageDownloader = [[YRImageDownloader alloc] init];
+        [imageDownloader setDelegate:self];
+        [imageDownloader startDownloadWithTribute:aTribute];
+        
+        imageIsCurrentlyDownloading = YES;
+        
+    }
+    
+}
+
+- (void)didFinishDownloadingImage:(UIImage *)image {
+    
+    /* Here we need to Replace the current imageView's image with the newest one,
+       the image downloader handles caching */
+#warning Please read my comment ^^
+    imageIsCurrentlyDownloading = NO;
+    
+}
 
 @end

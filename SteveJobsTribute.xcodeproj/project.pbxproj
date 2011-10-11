@@ -29,6 +29,11 @@
 		04ADE674143E547300B204BD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04ADE671143E547300B204BD /* README.md */; };
 		04ADE687143E5CB200B204BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADE686143E5CB200B204BD /* MediaPlayer.framework */; };
 		04ADE68A143E5E2800B204BD /* TributeVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 04ADE689143E5E2800B204BD /* TributeVideo.mp4 */; };
+		04D8B4A01444577F00392B70 /* YRImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8B49F1444577F00392B70 /* YRImageDownloader.m */; };
+		04D8B4AC14446B9300392B70 /* YRReportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8B4AB14446B9200392B70 /* YRReportMessage.m */; };
+		04D8B4B51444760800392B70 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04D8B4B21444760800392B70 /* SVProgressHUD.bundle */; };
+		04D8B4B61444760800392B70 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8B4B41444760800392B70 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		04D8B4B81444781500392B70 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D8B4B71444781500392B70 /* flag.png */; };
 		04DB3B56143D7FA100BD957B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB3B55143D7FA100BD957B /* UIKit.framework */; };
 		04DB3B58143D7FA100BD957B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB3B57143D7FA100BD957B /* Foundation.framework */; };
 		04DB3B5A143D7FA100BD957B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB3B59143D7FA100BD957B /* CoreGraphics.framework */; };
@@ -47,11 +52,8 @@
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
 		4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */; };
 		4BCDDA21143ED79D002C966C /* postIt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDDA20143ED79D002C966C /* postIt.png */; };
-		4BD5C29C14440F8E0084C0A3 /* CreateTributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */; };
-		4BD5C29F144410230084C0A3 /* tribute-input-boxes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C29E144410230084C0A3 /* tribute-input-boxes.png */; };
-		4BD5C2A11444102C0084C0A3 /* tribute-create-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */; };
-		4BD5C2A41444105E0084C0A3 /* CreateTributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */; };
-		4BD5C2A614441E470084C0A3 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A514441E470084C0A3 /* flag.png */; };
+		4BD5C2AF1444C7BE0084C0A3 /* CreateTributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */; };
+		4BD5C2B11444C7CB0084C0A3 /* CreateTributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */; };
 		4BE239871443400200686F01 /* tribute-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE239861443400200686F01 /* tribute-close.png */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,14 @@
 		04ADE671143E547300B204BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		04ADE686143E5CB200B204BD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04ADE689143E5E2800B204BD /* TributeVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TributeVideo.mp4; sourceTree = "<group>"; };
+		04D8B49E1444577F00392B70 /* YRImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRImageDownloader.h; path = Classes/Models/YRImageDownloader.h; sourceTree = "<group>"; };
+		04D8B49F1444577F00392B70 /* YRImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRImageDownloader.m; path = Classes/Models/YRImageDownloader.m; sourceTree = "<group>"; };
+		04D8B4AA14446B9200392B70 /* YRReportMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRReportMessage.h; path = Classes/Models/YRReportMessage.h; sourceTree = "<group>"; };
+		04D8B4AB14446B9200392B70 /* YRReportMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRReportMessage.m; path = Classes/Models/YRReportMessage.m; sourceTree = "<group>"; };
+		04D8B4B21444760800392B70 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		04D8B4B31444760800392B70 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		04D8B4B41444760800392B70 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		04D8B4B71444781500392B70 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		04DB3B51143D7FA100BD957B /* SteveJobsTribute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteveJobsTribute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DB3B55143D7FA100BD957B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04DB3B57143D7FA100BD957B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,11 +124,9 @@
 		4BCDDA20143ED79D002C966C /* postIt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postIt.png; sourceTree = "<group>"; };
 		4BD5C29A14440F8E0084C0A3 /* CreateTributeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeView.h; path = Classes/Views/CreateTributeView.h; sourceTree = "<group>"; };
 		4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeView.m; path = Classes/Views/CreateTributeView.m; sourceTree = "<group>"; };
-		4BD5C29E144410230084C0A3 /* tribute-input-boxes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-input-boxes.png"; sourceTree = "<group>"; };
 		4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-create-background.png"; sourceTree = "<group>"; };
 		4BD5C2A21444105E0084C0A3 /* CreateTributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeViewController.h; path = Classes/Controllers/CreateTributeViewController.h; sourceTree = "<group>"; };
 		4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeViewController.m; path = Classes/Controllers/CreateTributeViewController.m; sourceTree = "<group>"; };
-		4BD5C2A514441E470084C0A3 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4BE239861443400200686F01 /* tribute-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-close.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +203,7 @@
 		04A125B9143D8FE80094CEDA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04D8B4B11444760800392B70 /* SVProgressHUD */,
 				041382701443EC3C004BDDE6 /* Icon Artwork */,
 				4BCDDA1F143ED79D002C966C /* Corkboard */,
 				04ADE688143E5E2800B204BD /* Tribute Intro */,
@@ -229,6 +238,10 @@
 				04ADE65F143E44D800B204BD /* Objects */,
 				041382621443B5C4004BDDE6 /* YRTributeMessages.h */,
 				041382631443B5C4004BDDE6 /* YRTributeMessages.m */,
+				04D8B49E1444577F00392B70 /* YRImageDownloader.h */,
+				04D8B49F1444577F00392B70 /* YRImageDownloader.m */,
+				04D8B4AA14446B9200392B70 /* YRReportMessage.h */,
+				04D8B4AB14446B9200392B70 /* YRReportMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -263,6 +276,16 @@
 			);
 			name = "Tribute Intro";
 			path = "SteveJobsTribute/Resources/Tribute Intro";
+			sourceTree = "<group>";
+		};
+		04D8B4B11444760800392B70 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				04D8B4B21444760800392B70 /* SVProgressHUD.bundle */,
+				04D8B4B31444760800392B70 /* SVProgressHUD.h */,
+				04D8B4B41444760800392B70 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		04DB3B46143D7FA100BD957B = {
@@ -339,8 +362,7 @@
 		4BCDDA1F143ED79D002C966C /* Corkboard */ = {
 			isa = PBXGroup;
 			children = (
-				4BD5C2A514441E470084C0A3 /* flag.png */,
-				4BD5C29E144410230084C0A3 /* tribute-input-boxes.png */,
+				04D8B4B71444781500392B70 /* flag.png */,
 				4BE239861443400200686F01 /* tribute-close.png */,
 				4B399DD31442425100DAEA1C /* pin.png */,
 				4B399DD41442425100DAEA1C /* post.png */,
@@ -422,9 +444,8 @@
 				0413827C1443EC4D004BDDE6 /* Icon.png in Resources */,
 				0413827D1443EC4D004BDDE6 /* Icon@2x.png in Resources */,
 				0413827E1443EC4D004BDDE6 /* iTunesArtwork in Resources */,
-				4BD5C29F144410230084C0A3 /* tribute-input-boxes.png in Resources */,
-				4BD5C2A11444102C0084C0A3 /* tribute-create-background.png in Resources */,
-				4BD5C2A614441E470084C0A3 /* flag.png in Resources */,
+				04D8B4B51444760800392B70 /* SVProgressHUD.bundle in Resources */,
+				04D8B4B81444781500392B70 /* flag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BD5C2B11444C7CB0084C0A3 /* CreateTributeView.m in Sources */,
+				4BD5C2AF1444C7BE0084C0A3 /* CreateTributeViewController.m in Sources */,
 				04DB3B62143D7FA100BD957B /* main.m in Sources */,
 				04DB3B66143D7FA100BD957B /* YRAppDelegate.m in Sources */,
 				04A125B0143D8D3D0094CEDA /* YRCorkViewcontroller.m in Sources */,
@@ -449,8 +472,9 @@
 				4B399DD914424BE400DAEA1C /* TributeView.m in Sources */,
 				4B399DE71442A13900DAEA1C /* TributeViewController.m in Sources */,
 				041382641443B5C4004BDDE6 /* YRTributeMessages.m in Sources */,
-				4BD5C29C14440F8E0084C0A3 /* CreateTributeView.m in Sources */,
-				4BD5C2A41444105E0084C0A3 /* CreateTributeViewController.m in Sources */,
+				04D8B4A01444577F00392B70 /* YRImageDownloader.m in Sources */,
+				04D8B4AC14446B9300392B70 /* YRReportMessage.m in Sources */,
+				04D8B4B61444760800392B70 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -85,17 +85,35 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     NSDictionary *json = [connectionBuffer objectFromJSONData];
+    if (json == nil)
+        return;
+    
     
     for (NSDictionary *tributeJson in json) {
         
         YRTribute *tribute = [[YRTribute alloc] init];
+        
+        tribute.identifier = [[tributeJson objectForKey:@"tribute_id"] intValue];
         
         tribute.title = [tributeJson objectForKey:@"tribute_title"];
         tribute.author = [tributeJson objectForKey:@"tribute_author"];
         tribute.message = [tributeJson objectForKey:@"tribute_message"];
         tribute.device = [tributeJson objectForKey:@"tribute_device"];
         
-        tribute.image = [NSURL URLWithString:[tributeJson objectForKey:@"tribute_image"]];
+        tribute.imageUrl = [NSURL URLWithString:[tributeJson objectForKey:@"tribute_image_url"]];
+
+        
+#warning Cant figure this fucking thing out - /me drinks (a lot) more beer
+        /*NSString *imageSizeAsString = [tributeJson objectForKey:@"tribute_image_size"];
+        if (![(NSString *)imageSizeAsString containsString:@","]) {
+            
+            NSArray *imageSizes = [imageSizeAsString componentsSeparatedByString:@","]; 
+            tribute.imageSize = CGSizeMake([[imageSizes objectAtIndex:0] floatValue], [[imageSizes objectAtIndex:1] floatValue]);
+        
+        }*/
+        
+        
+#warning We need to turn 2011-10-11 04:54:57 into a NSDate, Have fun :)
         //tribute.posted = [tributeJson objectForKey:@"tribute_posted"];
         
         tribute.flagged = [[tributeJson objectForKey:@"tribute_flagged"] boolValue];

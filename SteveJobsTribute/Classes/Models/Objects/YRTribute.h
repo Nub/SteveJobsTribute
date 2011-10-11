@@ -10,18 +10,22 @@
 
 @interface YRTribute : NSObject {
     
-    
     NSString            *title;
     NSString            *author;
     NSString            *message;
     NSString            *device;
     
     
-    NSURL               *image;
+    UIImage             *image;
+    NSURL               *imageUrl;
+    CGSize              imageSize;
+    
     NSDate              *posted;
     
+    
     BOOL                flagged;
-    int                 databaseRow;
+    NSInteger           databaseRow;
+    NSInteger           identifier;
     
 }
 
@@ -31,11 +35,15 @@
 @property (nonatomic, retain) NSString *message;
 @property (nonatomic, retain) NSString *device;
 
-@property (nonatomic, retain) NSURL *image;
+@property (nonatomic, retain) NSURL *imageUrl;
+@property (nonatomic, retain) UIImage *image;
+@property (nonatomic) CGSize imageSize;
+
 @property (nonatomic, retain) NSDate *posted;
 
 @property (nonatomic) BOOL flagged;
-@property (nonatomic) int databaseRow;
+@property (nonatomic) NSInteger databaseRow;
+@property (nonatomic) NSInteger identifier;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (id)tributeWithDictionary:(NSDictionary *)dictionary;

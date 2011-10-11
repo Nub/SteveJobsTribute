@@ -11,6 +11,7 @@
 
 
 #import "YRTribute.h"
+#import "YRReportMessage.h"
 
 @protocol TributeViewControllerDelegate
 
@@ -18,9 +19,11 @@
 
 @end
 
-@interface TributeViewController : UIViewController{
+@interface TributeViewController : UIViewController <YRReportMessageDelegate> {
     
     BOOL presenting;
+    
+    YRTribute *aTribute;
     
     id <TributeViewControllerDelegate> delegate;
 }
@@ -29,7 +32,7 @@
 
 @property (nonatomic, retain) id <TributeViewControllerDelegate> delegate;
 
-- (void)setTribute:(YRTribute*)tribute;
+- (void)setTribute:(YRTribute *)aTribute;
 
 - (void)presentViewFromRect:(CGRect)fromRect inView:(UIView*)aView;
 

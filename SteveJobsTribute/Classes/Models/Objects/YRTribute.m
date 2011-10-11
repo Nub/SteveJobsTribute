@@ -10,7 +10,7 @@
 
 @implementation YRTribute
 
-@synthesize title, author, message, image, device, posted, flagged, databaseRow;
+@synthesize title, author, message, image, imageUrl, imageSize, device, posted, flagged, databaseRow, identifier;
 
 
 + (id)tributeWithDictionary:(NSDictionary *)dictionary {
@@ -18,7 +18,6 @@
     return [[self alloc] initWithDictionary:dictionary];
     
 }
-
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     

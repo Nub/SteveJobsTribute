@@ -19,7 +19,6 @@
     
 }
 
-
 - (void)reloadData;
 - (void)addPost:(YRTribute *)tribute;
 
