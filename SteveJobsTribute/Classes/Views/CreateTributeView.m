@@ -35,7 +35,10 @@
         self.layer.shadowColor = [[UIColor blackColor] CGColor];
         self.layer.shadowRadius = 10.f;
         self.layer.shadowOpacity = 0.5;
+        self.layer.shadowOffset = CGSizeMake(0, 10.f);
         
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+                
         UIImageView* backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tribute-create-background"]];
         backgroundView.frame = self.bounds;
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -46,8 +49,6 @@
         inputBoxes.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self addSubview:inputBoxes];
         
-        
-        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         
         CGFloat cumulativeY = 84.f;
         
