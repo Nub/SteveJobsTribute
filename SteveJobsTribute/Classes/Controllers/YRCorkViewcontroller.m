@@ -41,8 +41,14 @@
 
 
 @implementation YRCorkViewController
+@synthesize tributeObjects;
 
 
+- (void)reloadData {
+    
+    [corkboardContentView addPosts:self.tributeObjects];
+    
+}
 
 
 #pragma mark - View Lifecycle
@@ -63,13 +69,15 @@
     corkboardContentView.delegate = self;
     corkboardContentView.backgroundColor = [UIColor clearColor];
     
-    NSMutableArray *testPostArray = [NSMutableArray array];
+#warning Updated this code
+    /*NSMutableArray *testPostArray = [NSMutableArray array];
     
     for (int i = 0; i < 100; i++) {
         [testPostArray addObject:[NSString stringWithFormat:@"Test Tribute Title #%i", i]];
-    }
+    }*/
     
-    [corkboardContentView addPosts:testPostArray];
+    
+    [corkboardContentView addPosts:self.tributeObjects];
     // corkboardContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [postsScrollView addSubview:corkboardContentView];
@@ -212,6 +220,9 @@
 - (void)tappedPostAtIndex:(NSInteger)index{
     
     //TODO: [tributeViewController setTribute:tributeObject];
+
+#warning Is this correct?
+    [tributeViewController setTribute:[self.tributeObjects objectAtIndex:index]];
     
     if (![tributeViewController isPresenting]){
         [tributeViewController presentViewFromRect:[corkboardContentView postRect:index] inView:self.view];

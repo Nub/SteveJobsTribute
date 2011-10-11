@@ -13,6 +13,18 @@
 
 
 
-@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate>
+@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate> {
+    
+    NSArray         *tributeObjects;
+    
+}
+
+
+- (void)reloadData;
+- (void)addPost:(YRTribute *)tribute;
+
+
+@property (nonatomic, retain) NSArray *tributeObjects;
+
 
 @end

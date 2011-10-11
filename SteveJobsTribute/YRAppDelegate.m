@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    YRCorkViewController *corkViewcontroller = [[YRCorkViewController alloc] init];
+    corkViewcontroller = [[YRCorkViewController alloc] init];
     
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
@@ -37,6 +37,7 @@
     
     /* Tribute Collector */
     YRTributeMessages *tributeMessages = [[YRTributeMessages alloc] init];
+    [tributeMessages setDelegate:self];
     [tributeMessages tributeMessagesFromOffset:0 withRange:20];
     
     
@@ -56,7 +57,14 @@
 
 
 
-
+#pragma mark - Tribute Messages
+- (void)didFinishLoadingTributes:(NSArray *)tributeObjects {
+    
+    [corkViewcontroller setTributeObjects:tributeObjects];
+    [corkViewcontroller reloadData];
+    
+    
+}
 
 
 

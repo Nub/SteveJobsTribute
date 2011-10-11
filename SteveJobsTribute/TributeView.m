@@ -47,10 +47,15 @@
     if (self) {
         
         
-        title = @"Title";
+        title = tribute.title;
+        author = tribute.author;
+        message = tribute.message;
+        image = tribute.image;
+        
+        /*title = @"Title";
         author = @"Author";
         message = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec sapien justo, vel sollicitudin lacus. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis risus convallis est adipiscing tempus egestas ligula viverra. In hac habitasse platea dictumst. Donec nibh leo, scelerisque vitae ornare et, laoreet at ante. Donec eget venenatis massa. Morbi nec blandit elit. Aenean bibendum feugiat lectus. ";
-        image = nil;
+        image = nil;*/
         
         self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         

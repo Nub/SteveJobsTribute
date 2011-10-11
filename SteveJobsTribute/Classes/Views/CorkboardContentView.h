@@ -10,6 +10,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "YRTribute.h"
+
 @protocol CorkboardPostDelegate
 
 - (void)tappedPostAtIndex:(NSInteger)index;
@@ -25,7 +27,8 @@
 @property (nonatomic, retain) id <CorkboardPostDelegate> delegate;
 
 //Add a post representation
-- (void)addPost:(NSString *)title;
+- (void)addPost:(YRTribute *)tribute;
+//- (void)addPost:(NSString *)title;
 
 //Add a count of post representations
 - (void)addPosts:(NSArray*)titles;

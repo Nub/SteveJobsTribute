@@ -57,7 +57,7 @@
 
 #define arc4randPM(value)((((CGFloat)arc4random() / 0x100000000) - 0.5) * value * 2.f)
 
-- (void)addPost:(NSString *)title{
+/*- (void)addPost:(NSString *)title{
         
     
     UIView *newView = [[UIView alloc] init];
@@ -103,9 +103,73 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(respondToTapGesture:)];
     [newView addGestureRecognizer:tapRecognizer];
     
+}*/
+
+#warning Updated this tp use YRtibute
+- (void)addPosts:(NSArray *)tributeObjects {
+    
+    for (YRTribute *tribute in tributeObjects) {
+        
+        [self addPost:tribute];
+        
+    }
+    
+    [self buildGrid];
+    
 }
 
-- (void)addPosts:(NSArray*)titles{
+#warning Updated this to use YRTribute
+- (void)addPost:(YRTribute *)tribute {
+    
+    UIView *newView = [[UIView alloc] init];
+    newView.frame = CGRectMake(0, 0, kPostSquareSize, kPostSquareSize);;
+    
+    //Add random rotation
+    CGFloat rot = arc4randPM(0.2);
+    
+    CATransform3D newTransform = CATransform3DMakeRotation(rot, 0, 0, 1);
+    newTransform.m34 = -1.0f/500.f;
+    newView.layer.transform = newTransform;
+    
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"post"]];
+    backgroundView.frame = newView.bounds;
+    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [newView addSubview:backgroundView];
+    
+    UIImageView *pin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pin"]];
+    pin.frame = CGRectMake((kPostSquareSize*0.5f - 15) - ((rot/0.2f)*kPostSquareSize*0.35f), -5, 32, 32);
+    pin.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [newView addSubview:pin];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, kPostSquareSize - 30, kPostSquareSize2 - 40)];
+    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|
+    UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|
+    UIViewAutoresizingFlexibleBottomMargin;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont fontWithName:@"Noteworthy-Bold" size:18];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.minimumFontSize = 10;
+    titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.text = tribute.title;
+    titleLabel.numberOfLines = 5;
+    
+    [newView addSubview:titleLabel];
+    
+    [self addSubview:newView];
+    
+    postCount ++;
+    
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(respondToTapGesture:)];
+    [newView addGestureRecognizer:tapRecognizer];
+    
+    
+}
+
+
+
+/*- (void)addPosts:(NSArray*)titles{
     
     for (NSString *title in titles) {
         [self addPost:title];
@@ -113,7 +177,7 @@
     
     [self buildGrid];
         
-}
+}*/
 
 - (CGRect)postRect:(NSInteger)postIndex{
     

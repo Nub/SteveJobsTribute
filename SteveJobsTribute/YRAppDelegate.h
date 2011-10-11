@@ -7,18 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YRTributeMessages.h"
 
-@interface YRAppDelegate : UIResponder <UIApplicationDelegate> {
+@class YRCorkViewController;
+
+@interface YRAppDelegate : UIResponder <UIApplicationDelegate, YRTributeMessagesManager> {
     
     UIWindow                *window;
     UINavigationController  *navController;
+    
+    YRCorkViewController    *corkViewcontroller;
     
 }
 
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
-
 
 
 @end
