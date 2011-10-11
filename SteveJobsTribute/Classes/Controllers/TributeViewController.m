@@ -41,7 +41,6 @@
     
     [self.view addSubview:closeButton];
     
-    
 
     UIButton *flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [flagButton setFrame:CGRectMake(443, 22, 17, 20)];
@@ -49,13 +48,10 @@
     UIImage *flagButtonImage = [UIImage imageNamed:@"flag"];
     [flagButton setBackgroundImage:flagButtonImage forState:UIControlStateNormal];
     
-
     [flagButton addTarget:self action:@selector(flagTribute:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:flagButton];
     
-        
-
     presenting = NO;
     
 }
