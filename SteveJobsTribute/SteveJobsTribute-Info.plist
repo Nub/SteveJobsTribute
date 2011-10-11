@@ -53,7 +53,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewEdgeAntialiasing</key>
-	<true/>
 </dict>
 </plist>

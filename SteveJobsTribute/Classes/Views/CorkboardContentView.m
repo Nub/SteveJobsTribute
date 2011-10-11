@@ -70,6 +70,7 @@
     newTransform.m34 = -1.0f/500.f;
     newView.layer.transform = newTransform;
 
+    
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"post"]];
     backgroundView.frame = newView.bounds;
     backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
