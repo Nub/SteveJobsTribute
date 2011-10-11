@@ -42,6 +42,7 @@
     [self.view addSubview:closeButton];
     
 
+
     UIButton *flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [flagButton setFrame:CGRectMake(443, 22, 17, 20)];
     
@@ -52,6 +53,7 @@
     
     [self.view addSubview:flagButton];
     
+
     presenting = NO;
     
 }
