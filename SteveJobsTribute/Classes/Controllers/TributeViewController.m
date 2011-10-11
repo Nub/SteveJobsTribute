@@ -41,7 +41,6 @@
     
     [self.view addSubview:closeButton];
     
-
     
     
     UIButton *flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
