@@ -17,6 +17,7 @@
     
 }
 
+- (void)doPhotoButton:(UIButton*)sender;
 
 @end
 
@@ -50,6 +51,10 @@
 {
     
     self.view = [[CreateTributeView alloc] initWithFrame:CGRectMake(0, 0, 640, 480)];
+    
+    CreateTributeView *createView = (id)self.view;
+    
+    [createView.photoButton addTarget:self action:@selector(doPhotoButton:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -130,4 +135,21 @@
     [delegate didCancelCreateTribute];
     
 }
+
+
+- (void)doPhotoButton:(UIButton*)sender{
+    
+    UIImagePickerController *imagepicker = [[UIImagePickerController alloc] init];
+    
+    imagepicker.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    CreateTributeView *createView = (id)self.view;
+    
+    imagepicker.delegate = createView;
+    
+    [self presentModalViewController:imagepicker animated:YES];
+    
+    
+}
+
 @end

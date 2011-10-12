@@ -54,6 +54,9 @@
 		4BCDDA21143ED79D002C966C /* postIt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDDA20143ED79D002C966C /* postIt.png */; };
 		4BD5C2AF1444C7BE0084C0A3 /* CreateTributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */; };
 		4BD5C2B11444C7CB0084C0A3 /* CreateTributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */; };
+		4BD5C2D8144558240084C0A3 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2D7144558240084C0A3 /* UIImage+Additions.m */; };
+		4BD5C2DB14455C080084C0A3 /* tribute-input-boxes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2DA14455C080084C0A3 /* tribute-input-boxes.png */; };
+		4BD5C2DD14455D770084C0A3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2DC14455D770084C0A3 /* photo.png */; };
 		4BE239871443400200686F01 /* tribute-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE239861443400200686F01 /* tribute-close.png */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +130,10 @@
 		4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-create-background.png"; sourceTree = "<group>"; };
 		4BD5C2A21444105E0084C0A3 /* CreateTributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeViewController.h; path = Classes/Controllers/CreateTributeViewController.h; sourceTree = "<group>"; };
 		4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeViewController.m; path = Classes/Controllers/CreateTributeViewController.m; sourceTree = "<group>"; };
+		4BD5C2D6144558240084C0A3 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		4BD5C2D7144558240084C0A3 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
+		4BD5C2DA14455C080084C0A3 /* tribute-input-boxes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tribute-input-boxes.png"; path = "SteveJobsTribute/Resources/Corkboard/tribute-input-boxes.png"; sourceTree = SOURCE_ROOT; };
+		4BD5C2DC14455D770084C0A3 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		4BE239861443400200686F01 /* tribute-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-close.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +202,8 @@
 				4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */,
 				4B399DD014418ED600DAEA1C /* UIView+Additions.h */,
 				4B399DD114418ED600DAEA1C /* UIView+Additions.m */,
+				4BD5C2D6144558240084C0A3 /* UIImage+Additions.h */,
+				4BD5C2D7144558240084C0A3 /* UIImage+Additions.m */,
 			);
 			name = Categories;
 			path = Classes/Additions;
@@ -224,6 +233,7 @@
 		04A125BD143D92E50094CEDA /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				4BD5C2DA14455C080084C0A3 /* tribute-input-boxes.png */,
 				4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */,
 				4B399DE214429F8F00DAEA1C /* tribute-background.png */,
 				04A125BE143D92E50094CEDA /* cork-background~ipad.png */,
@@ -362,6 +372,7 @@
 		4BCDDA1F143ED79D002C966C /* Corkboard */ = {
 			isa = PBXGroup;
 			children = (
+				4BD5C2DC14455D770084C0A3 /* photo.png */,
 				04D8B4B71444781500392B70 /* flag.png */,
 				4BE239861443400200686F01 /* tribute-close.png */,
 				4B399DD31442425100DAEA1C /* pin.png */,
@@ -446,6 +457,8 @@
 				0413827E1443EC4D004BDDE6 /* iTunesArtwork in Resources */,
 				04D8B4B51444760800392B70 /* SVProgressHUD.bundle in Resources */,
 				04D8B4B81444781500392B70 /* flag.png in Resources */,
+				4BD5C2DB14455C080084C0A3 /* tribute-input-boxes.png in Resources */,
+				4BD5C2DD14455D770084C0A3 /* photo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +488,7 @@
 				04D8B4A01444577F00392B70 /* YRImageDownloader.m in Sources */,
 				04D8B4AC14446B9300392B70 /* YRReportMessage.m in Sources */,
 				04D8B4B61444760800392B70 /* SVProgressHUD.m in Sources */,
+				4BD5C2D8144558240084C0A3 /* UIImage+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

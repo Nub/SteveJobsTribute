@@ -31,7 +31,7 @@
 //- (void)addPost:(NSString *)title;
 
 //Add a count of post representations
-- (void)addPosts:(NSArray*)titles;
+- (void)addPosts:(NSArray *)tributeObjects;
 
 - (CGRect)postRect:(NSInteger)postIndex;
 - (CATransform3D)postTransform:(NSInteger)postIndex;

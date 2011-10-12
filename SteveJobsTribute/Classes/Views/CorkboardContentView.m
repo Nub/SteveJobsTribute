@@ -13,10 +13,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define kPostSquareSize 150.f
+#define kPostSquareSizeiPhone 120.f
 #define kPostSquarePadding 20.f
 #define kPostSquareSize2 170.f
-
-
 
 
 @interface CorkboardContentView (){
@@ -26,6 +25,8 @@
     NSInteger focusedPost;
     
     UIImage *postIt;
+    
+    BOOL deviceIsIPad;
     
 }
 
@@ -48,6 +49,15 @@
         focusedPost = -1;
         layoutOrientation = [[UIDevice currentDevice] orientation];
         
+        NSString *deviceModel = [[UIDevice currentDevice] model];
+
+        NSRange modelRange = [deviceModel rangeOfString:@"iPad"];
+        
+        if (modelRange.location != NSNotFound) {
+            
+            deviceIsIPad = YES;
+        
+        }
     }
     return self;
 }
@@ -57,56 +67,6 @@
 
 #define arc4randPM(value)((((CGFloat)arc4random() / 0x100000000) - 0.5) * value * 2.f)
 
-/*- (void)addPost:(NSString *)title{
-        
-    
-    UIView *newView = [[UIView alloc] init];
-    newView.frame = CGRectMake(0, 0, kPostSquareSize, kPostSquareSize);;
-
-    //Add random rotation
-    CGFloat rot = arc4randPM(0.2);
-    
-    CATransform3D newTransform = CATransform3DMakeRotation(rot, 0, 0, 1);
-    newTransform.m34 = -1.0f/500.f;
-    newView.layer.transform = newTransform;
-
-    
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"post"]];
-    backgroundView.frame = newView.bounds;
-    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    [newView addSubview:backgroundView];
-    
-    UIImageView *pin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pin"]];
-    pin.frame = CGRectMake((kPostSquareSize*0.5f - 15) - ((rot/0.2f)*kPostSquareSize*0.35f), -5, 32, 32);
-    pin.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [newView addSubview:pin];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, kPostSquareSize - 30, kPostSquareSize2 - 40)];
-    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|
-    UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|
-    UIViewAutoresizingFlexibleBottomMargin;
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont fontWithName:@"Noteworthy-Bold" size:18];
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    titleLabel.minimumFontSize = 10;
-    titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
-    titleLabel.textAlignment = UITextAlignmentCenter;
-    titleLabel.text = title;
-    titleLabel.numberOfLines = 5;
-    
-    [newView addSubview:titleLabel];
-    
-    [self addSubview:newView];
-    
-    postCount ++;
-    
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(respondToTapGesture:)];
-    [newView addGestureRecognizer:tapRecognizer];
-    
-}*/
-
-#warning Updated this tp use YRtibute
 - (void)addPosts:(NSArray *)tributeObjects {
     
     for (YRTribute *tribute in tributeObjects) {
@@ -119,7 +79,6 @@
     
 }
 
-#warning Updated this to use YRTribute
 - (void)addPost:(YRTribute *)tribute {
     
     UIView *newView = [[UIView alloc] init];
@@ -170,24 +129,18 @@
 
 
 
-/*- (void)addPosts:(NSArray*)titles{
-    
-    for (NSString *title in titles) {
-        [self addPost:title];
-    }
-    
-    [self buildGrid];
-        
-}*/
-
 - (CGRect)postRect:(NSInteger)postIndex{
     
     UIView *post = [[self subviews] objectAtIndex:postIndex];
     if (!post)
         return CGRectZero;
-    else
-        return [self convertRect:post.frame toView:self.superview.superview];
-#warning Ugly heirarchy access.
+    else{
+     
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+        
+        return [self convertRect:post.frame toView:mainWindow.rootViewController.view];
+        
+    }
 }
 
 - (CATransform3D)postTransform:(NSInteger)postIndex{
@@ -257,6 +210,8 @@
 
 - (CGRect)frameForIndex:(NSInteger)i{
     
+    CGFloat squareSize = (deviceIsIPad)?kPostSquareSize2:kPostSquareSizeiPhone;
+    
     if (UIDeviceOrientationIsLandscape(layoutOrientation)) {//Horizontal scroll
         
         NSInteger rows = floorf(([self superview].frame.size.height - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
@@ -270,12 +225,12 @@
         
     }else{//Portait vertical scroll
         
-        NSInteger columns = floorf(([self superview].frame.size.width - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
+        NSInteger columns = floorf(([self superview].frame.size.width - (kPostSquarePadding * 2)) / (squareSize + (kPostSquarePadding)));
         
-        CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % columns) * (kPostSquareSize2 + kPostSquarePadding);
-        CGFloat y = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + ((i - (i%columns))/columns) * (kPostSquareSize2 + kPostSquarePadding);
+        CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % columns) * (squareSize + kPostSquarePadding);
+        CGFloat y = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + ((i - (i%columns))/columns) * (squareSize + kPostSquarePadding);
         
-        return CGRectMake(x, y, kPostSquareSize2, kPostSquareSize2);
+        return CGRectMake(x, y, squareSize, squareSize);
             
     }
     

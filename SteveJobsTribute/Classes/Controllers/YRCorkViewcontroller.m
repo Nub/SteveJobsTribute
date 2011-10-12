@@ -49,6 +49,7 @@
 
 - (void)reloadData {
     
+    
     [corkboardContentView addPosts:self.tributeObjects];
     
 }
@@ -71,13 +72,6 @@
     corkboardContentView = [[CorkboardContentView alloc] initWithFrame:self.view.frame];
     corkboardContentView.delegate = self;
     corkboardContentView.backgroundColor = [UIColor clearColor];
-    
-#warning Updated this code
-    /*NSMutableArray *testPostArray = [NSMutableArray array];
-    
-    for (int i = 0; i < 100; i++) {
-        [testPostArray addObject:[NSString stringWithFormat:@"Test Tribute Title #%i", i]];
-    }*/
     
     
     [corkboardContentView addPosts:self.tributeObjects];
@@ -235,9 +229,6 @@
     
     presentingCustomModal = YES;
     
-    //TODO: [tributeViewController setTribute:tributeObject];
-
-#warning Is this correct?
     [tributeViewController setTribute:[self.tributeObjects objectAtIndex:index]];
     
     if (![tributeViewController isPresenting]){

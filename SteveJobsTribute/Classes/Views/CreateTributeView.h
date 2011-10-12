@@ -9,19 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "YRTribute.h"
 
-@interface CreateTributeView : UIView
+@interface CreateTributeView : UIView <UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate>
 {
     
     UIButton *cancelButton;
     UIButton *sendButton;
+    UIButton *photoButton;
     
 }
 
 @property (nonatomic, readonly) UIButton *cancelButton;
 @property (nonatomic, readonly) UIButton *sendButton;
+@property (nonatomic, readonly) UIButton *photoButton;
 
 - (YRTribute*)tributeFromInput;
 
-- (void)focusMessage;
 
 @end

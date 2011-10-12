@@ -20,8 +20,6 @@
 }
 
 - (void)reloadData;
-- (void)addPost:(YRTribute *)tribute;
-
 
 @property (nonatomic, retain) NSArray *tributeObjects;
 

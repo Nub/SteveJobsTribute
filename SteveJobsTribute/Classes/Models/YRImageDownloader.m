@@ -55,10 +55,6 @@
     UIImage *image = [[UIImage alloc] initWithData:self.activeDownloadBuffer];
     self.tribute.image = image;
     
-    /* Insert code here that Zach is going to write to resize image, why? to be on the safe side */
-#warning Read comment ^^
-    
-    
     /* Reset all fields */
     [self cancelDownload];
     
