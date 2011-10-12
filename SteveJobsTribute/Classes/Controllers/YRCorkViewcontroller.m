@@ -128,8 +128,10 @@
     NSString *deviceModel = [[UIDevice currentDevice] model];
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     CGFloat x,y;
+        
+    NSRange modelRange = [deviceModel rangeOfString:@"iPad"];
     
-    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"]) {
+    if (modelRange.location != NSNotFound) {
         
         deviceIsIPad = YES;
         

@@ -112,10 +112,15 @@
 
 - (void)hideViewToRect:(CGRect)toRect{
     
+    TributeView *tributeView = (id)self.view;
+    
+    [imageView removeFromSuperview];
+    
     [UIView animateWithDuration:kAnimationTime animations:^(void){
         
         self.view.frame = toRect;
         self.view.alpha = 0;
+        tributeView.image
         
     } completion:^(BOOL finished){
         

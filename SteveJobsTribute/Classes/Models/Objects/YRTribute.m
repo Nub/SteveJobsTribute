@@ -24,7 +24,19 @@
     
     if (self = [super init]) {
         
-        [self setValuesForKeysWithDictionary:dictionary];
+        NSMutableDictionary *adjustedDictionary = [NSMutableDictionary dictionary];
+        
+        for (NSString *key in dictionary) {
+            id object = [dictionary objectForKey:key];
+            
+            if (![object isKindOfClass:[NSNull class]]) {
+                [adjustedDictionary setObject:object forKey:key];
+            }
+            
+        }
+        
+        [self setValuesForKeysWithDictionary:adjustedDictionary];
+        
         
     }
     

@@ -107,7 +107,7 @@
     messageView.textAlignment = UITextAlignmentCenter;
     [self addSubview:messageView];
     
-    
+    imageView = [[UIImageView alloc] init];
     
 }
 
@@ -143,8 +143,15 @@
     [self layoutSubviews];
 
     
-    // if (tribute.image != nil)
+    if (tribute.imageUrl){
+        
         [self downloadImageFromTribute:tribute];
+        
+    }else{
+        
+        [imageView removeFromSuperview];
+        
+    }
     
     
     [self setNeedsDisplay];
@@ -176,7 +183,7 @@
 
 - (void)didFinishDownloadingImage:(UIImage *)image {
     
-    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.image = image;
     imageView.frame = imageViewRect;
     imageView.layer.borderWidth = 10.f;
     imageView.layer.borderColor = [[UIColor whiteColor] CGColor];
