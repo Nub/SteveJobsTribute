@@ -1,0 +1,40 @@
+//
+//  TributeView.h
+//  SteveJobsTribute
+//
+//  Created by Zachry Thayer on 10/9/11.
+//  Copyright (c) 2011 Yoshimi Robotics. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+#import "YRTribute.h"
+#import "YRImageDownloader.h"
+
+@interface TributeView : UIView <YRImageDownloaderDelegate> {
+    
+<<<<<<< HEAD
+=======
+    NSString *title;
+    NSString *author;
+    NSString *message;
+    UIImage *image;
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
+    
+    YRTribute *tribute;
+    
+}
+
+<<<<<<< HEAD
+=======
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *author;
+@property (nonatomic, retain) NSString *message;
+@property (nonatomic, retain) UIImage  *image;
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
+
+@property (nonatomic, retain) YRTribute *tribute;
+
++ (TributeView*)tributeViewFromTribute:(YRTribute*)tribute;
+
+@end

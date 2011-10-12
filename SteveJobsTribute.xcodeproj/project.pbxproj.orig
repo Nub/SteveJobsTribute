@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		041382641443B5C4004BDDE6 /* YRTributeMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 041382631443B5C4004BDDE6 /* YRTributeMessages.m */; };
 		0437854F144500E60067970D /* YRSubmitTribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437854E144500E60067970D /* YRSubmitTribute.m */; };
+<<<<<<< HEAD
+=======
 		044B5F6B1444F915008A7389 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 044B5F681444F915008A7389 /* SVProgressHUD.bundle */; };
 		044B5F6C1444F915008A7389 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 044B5F6A1444F915008A7389 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		044B5F741444F925008A7389 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 044B5F6D1444F925008A7389 /* Icon-72.png */; };
@@ -18,6 +20,7 @@
 		044B5F781444F925008A7389 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 044B5F711444F925008A7389 /* Icon.png */; };
 		044B5F791444F925008A7389 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044B5F721444F925008A7389 /* Icon@2x.png */; };
 		044B5F7A1444F925008A7389 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 044B5F731444F925008A7389 /* iTunesArtwork */; };
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 		04A125B0143D8D3D0094CEDA /* YRCorkViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */; };
 		04A125B8143D8E980094CEDA /* UINavigationBar+CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A125B7143D8E980094CEDA /* UINavigationBar+CustomImage.m */; };
 		04A125BC143D908F0094CEDA /* YRCorkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A125BB143D908F0094CEDA /* YRCorkView.xib */; };
@@ -34,6 +37,11 @@
 		04ADE68A143E5E2800B204BD /* TributeVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 04ADE689143E5E2800B204BD /* TributeVideo.mp4 */; };
 		04D8B4A01444577F00392B70 /* YRImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8B49F1444577F00392B70 /* YRImageDownloader.m */; };
 		04D8B4AC14446B9300392B70 /* YRReportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8B4AB14446B9200392B70 /* YRReportMessage.m */; };
+<<<<<<< HEAD
+		04D8B4B51444760800392B70 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04D8B4B21444760800392B70 /* SVProgressHUD.bundle */; };
+		04D8B4B61444760800392B70 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8B4B41444760800392B70 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+=======
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 		04D8B4B81444781500392B70 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D8B4B71444781500392B70 /* flag.png */; };
 		04DB3B56143D7FA100BD957B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB3B55143D7FA100BD957B /* UIKit.framework */; };
 		04DB3B58143D7FA100BD957B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB3B57143D7FA100BD957B /* Foundation.framework */; };
@@ -53,6 +61,11 @@
 		4BCDDA1A143EC40F002C966C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDDA19143EC40F002C966C /* QuartzCore.framework */; };
 		4BCDDA1E143ECCF1002C966C /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */; };
 		4BCDDA21143ED79D002C966C /* postIt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDDA20143ED79D002C966C /* postIt.png */; };
+		4BD5C2AF1444C7BE0084C0A3 /* CreateTributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */; };
+		4BD5C2B11444C7CB0084C0A3 /* CreateTributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */; };
+		4BD5C2D8144558240084C0A3 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5C2D7144558240084C0A3 /* UIImage+Additions.m */; };
+		4BD5C2DB14455C080084C0A3 /* tribute-input-boxes.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2DA14455C080084C0A3 /* tribute-input-boxes.png */; };
+		4BD5C2DD14455D770084C0A3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5C2DC14455D770084C0A3 /* photo.png */; };
 		4BE239871443400200686F01 /* tribute-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE239861443400200686F01 /* tribute-close.png */; };
 /* End PBXBuildFile section */
 
@@ -61,9 +74,12 @@
 		041382631443B5C4004BDDE6 /* YRTributeMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRTributeMessages.m; path = Classes/Models/YRTributeMessages.m; sourceTree = "<group>"; };
 		0437854D144500E60067970D /* YRSubmitTribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRSubmitTribute.h; path = Classes/Models/YRSubmitTribute.h; sourceTree = "<group>"; };
 		0437854E144500E60067970D /* YRSubmitTribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRSubmitTribute.m; path = Classes/Models/YRSubmitTribute.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
 		044B5F681444F915008A7389 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SteveJobsTribute/Resources/SVProgressHUD/SVProgressHUD.bundle; sourceTree = SOURCE_ROOT; };
 		044B5F691444F915008A7389 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SteveJobsTribute/Resources/SVProgressHUD/SVProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		044B5F6A1444F915008A7389 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SteveJobsTribute/Resources/SVProgressHUD/SVProgressHUD.m; sourceTree = SOURCE_ROOT; };
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 		044B5F6D1444F925008A7389 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "SteveJobsTribute/Resources/Icon Artwork/Icon-72.png"; sourceTree = "<group>"; };
 		044B5F6E1444F925008A7389 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "SteveJobsTribute/Resources/Icon Artwork/Icon-Small-50.png"; sourceTree = "<group>"; };
 		044B5F6F1444F925008A7389 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "SteveJobsTribute/Resources/Icon Artwork/Icon-Small.png"; sourceTree = "<group>"; };
@@ -95,6 +111,12 @@
 		04D8B49F1444577F00392B70 /* YRImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRImageDownloader.m; path = Classes/Models/YRImageDownloader.m; sourceTree = "<group>"; };
 		04D8B4AA14446B9200392B70 /* YRReportMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YRReportMessage.h; path = Classes/Models/YRReportMessage.h; sourceTree = "<group>"; };
 		04D8B4AB14446B9200392B70 /* YRReportMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YRReportMessage.m; path = Classes/Models/YRReportMessage.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		04D8B4B21444760800392B70 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		04D8B4B31444760800392B70 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		04D8B4B41444760800392B70 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+=======
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 		04D8B4B71444781500392B70 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		04DB3B51143D7FA100BD957B /* SteveJobsTribute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteveJobsTribute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DB3B55143D7FA100BD957B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +145,15 @@
 		4BCDDA1C143ECCF1002C966C /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
 		4BCDDA20143ED79D002C966C /* postIt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postIt.png; sourceTree = "<group>"; };
+		4BD5C29A14440F8E0084C0A3 /* CreateTributeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeView.h; path = Classes/Views/CreateTributeView.h; sourceTree = "<group>"; };
+		4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeView.m; path = Classes/Views/CreateTributeView.m; sourceTree = "<group>"; };
+		4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-create-background.png"; sourceTree = "<group>"; };
+		4BD5C2A21444105E0084C0A3 /* CreateTributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeViewController.h; path = Classes/Controllers/CreateTributeViewController.h; sourceTree = "<group>"; };
+		4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeViewController.m; path = Classes/Controllers/CreateTributeViewController.m; sourceTree = "<group>"; };
+		4BD5C2D6144558240084C0A3 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		4BD5C2D7144558240084C0A3 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
+		4BD5C2DA14455C080084C0A3 /* tribute-input-boxes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tribute-input-boxes.png"; path = "SteveJobsTribute/Resources/Corkboard/tribute-input-boxes.png"; sourceTree = SOURCE_ROOT; };
+		4BD5C2DC14455D770084C0A3 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		4BE239861443400200686F01 /* tribute-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tribute-close.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +203,8 @@
 				04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */,
 				4B399DE51442A13900DAEA1C /* TributeViewController.h */,
 				4B399DE61442A13900DAEA1C /* TributeViewController.m */,
+				4BD5C2A21444105E0084C0A3 /* CreateTributeViewController.h */,
+				4BD5C2A31444105E0084C0A3 /* CreateTributeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -189,6 +222,8 @@
 				4BCDDA1D143ECCF1002C966C /* UIColor+Additions.m */,
 				4B399DD014418ED600DAEA1C /* UIView+Additions.h */,
 				4B399DD114418ED600DAEA1C /* UIView+Additions.m */,
+				4BD5C2D6144558240084C0A3 /* UIImage+Additions.h */,
+				4BD5C2D7144558240084C0A3 /* UIImage+Additions.m */,
 			);
 			name = Categories;
 			path = Classes/Additions;
@@ -218,6 +253,8 @@
 		04A125BD143D92E50094CEDA /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				4BD5C2DA14455C080084C0A3 /* tribute-input-boxes.png */,
+				4BD5C2A01444102C0084C0A3 /* tribute-create-background.png */,
 				4B399DE214429F8F00DAEA1C /* tribute-background.png */,
 				04A125BE143D92E50094CEDA /* cork-background~ipad.png */,
 			);
@@ -276,9 +313,15 @@
 		04D8B4B11444760800392B70 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+				04D8B4B21444760800392B70 /* SVProgressHUD.bundle */,
+				04D8B4B31444760800392B70 /* SVProgressHUD.h */,
+				04D8B4B41444760800392B70 /* SVProgressHUD.m */,
+=======
 				044B5F681444F915008A7389 /* SVProgressHUD.bundle */,
 				044B5F691444F915008A7389 /* SVProgressHUD.h */,
 				044B5F6A1444F915008A7389 /* SVProgressHUD.m */,
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -348,6 +391,8 @@
 				4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */,
 				4B399DD714424BE400DAEA1C /* TributeView.h */,
 				4B399DD814424BE400DAEA1C /* TributeView.m */,
+				4BD5C29A14440F8E0084C0A3 /* CreateTributeView.h */,
+				4BD5C29B14440F8E0084C0A3 /* CreateTributeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -355,6 +400,10 @@
 		4BCDDA1F143ED79D002C966C /* Corkboard */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+				4BD5C2DC14455D770084C0A3 /* photo.png */,
+=======
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 				04D8B4B71444781500392B70 /* flag.png */,
 				4BE239861443400200686F01 /* tribute-close.png */,
 				4B399DD31442425100DAEA1C /* pin.png */,
@@ -430,6 +479,12 @@
 				4B399DD61442425100DAEA1C /* post.png in Resources */,
 				4B399DE314429F8F00DAEA1C /* tribute-background.png in Resources */,
 				4BE239871443400200686F01 /* tribute-close.png in Resources */,
+<<<<<<< HEAD
+				04D8B4B51444760800392B70 /* SVProgressHUD.bundle in Resources */,
+				04D8B4B81444781500392B70 /* flag.png in Resources */,
+				4BD5C2DB14455C080084C0A3 /* tribute-input-boxes.png in Resources */,
+				4BD5C2DD14455D770084C0A3 /* photo.png in Resources */,
+=======
 				04D8B4B81444781500392B70 /* flag.png in Resources */,
 				044B5F6B1444F915008A7389 /* SVProgressHUD.bundle in Resources */,
 				044B5F741444F925008A7389 /* Icon-72.png in Resources */,
@@ -439,6 +494,7 @@
 				044B5F781444F925008A7389 /* Icon.png in Resources */,
 				044B5F791444F925008A7389 /* Icon@2x.png in Resources */,
 				044B5F7A1444F925008A7389 /* iTunesArtwork in Resources */,
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +505,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BD5C2B11444C7CB0084C0A3 /* CreateTributeView.m in Sources */,
+				4BD5C2AF1444C7BE0084C0A3 /* CreateTributeViewController.m in Sources */,
 				04DB3B62143D7FA100BD957B /* main.m in Sources */,
 				04DB3B66143D7FA100BD957B /* YRAppDelegate.m in Sources */,
 				04A125B0143D8D3D0094CEDA /* YRCorkViewcontroller.m in Sources */,
@@ -465,7 +523,12 @@
 				041382641443B5C4004BDDE6 /* YRTributeMessages.m in Sources */,
 				04D8B4A01444577F00392B70 /* YRImageDownloader.m in Sources */,
 				04D8B4AC14446B9300392B70 /* YRReportMessage.m in Sources */,
+<<<<<<< HEAD
+				04D8B4B61444760800392B70 /* SVProgressHUD.m in Sources */,
+				4BD5C2D8144558240084C0A3 /* UIImage+Additions.m in Sources */,
+=======
 				044B5F6C1444F915008A7389 /* SVProgressHUD.m in Sources */,
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
 				0437854F144500E60067970D /* YRSubmitTribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
