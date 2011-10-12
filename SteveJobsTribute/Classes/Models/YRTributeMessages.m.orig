@@ -103,6 +103,7 @@
         tribute.imageUrl = [NSURL URLWithString:[tributeJson objectForKey:@"tribute_image_url"]];
 
         
+<<<<<<< HEAD
         NSString *imageSizeAsString = [tributeJson objectForKey:@"tribute_image_size"];
         if ([imageSizeAsString isKindOfClass:[NSNull class]]) {
             
@@ -111,10 +112,16 @@
         }
         else if ([imageSizeAsString containsString:@","]) {
 
+=======
+#warning Cant figure this fucking thing out - /me drinks (a lot) more beer
+        /*NSString *imageSizeAsString = [tributeJson objectForKey:@"tribute_image_size"];
+        if (![(NSString *)imageSizeAsString containsString:@","]) {
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
             
             NSArray *imageSizes = [imageSizeAsString componentsSeparatedByString:@","]; 
             tribute.imageSize = CGSizeMake([[imageSizes objectAtIndex:0] floatValue], [[imageSizes objectAtIndex:1] floatValue]);
         
+<<<<<<< HEAD
         }
         
         
@@ -126,6 +133,13 @@
         NSDate *myDate = [df dateFromString: dateAsString];
         tribute.posted = myDate;
 
+=======
+        }*/
+        
+        
+#warning We need to turn 2011-10-11 04:54:57 into a NSDate, Have fun :)
+        //tribute.posted = [tributeJson objectForKey:@"tribute_posted"];
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
         
         tribute.flagged = [[tributeJson objectForKey:@"tribute_flagged"] boolValue];
         tribute.databaseRow = [[tributeJson objectForKey:@"tribute_database_row"] intValue];

@@ -53,6 +53,10 @@
     
     [self.view addSubview:flagButton];
     
+<<<<<<< HEAD
+
+=======
+>>>>>>> 16af08b7f437c4174d1381115be5577c5f9cbe68
     
     
     presenting = NO;
