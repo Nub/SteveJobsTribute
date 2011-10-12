@@ -42,6 +42,9 @@
 		04DB3B62143D7FA100BD957B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B61143D7FA100BD957B /* main.m */; };
 		04DB3B66143D7FA100BD957B /* YRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DB3B65143D7FA100BD957B /* YRAppDelegate.m */; };
 		04E0DBAF143E64CB0031781B /* TributePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DBAE143E64CB0031781B /* TributePhoto.png */; };
+		4B2BDD5A14457E7000176958 /* CreateTributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BDD5914457E7000176958 /* CreateTributeView.m */; };
+		4B2BDD5E14457E7D00176958 /* CreateTributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BDD5D14457E7D00176958 /* CreateTributeViewController.m */; };
+		4B2BDD6114457E9A00176958 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BDD6014457E9A00176958 /* UIImage+Additions.m */; };
 		4B399DD214418ED600DAEA1C /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B399DD114418ED600DAEA1C /* UIView+Additions.m */; };
 		4B399DD51442425100DAEA1C /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DD31442425100DAEA1C /* pin.png */; };
 		4B399DD61442425100DAEA1C /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B399DD41442425100DAEA1C /* post.png */; };
@@ -107,6 +110,12 @@
 		04DB3B64143D7FA100BD957B /* YRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YRAppDelegate.h; sourceTree = "<group>"; };
 		04DB3B65143D7FA100BD957B /* YRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YRAppDelegate.m; sourceTree = "<group>"; };
 		04E0DBAE143E64CB0031781B /* TributePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TributePhoto.png; sourceTree = "<group>"; };
+		4B2BDD5814457E7000176958 /* CreateTributeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeView.h; path = Classes/Views/CreateTributeView.h; sourceTree = "<group>"; };
+		4B2BDD5914457E7000176958 /* CreateTributeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeView.m; path = Classes/Views/CreateTributeView.m; sourceTree = "<group>"; };
+		4B2BDD5C14457E7D00176958 /* CreateTributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTributeViewController.h; path = Classes/Controllers/CreateTributeViewController.h; sourceTree = "<group>"; };
+		4B2BDD5D14457E7D00176958 /* CreateTributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTributeViewController.m; path = Classes/Controllers/CreateTributeViewController.m; sourceTree = "<group>"; };
+		4B2BDD5F14457E9A00176958 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		4B2BDD6014457E9A00176958 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		4B399DD014418ED600DAEA1C /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		4B399DD114418ED600DAEA1C /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		4B399DD31442425100DAEA1C /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
@@ -168,6 +177,8 @@
 		04A125AD143D8C730094CEDA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4B2BDD5C14457E7D00176958 /* CreateTributeViewController.h */,
+				4B2BDD5D14457E7D00176958 /* CreateTributeViewController.m */,
 				04A125AE143D8D3D0094CEDA /* YRCorkViewcontroller.h */,
 				04A125AF143D8D3D0094CEDA /* YRCorkViewcontroller.m */,
 				4B399DE51442A13900DAEA1C /* TributeViewController.h */,
@@ -179,6 +190,8 @@
 		04A125B5143D8E980094CEDA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4B2BDD5F14457E9A00176958 /* UIImage+Additions.h */,
+				4B2BDD6014457E9A00176958 /* UIImage+Additions.m */,
 				04A125CD143DA12A0094CEDA /* NSData+Additions.h */,
 				04A125CE143DA12A0094CEDA /* NSData+Additions.m */,
 				04A125CA143DA0F20094CEDA /* NSString+Additions.h */,
@@ -344,6 +357,8 @@
 		4BC91BCF143E79B8001E3A41 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B2BDD5814457E7000176958 /* CreateTributeView.h */,
+				4B2BDD5914457E7000176958 /* CreateTributeView.m */,
 				4BC91BD1143E7A1D001E3A41 /* CorkboardContentView.h */,
 				4BC91BD2143E7A1D001E3A41 /* CorkboardContentView.m */,
 				4B399DD714424BE400DAEA1C /* TributeView.h */,
@@ -467,6 +482,9 @@
 				04D8B4AC14446B9300392B70 /* YRReportMessage.m in Sources */,
 				044B5F6C1444F915008A7389 /* SVProgressHUD.m in Sources */,
 				0437854F144500E60067970D /* YRSubmitTribute.m in Sources */,
+				4B2BDD5A14457E7000176958 /* CreateTributeView.m in Sources */,
+				4B2BDD5E14457E7D00176958 /* CreateTributeViewController.m in Sources */,
+				4B2BDD6114457E9A00176958 /* UIImage+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
