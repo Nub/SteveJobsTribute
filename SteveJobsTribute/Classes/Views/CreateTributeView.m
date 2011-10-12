@@ -95,9 +95,9 @@
         
         cumulativeY += kTextFieldHeight + kPadding;
         
-        messageField = [[UITextView alloc] initWithFrame:CGRectMake(kTextFieldX, cumulativeY - 8, 310.f, 334.f)];
+        messageField = [[UITextView alloc] initWithFrame:CGRectMake(kTextFieldX, cumulativeY - 8, 305.f, 334.f)];
         messageField.text = @"Show your Inspiration";
-        messageField.backgroundColor = [UIColor redColor];
+        messageField.backgroundColor = [UIColor clearColor];
         messageField.font = authorLabel.font;
         messageField.delegate = self;
         [self addSubview:messageField];

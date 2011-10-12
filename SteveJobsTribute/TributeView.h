@@ -18,6 +18,7 @@
     
 }
 
+
 @property (nonatomic, retain) YRTribute *tribute;
 
 + (TributeView*)tributeViewFromTribute:(YRTribute*)tribute;

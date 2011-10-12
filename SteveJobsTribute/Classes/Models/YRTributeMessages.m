@@ -110,6 +110,7 @@
             
         }
         else if ([imageSizeAsString containsString:@","]) {
+
             
             NSArray *imageSizes = [imageSizeAsString componentsSeparatedByString:@","]; 
             tribute.imageSize = CGSizeMake([[imageSizes objectAtIndex:0] floatValue], [[imageSizes objectAtIndex:1] floatValue]);
@@ -124,6 +125,7 @@
         [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
         NSDate *myDate = [df dateFromString: dateAsString];
         tribute.posted = myDate;
+
         
         tribute.flagged = [[tributeJson objectForKey:@"tribute_flagged"] boolValue];
         tribute.databaseRow = [[tributeJson objectForKey:@"tribute_database_row"] intValue];

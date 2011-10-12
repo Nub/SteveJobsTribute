@@ -47,6 +47,7 @@
     if (self) {
         
              self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+
         
         [self setupSubviews];
         
@@ -96,6 +97,7 @@
     
     CGFloat imageViewHeight = tribute.imageSize.height;
     imageViewRect = CGRectMake(kContentPadding + (self.frame.size.width/2) - (tribute.imageSize.width/2),lastBottom,tribute.imageSize.width, tribute.imageSize.height);
+
     
     
     messageView = [[UITextView alloc] initWithFrame:CGRectMake(kContentPadding, lastBottom + imageViewHeight, self.frame.size.width - kContentDoublePadding, self.frame.size.height - lastBottom - kContentPadding)];
@@ -139,6 +141,7 @@
     messageView.text = tribute.message;
     
     [self layoutSubviews];
+
     
     // if (tribute.image != nil)
         [self downloadImageFromTribute:tribute];
@@ -186,5 +189,6 @@
     imageIsCurrentlyDownloading = NO;
     
 }
+
 
 @end

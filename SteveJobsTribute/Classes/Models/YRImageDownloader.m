@@ -54,6 +54,7 @@
     
     UIImage *image = [[UIImage alloc] initWithData:self.activeDownloadBuffer];
     self.tribute.image = image;
+
     
     /* Reset all fields */
     [self cancelDownload];
