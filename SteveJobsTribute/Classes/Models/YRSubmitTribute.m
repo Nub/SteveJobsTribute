@@ -41,13 +41,14 @@
 - (NSData *)jsonHttpBodyWithTribute:(YRTribute *)tribute {
 
 
-    
+    NSString *deviceIdentifier = [[UIDevice currentDevice] uniqueDeviceIdentifier]; 
+    NSString *message = [tribute.message URLEncodeString];
     
     NSMutableDictionary *jsonData = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                      tribute.title, @"tribute_title",
                                      tribute.author, @"tribute_author",
-                                     [tribute.message UTF8String], @"tribute_message",
-                                     [[UIDevice currentDevice] uniqueDeviceIdentifier], @"tribute_device",
+                                     message, @"tribute_message",
+                                     deviceIdentifier, @"tribute_device",
                                      nil];
     
     
