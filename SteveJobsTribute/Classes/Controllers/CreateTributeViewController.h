@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "CreateTributeView.h"
-#import "YRTribute.h"
 
-@interface CreateTributeViewController : UIViewController
-{    
+#import "YRTribute.h"
+#import "YRSubmitTribute.h"
+
+@interface CreateTributeViewController : UIViewController <YRSubmitTributeDelegate> {    
+    
     BOOL presenting;
+    
 }
 
 @property (nonatomic, getter = isPresenting) BOOL presenting;

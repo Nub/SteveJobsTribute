@@ -12,6 +12,7 @@
 #import "YRImageDownloader.h"
 
 @interface TributeView : UIView <YRImageDownloaderDelegate> {
+    
     UIImageView *imageView;
 
     

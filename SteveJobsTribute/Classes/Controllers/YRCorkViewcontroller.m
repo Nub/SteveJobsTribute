@@ -346,4 +346,12 @@
     
 }
 
+
+#pragma mark - delegate
+- (void)didCloseTribute {
+    
+    
+}
+
+
 @end

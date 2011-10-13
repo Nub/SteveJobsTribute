@@ -56,7 +56,7 @@
     
     [createView.cancelButton addTarget:self action:@selector(cancelButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    [createView.sendButton addTarget:self action:@selector(sendButton:) forControlEvents:UIControlEventTouchUpInside];
+    [createView.sendButton addTarget:self action:@selector(sendTribute:) forControlEvents:UIControlEventTouchUpInside];
     
     [createView.photoButton addTarget:self action:@selector(doPhotoButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -153,10 +153,17 @@
     
 }
 
+
 - (void)sendTribute:(UIButton *)sender{
     
-    CreateTributeView *createTribute = (id)self.view;
-    //[createTribute tributeFromInput];
+    //CreateTributeView *createTribute = (id)self.view;
+    YRTribute *tribute = [(CreateTributeView *)self.view tributeFromInput];
+    
+    YRSubmitTribute *submitTribute = [[YRSubmitTribute alloc] init];
+    [submitTribute setDelegate:self];
+    [submitTribute submitTribute:tribute];
+    
+    
 #warning Insert Model upload
     
 }

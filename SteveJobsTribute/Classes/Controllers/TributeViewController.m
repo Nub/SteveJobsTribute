@@ -148,6 +148,7 @@
     
     [self setPresenting:NO];
     
+    
     [delegate didCloseTribute];
     
 }
