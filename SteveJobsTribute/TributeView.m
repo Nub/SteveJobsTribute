@@ -21,7 +21,6 @@
     UILabel *titleLabel;
     UILabel *authorLabel;
     
-    UIImageView *imageView;
     CGRect imageViewRect;
     
     UITextView *messageView;
@@ -40,6 +39,7 @@
 
 
 @synthesize tribute;
+@synthesize imageView;
 
 - (id)initWithFrame:(CGRect)frame
 {

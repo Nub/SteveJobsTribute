@@ -10,21 +10,11 @@
 #import "CreateTributeView.h"
 #import "YRTribute.h"
 
-@protocol CreateTributeViewControllerDelegate
-
-- (void)didCancelCreateTribute;
-- (void)didSendTribute:(YRTribute*)tribute;
-
-@end
-
 @interface CreateTributeViewController : UIViewController
-{
-    id <CreateTributeViewControllerDelegate> delegate;
-    
+{    
     BOOL presenting;
 }
 
-@property (nonatomic, retain) id <CreateTributeViewControllerDelegate> delegate;
 @property (nonatomic, getter = isPresenting) BOOL presenting;
 
 - (void)presentViewFromRect:(CGRect)fromRect inView:(UIView*)aView;

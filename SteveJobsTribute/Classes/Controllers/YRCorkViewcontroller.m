@@ -163,7 +163,6 @@
     tributeViewController.delegate = self;
     
     createTributeViewController = [[CreateTributeViewController alloc] init];
-    createTributeViewController.delegate = self;
     
 }
 
@@ -239,20 +238,6 @@
         
         presentingIndex = index;
     }
-    
-}
-
-- (void)didCloseTribute{
-    
-    presentingCustomModal = NO;
-    
-    [corkboardContentView showPost:presentingIndex];
-    
-}
-
-- (void)didCancelCreateTribute{
-    
-    presentingCustomModal = NO;
     
 }
 

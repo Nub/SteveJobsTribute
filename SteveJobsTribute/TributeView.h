@@ -12,12 +12,14 @@
 #import "YRImageDownloader.h"
 
 @interface TributeView : UIView <YRImageDownloaderDelegate> {
-    
+    UIImageView *imageView;
+
     
     YRTribute *tribute;
     
 }
 
+@property (nonatomic, retain)   UIImageView *imageView;
 
 @property (nonatomic, retain) YRTribute *tribute;
 

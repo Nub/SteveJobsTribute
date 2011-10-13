@@ -30,7 +30,7 @@
     
     UIImage *selectedImage;
     
-    
+    BOOL editing;
 }
 
 @end
@@ -99,6 +99,7 @@
         messageField.text = @"Show your Inspiration";
         messageField.backgroundColor = [UIColor clearColor];
         messageField.font = authorLabel.font;
+        messageField.textColor = [UIColor lightGrayColor];
         messageField.delegate = self;
         [self addSubview:messageField];
         
@@ -107,12 +108,31 @@
         messageLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:messageLabel];
                 
-        photoButton = [[UIButton alloc] initWithFrame:CGRectMake(375, 120, 26, 19)];
+        photoButton = [[UIButton alloc] initWithFrame:CGRectMake(375, 120, 26, 22)];
         photoButton.backgroundColor = [UIColor clearColor];
-        [photoButton setBackgroundImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
+        [photoButton setBackgroundImage:[UIImage imageNamed:@"photos"] forState:UIControlStateNormal];
         
         [self addSubview:photoButton]; 
         
+        UIImage *cancelButtonBackground = [UIImage imageNamed:@"tribute-cancel-button"];
+        cancelButtonBackground = [cancelButtonBackground stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+        
+        cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 8, 70, 31)];
+        cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [cancelButton setBackgroundImage:cancelButtonBackground forState:UIControlStateNormal];
+        [self addSubview:cancelButton];
+        
+        UIImage *sendButtonBackground = [UIImage imageNamed:@"tribute-send-button"];
+        sendButtonBackground = [sendButtonBackground stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+        
+        sendButton = [[UIButton alloc] initWithFrame:CGRectMake(400, 8, 70, 31)];
+        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        [sendButton setTitle:@"Send" forState:UIControlStateNormal];
+        [sendButton setBackgroundImage:sendButtonBackground forState:UIControlStateNormal];
+        [self addSubview:sendButton];
+        
+        editing = NO;
         
     }
     return self;
@@ -159,10 +179,13 @@
         self.layer.transform = CATransform3DMakeTranslation(0, yTrans, 0);
     }];
     
+    editing = YES;
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
+    if (!editing)
     [UIView animateWithDuration:0.5 animations:^(){
         self.layer.transform = CATransform3DIdentity;
     }];
@@ -171,14 +194,40 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
+    CGFloat yTrans = 0;
+    
+    if (UIDeviceOrientationIsLandscape(orientation)) {
+        
+        yTrans = - 85;
+        
+    }else{
+        
+        yTrans = - 150;
+        
+    }
+    
     [UIView animateWithDuration:0.5 animations:^(){
-        self.layer.transform = CATransform3DMakeTranslation(0, -250, 0);
+        self.layer.transform = CATransform3DMakeTranslation(0, yTrans, 0);
     }];
     
+    if ([textView.text isEqualToString:@"Show your Inspiration"]){
+        textView.textColor = [UIColor blackColor];
+        textView.text = @"";
+    }
+    
+    editing = YES;
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
     
+    if ([textView.text isEqualToString:@""]) {
+        textView.textColor = [UIColor lightGrayColor];
+        textView.text = @"Show your Inspiration";
+    }
+    
+    if (!editing)
     [UIView animateWithDuration:0.5 animations:^(){
         self.layer.transform = CATransform3DIdentity;
     }];

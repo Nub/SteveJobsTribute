@@ -13,7 +13,7 @@
 #import "CreateTributeViewController.h"
 
 
-@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate, CreateTributeViewControllerDelegate> {
+@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate> {
     
     NSArray         *tributeObjects;
     

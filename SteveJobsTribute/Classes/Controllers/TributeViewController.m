@@ -114,13 +114,13 @@
     
     TributeView *tributeView = (id)self.view;
     
-    [imageView removeFromSuperview];
+    [tributeView.imageView removeFromSuperview];
     
     [UIView animateWithDuration:kAnimationTime animations:^(void){
         
         self.view.frame = toRect;
         self.view.alpha = 0;
-        tributeView.image
+        [tributeView.imageView removeFromSuperview];
         
     } completion:^(BOOL finished){
         

@@ -14,6 +14,7 @@
 {
     @private
     CGRect presentRect;
+    BOOL deviceIsIPad;
     
 }
 
@@ -23,7 +24,6 @@
 
 @implementation CreateTributeViewController
 
-@synthesize delegate;
 @synthesize presenting;
 
 - (id)init
@@ -54,7 +54,21 @@
     
     CreateTributeView *createView = (id)self.view;
     
+    [createView.cancelButton addTarget:self action:@selector(cancelButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [createView.sendButton addTarget:self action:@selector(sendButton:) forControlEvents:UIControlEventTouchUpInside];
+    
     [createView.photoButton addTarget:self action:@selector(doPhotoButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString *deviceModel = [[UIDevice currentDevice] model];
+
+    
+    NSRange modelRange = [deviceModel rangeOfString:@"iPad"];
+    
+    if (modelRange.location != NSNotFound) 
+        deviceIsIPad = YES;
+    else
+        deviceIsIPad = NO;
     
 }
 
@@ -81,6 +95,11 @@
         newFrame.origin.x = 144;
         newFrame.origin.y = 192;
         
+    }
+    
+    if (!deviceIsIPad) {
+        newFrame.origin.x = 0;
+        newFrame.origin.y = 0;
     }
     
     self.view.frame = fromRect;
@@ -132,7 +151,13 @@
     
     [self setPresenting:NO];
     
-    [delegate didCancelCreateTribute];
+}
+
+- (void)sendTribute:(UIButton *)sender{
+    
+    CreateTributeView *createTribute = (id)self.view;
+    //[createTribute tributeFromInput];
+#warning Insert Model upload
     
 }
 
@@ -142,10 +167,8 @@
     UIImagePickerController *imagepicker = [[UIImagePickerController alloc] init];
     
     imagepicker.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-    CreateTributeView *createView = (id)self.view;
-    
-    imagepicker.delegate = createView;
+        
+    imagepicker.delegate = (id)self.view;
     
     [self presentModalViewController:imagepicker animated:YES];
     
