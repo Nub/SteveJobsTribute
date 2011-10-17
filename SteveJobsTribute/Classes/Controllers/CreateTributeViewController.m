@@ -19,6 +19,8 @@
 }
 
 - (void)doPhotoButton:(UIButton*)sender;
+- (void)cancelTribute:(UIButton *)sender;
+- (void)sendTribute:(UIButton *)sender;
 
 @end
 
@@ -54,7 +56,7 @@
     
     CreateTributeView *createView = (id)self.view;
     
-    [createView.cancelButton addTarget:self action:@selector(cancelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [createView.cancelButton addTarget:self action:@selector(cancelTribute:) forControlEvents:UIControlEventTouchUpInside];
     
     [createView.sendButton addTarget:self action:@selector(sendTribute:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -140,6 +142,8 @@
     if (presenting && !newPresenting) {
         
         [self hideViewToRect:presentRect];
+        
+        presenting = newPresenting;
         
     }
     
