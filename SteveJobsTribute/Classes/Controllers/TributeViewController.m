@@ -7,8 +7,10 @@
 //
 
 #import "TributeViewController.h"
-#import "TributeView.h"
 #import "SVProgressHUD.h"
+#import "UIDevice-Hardware.h"
+#import "YRImageDownloader.h"
+
 
 #define kAnimationTime 0.5
 
@@ -16,56 +18,68 @@
     @private
     CGRect presentRect;
     
+    BOOL imageIsCurrentlyDownloading;    
+    
 }
 
 - (void)flagTribute:(UIButton *)sender;
 - (void)closeTribute:(UIButton *)sender;
 
+- (void)downloadImageFromTribute:(YRTribute *)aTribute;
+- (void)didFinishDownloadingImage:(UIImage *)image;
+
 @end
 
 @implementation TributeViewController
+@synthesize closeButton;
+@synthesize flagButton;
+@synthesize titleLabel;
+@synthesize authorLabel;
+@synthesize imageView;
+@synthesize tributeTextView;
 
 @synthesize presenting, delegate;
 
-- (void)loadView{
-    
-    self.view = [[TributeView alloc] initWithFrame:CGRectMake(0, 0, 480, 640)];
-    
-    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButton setFrame:CGRectMake(15, 15, 64, 32)];
-
-    UIImage *closeButtonImage = [UIImage imageNamed:@"tribute-close"];
-    [closeButton setBackgroundImage:closeButtonImage forState:UIControlStateNormal];
+- (void)viewDidLoad{
     
     [closeButton addTarget:self action:@selector(closeTribute:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:closeButton];
-    
-    
-    
-    UIButton *flagButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [flagButton setFrame:CGRectMake(443, 22, 17, 20)];
-    
-    UIImage *flagButtonImage = [UIImage imageNamed:@"flag"];
-    [flagButton setBackgroundImage:flagButtonImage forState:UIControlStateNormal];
-    
     [flagButton addTarget:self action:@selector(flagTribute:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:flagButton];
-    
-
-    
+    imageView.layer.borderWidth = 10.f;
+    imageView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    imageView.layer.shadowOpacity = 0.3;
+    imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    imageView.layer.shadowRadius = 3;
+    imageView.layer.shadowOffset = CGSizeMake(0, 5);
     
     presenting = NO;
     
 }
 
+- (void)viewDidUnload {
+    [self setTitleLabel:nil];
+    [self setAuthorLabel:nil];
+    [self setImageView:nil];
+    [self setTributeTextView:nil];
+    [self setCloseButton:nil];
+    [self setFlagButton:nil];
+    [super viewDidUnload];
+}
+
 - (void)setTribute:(YRTribute *)tribute {
     
-    aTribute = tribute;
+    titleLabel.text = tribute.title;
+    authorLabel.text = tribute.author;
     
-    TributeView *tributeView = (id)self.view;
-    [tributeView setTribute:aTribute];
+    if (tribute.imageUrl) {
+        [self downloadImageFromTribute:tribute];
+    }else{
+        //TODO: resize textView to fill empty space
+    }
+    
+    tributeTextView.text = tribute.message;
+    
     
 }
 
@@ -111,16 +125,12 @@
 }
 
 - (void)hideViewToRect:(CGRect)toRect{
-    
-    TributeView *tributeView = (id)self.view;
-    
-    [tributeView.imageView removeFromSuperview];
+        
     
     [UIView animateWithDuration:kAnimationTime animations:^(void){
         
         self.view.frame = toRect;
         self.view.alpha = 0;
-        [tributeView.imageView removeFromSuperview];
         
     } completion:^(BOOL finished){
         
@@ -148,7 +158,6 @@
     
     [self setPresenting:NO];
     
-    
     [delegate didCloseTribute];
     
 }
@@ -175,5 +184,28 @@
     
 }
 
+
+
+- (void)downloadImageFromTribute:(YRTribute *)tribute {
+    
+    if (imageIsCurrentlyDownloading != YES) {
+        
+        YRImageDownloader *imageDownloader = [[YRImageDownloader alloc] init];
+        [imageDownloader setDelegate:self];
+        [imageDownloader startDownloadWithTribute:tribute];
+        
+        imageIsCurrentlyDownloading = YES;
+        
+    }
+    
+}
+
+- (void)didFinishDownloadingImage:(UIImage *)image {
+    
+    imageView.image = image;
+    
+    imageIsCurrentlyDownloading = NO;
+    
+}
 
 @end

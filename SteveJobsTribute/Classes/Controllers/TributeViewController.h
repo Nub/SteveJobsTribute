@@ -12,6 +12,8 @@
 
 #import "YRTribute.h"
 #import "YRReportMessage.h"
+#import "YRImageDownloader.h"
+
 
 @protocol TributeViewControllerDelegate
 
@@ -19,7 +21,7 @@
 
 @end
 
-@interface TributeViewController : UIViewController <YRReportMessageDelegate> {
+@interface TributeViewController : UIViewController <YRReportMessageDelegate, YRImageDownloaderDelegate> {
     
     BOOL presenting;
     
@@ -27,6 +29,12 @@
     
     id <TributeViewControllerDelegate> delegate;
 }
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
+@property (strong, nonatomic) IBOutlet UIButton *flagButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *authorLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UITextView *tributeTextView;
 
 @property (nonatomic, getter = isPresenting) BOOL presenting;
 

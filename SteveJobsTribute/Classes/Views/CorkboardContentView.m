@@ -228,7 +228,7 @@
         NSInteger columns = floorf(([self superview].frame.size.width - (kPostSquarePadding * 2)) / (squareSize + (kPostSquarePadding)));
         
         CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % columns) * (squareSize + kPostSquarePadding);
-        CGFloat y = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + ((i - (i%columns))/columns) * (squareSize + kPostSquarePadding);
+        CGFloat y = kPostSquarePadding + arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + ((i - (i%columns))/columns) * (squareSize + kPostSquarePadding);
         
         return CGRectMake(x, y, squareSize, squareSize);
             

@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface YRCorkViewController () {
 @private
     
@@ -21,7 +22,8 @@
     CorkboardContentView *corkboardContentView;
     
     TributeViewController *tributeViewController;
-    CreateTributeViewController *createTributeViewController;
+    
+    MFMailComposeViewController *createTribute;
     
     NSInteger presentingIndex;
     
@@ -41,6 +43,23 @@
 @end
 
 
+@interface UINavigationBar (MyCustomNavBar)
+@end
+@implementation UINavigationBar (MyCustomNavBar)
+- (void) drawRect:(CGRect)rect {
+    UIImage *barImage = [UIImage imageNamed:@"navbar-background.png"];
+    [barImage drawAsPatternInRect:rect];
+}
+@end
+
+@interface UIBarButtonItem (MyCustomNavBarButton)
+@end
+@implementation UIBarButtonItem (MyCustomNavBarButton)
+- (void) drawRect:(CGRect)rect {
+    UIImage *barImage = [[UIImage imageNamed:@"addTributeButton.png"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+    [barImage drawInRect:rect];
+}
+@end
 
 
 @implementation YRCorkViewController
@@ -78,23 +97,6 @@
     // corkboardContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [postsScrollView addSubview:corkboardContentView];
-    [postsScrollView setContentSize:corkboardContentView.frame.size];  
-    
-    CGFloat w,h;
-    
-    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
-        w = (deviceIsIPad)?1024:480;
-        h = (deviceIsIPad)?768:320;
-    }else{
-        w = (deviceIsIPad)?768:321;
-        h = (deviceIsIPad)?1024:480;
-    }
-    
-    CGRect newContentFrame = CGRectMake(0, 0, w, h);
-    
-    postsScrollView.frame = newContentFrame;
-    corkboardContentView.layoutOrientation = [[UIDevice currentDevice] orientation];
-    postsScrollView.contentSize = corkboardContentView.bounds.size;
     
     
     [self.navigationController setNavigationBarHidden:YES];
@@ -112,15 +114,14 @@
     self.navigationItem.titleView = titleLabel;
     titleLabel.text = NSLocalizedString(@"Steve Jobs Tribute", @"Steve Jobs Tribute");
 
-    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:46.f/255.f green:35.f/255.f blue:22.f/255.f alpha:0];
     
     /* Create new Tribute Button */
-    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithTitle:@"Add Tribute" style:UIBarButtonItemStylePlain target:self action:@selector(addTribute:)];
-
+        
+    UIBarButtonItem *focusTest = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTribute:)];
     
     self.navigationItem.rightBarButtonItem = focusTest;
-    
-    
+
     
     /* Steve Jobs Tribute */
     tributeImageView = [[UIImageView alloc] init];
@@ -159,16 +160,32 @@
     [self.view addSubview:tributeImageView];
     
     
-    tributeViewController = [[TributeViewController alloc] init];
+    tributeViewController = [[TributeViewController alloc] initWithNibName:@"TributeView" bundle:[NSBundle mainBundle]];
     tributeViewController.delegate = self;
-    
-    createTributeViewController = [[CreateTributeViewController alloc] init];
-    
+    tributeViewController.modalPresentationStyle = (deviceIsIPad)?UIModalPresentationFormSheet:UIModalPresentationFullScreen;
+        
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    
+    CGFloat w,h;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        w = (deviceIsIPad)?1024:480;
+        h = (deviceIsIPad)?768:320;
+    }else{
+        w = (deviceIsIPad)?768:321;
+        h = (deviceIsIPad)?1024:480;
+    }
+    
+    CGRect newContentFrame = CGRectMake(0, 0, w, h);
+    
+    postsScrollView.frame = newContentFrame;
+    corkboardContentView.layoutOrientation = [[UIDevice currentDevice] orientation];
+    postsScrollView.contentSize = corkboardContentView.frame.size;
     
     
     if ([self tributeVideoHasBeenPlayed] == NO) {
@@ -185,7 +202,6 @@
          [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tributeVideoFinished:) name:@"MPMoviePlayerPlaybackDidFinishNotification" object:tributeMoviePlayer];
         
     }
-    
     
     
 }
@@ -215,30 +231,50 @@
     if (presentingCustomModal) 
         [tributeViewController setPresenting:NO];
     
-    presentingCustomModal = YES;
+    presentingCustomModal = NO;
     
-    [createTributeViewController presentViewFromRect:CGRectZero inView:self.view];
+    
+    createTribute = [[MFMailComposeViewController alloc] init];
+    
+    createTribute.modalPresentationStyle = (deviceIsIPad)?UIModalPresentationFormSheet:UIModalPresentationFullScreen;
+    createTribute.mailComposeDelegate = self;
+    [createTribute setToRecipients:[NSArray arrayWithObject:@"rememberingsteve@apple.com"]];
+    
+    [self presentModalViewController:createTribute animated:YES];
+    
     
 }
 
-#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate, CreateTributeViewControllerDelegate
+#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate, MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
 
 - (void)tappedPostAtIndex:(NSInteger)index{
     
-    if (presentingCustomModal) 
-        return;
-    
-    presentingCustomModal = YES;
-    
     [tributeViewController setTribute:[self.tributeObjects objectAtIndex:index]];
-    
-    if (![tributeViewController isPresenting]){
-        [tributeViewController presentViewFromRect:[corkboardContentView postRect:index] inView:self.view];
-        [corkboardContentView hidePost:index];
+    presentingIndex = index;
+
+/*    if (deviceIsIPad) {
+        if (presentingCustomModal) 
+            return;
         
-        presentingIndex = index;
-    }
-    
+        presentingCustomModal = YES;
+                
+        if (![tributeViewController isPresenting]){
+            [tributeViewController presentViewFromRect:[corkboardContentView postRect:index] inView:self.view];
+            [corkboardContentView hidePost:index];
+            
+        }
+    }else{*/
+        
+        
+        [self presentModalViewController:tributeViewController animated:YES];
+        
+    //}
 }
 
 - (void)didSendTribute:(YRTribute *)tribute{
@@ -247,6 +283,16 @@
     
     //TODO: upload tribute code
     
+}
+
+- (void)didCloseTribute{
+    
+    //if (deviceIsIPad) {
+    //  presentingCustomModal = NO;
+    //   [corkboardContentView showPost:presentingIndex];
+    //}else{
+        [self dismissModalViewControllerAnimated:YES];
+    //}
 }
 
 
@@ -346,12 +392,6 @@
     
 }
 
-
-#pragma mark - delegate
-- (void)didCloseTribute {
-    
-    
-}
 
 
 @end

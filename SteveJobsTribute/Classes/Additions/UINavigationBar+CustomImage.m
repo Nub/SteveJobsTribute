@@ -10,15 +10,19 @@
 
 @implementation UINavigationBar (CustomImage)
 
-- (void) setBackgroundImage:(UIImage*)image {
+- (void)setBackgroundImage:(UIImage*)image {
     if (image == NULL) return;
     
     if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
         [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     } else {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(0, 0, 320, 44);
-        [self insertSubview:imageView atIndex:0];
+       /* UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = self.frame;
+        [self insertSubview:imageView atIndex:0];*/
+        
+        UIColor *backgroundColor = [UIColor colorWithPatternImage:image];
+        self.backgroundColor = backgroundColor;
+        
     }
 }
 
@@ -32,7 +36,7 @@
         [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     else {
         
-        UIGraphicsBeginImageContext(aSize);
+       /* UIGraphicsBeginImageContext(aSize);
         
         CGRect aRect = CGRectMake(0, 0, aSize.width, 48);
         [image drawAsPatternInRect:aRect];
@@ -42,7 +46,9 @@
         
         UIImageView *background = [[UIImageView alloc] initWithImage:backgroundPattern];
         background.frame = aRect;
-        [self insertSubview:background atIndex:0];
+        [self insertSubview:background atIndex:0];*/
+        
+        
         
         
     }
