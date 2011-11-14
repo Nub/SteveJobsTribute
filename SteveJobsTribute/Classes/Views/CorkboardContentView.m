@@ -13,9 +13,14 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define kPostSquareSize 150.f
-#define kPostSquareSizeiPhone 120.f
-#define kPostSquarePadding 20.f
 #define kPostSquareSize2 170.f
+
+#define kPostSquareSizeiPhone 130.f
+#define kPostSquarePadding 17.f
+#define kPostSquarePadding2 30.f
+#define kPostSquarePaddingiPhone 13.f
+
+
 
 
 @interface CorkboardContentView (){
@@ -39,6 +44,7 @@
 
 @synthesize layoutOrientation;
 @synthesize delegate;
+@synthesize segmentControl;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -58,6 +64,16 @@
             deviceIsIPad = YES;
         
         }
+        
+        segmentControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All",@"Favorites", nil]];
+        
+        //segmentControl.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
+        CGPoint center = self.center;
+        segmentControl.selectedSegmentIndex = 0;
+        segmentControl.center = CGPointMake(center.x, 30.f);
+        
+        [self addSubview:segmentControl];
     }
     return self;
 }
@@ -65,7 +81,7 @@
 
 #pragma mark - Public Methods
 
-#define arc4randPM(value)((((CGFloat)arc4random() / 0x100000000) - 0.5) * value * 2.f)
+#define arc4randPM(value) ((((CGFloat)arc4random() / 0x100000000) - 0.5f) * value * 2.f)
 
 - (void)addPosts:(NSArray *)tributeObjects {
     
@@ -82,7 +98,13 @@
 - (void)addPost:(YRTribute *)tribute {
     
     UIView *newView = [[UIView alloc] init];
-    newView.frame = CGRectMake(0, 0, kPostSquareSize, kPostSquareSize);;
+    
+    newView.tag = postCount;
+    
+    CGRect newFrame = [self frameForIndex:postCount];
+    newFrame.origin.y -= self.frame.size.height;
+    
+    newView.frame = newFrame;//CGRectMake(0, 0, kPostSquareSize, kPostSquareSize);;
     
     //Add random rotation
     CGFloat rot = arc4randPM(0.2);
@@ -111,7 +133,7 @@
     titleLabel.minimumFontSize = 10;
     titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
     titleLabel.textAlignment = UITextAlignmentCenter;
-    titleLabel.text = tribute.title;
+    titleLabel.text = (![tribute.header isEqualToString:@""])?tribute.header:@"Tribute";
     titleLabel.numberOfLines = 5;
     
     [newView addSubview:titleLabel];
@@ -188,7 +210,7 @@
     
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
         
-        [delegate tappedPostAtIndex:[self.subviews indexOfObject:gestureRecognizer.view]];
+        [delegate tappedPostAtIndex:gestureRecognizer.view.tag];
         
     }
     
@@ -210,29 +232,32 @@
 
 - (CGRect)frameForIndex:(NSInteger)i{
     
-    CGFloat squareSize = (deviceIsIPad)?kPostSquareSize2:kPostSquareSizeiPhone;
+    CGFloat squareSize = kPostSquareSizeiPhone;
     
-    if (UIDeviceOrientationIsLandscape(layoutOrientation)) {//Horizontal scroll
-        
-        NSInteger rows = floorf(([self superview].frame.size.height - (kPostSquarePadding * 2)) / (kPostSquareSize + (kPostSquarePadding)));
+    CGFloat padding = kPostSquarePaddingiPhone;
+    
+    NSInteger columns = 2;
+    
+    if (deviceIsIPad) {
             
-        CGFloat x = kPostSquarePadding + arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding - 10 + ((i - (i%rows))/rows) * (kPostSquareSize + kPostSquarePadding);
-        CGFloat y = 5 + arc4randPM(kPostSquarePadding - 5) + (kPostSquarePadding*2) + (i % rows) * (kPostSquareSize + kPostSquarePadding);
+        if (UIDeviceOrientationIsLandscape(layoutOrientation)) {
+            columns = 6;
+            squareSize = kPostSquareSize;
+            padding = kPostSquarePadding;
+        }else{
+            columns = 4;
+            squareSize = kPostSquareSize2;
+            padding = kPostSquarePadding2;
+        }
         
-        return CGRectMake(x, y, kPostSquareSize, kPostSquareSize);
-         
-        
-        
-    }else{//Portait vertical scroll
-        
-        NSInteger columns = floorf(([self superview].frame.size.width - (kPostSquarePadding * 2)) / (squareSize + (kPostSquarePadding)));
-        
-        CGFloat x = arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + (i % columns) * (squareSize + kPostSquarePadding);
-        CGFloat y = kPostSquarePadding + arc4randPM(kPostSquarePadding - 5) + kPostSquarePadding + ((i - (i%columns))/columns) * (squareSize + kPostSquarePadding);
-        
-        return CGRectMake(x, y, squareSize, squareSize);
-            
     }
+    
+    CGFloat x = padding + (i % columns) * (kPostSquareSize + padding);
+    CGFloat y = padding + ((i - (i%columns))/columns) * (kPostSquareSize + padding);
+    
+    y += 35; //offset for segment
+    
+    return CGRectMake(x, y, squareSize, squareSize);
     
 }
 
@@ -242,7 +267,17 @@
     
     for (UIView *view in self.subviews) {
         
-        if(i == focusedPost) continue;//skip layout of focused view
+        if ([view isMemberOfClass:[UISegmentedControl class]]) {
+            
+            CGPoint center = self.center;
+            [UIView animateWithDuration:0.5 animations:^(void){
+                segmentControl.center = CGPointMake(center.x, 30.f);
+            }];
+            
+            continue;
+        }
+        
+        // if(i == focusedPost) continue;//skip layout of focused view
         
         [UIView animateWithDuration:0.5 animations:^(void){
             view.frame = [self frameForIndex:i];
@@ -261,7 +296,7 @@
         
     }else{
         
-        contentsFrame.size.width = 768;
+        contentsFrame.size.width = (deviceIsIPad)?768:320;
         //contentsFrame.size.height += kPostSquarePadding;
         
     }

@@ -26,6 +26,7 @@
 @property (nonatomic) UIDeviceOrientation layoutOrientation;
 @property (nonatomic, retain) id <CorkboardPostDelegate> delegate;
 
+@property (nonatomic, strong) UISegmentedControl *segmentControl;
 //Add a post representation
 - (void)addPost:(YRTribute *)tribute;
 //- (void)addPost:(NSString *)title;

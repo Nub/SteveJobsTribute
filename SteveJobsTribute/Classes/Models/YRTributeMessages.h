@@ -16,17 +16,15 @@
     
     NSMutableArray                  *tributeObjects;
     
-@private
-    NSMutableData                   *connectionBuffer;
-    
     
 }
 
+- (void)tributesFromArray:(NSArray *)tributes;
+- (void)tributesFromOffset:(NSInteger)offset withRange:(NSInteger)range;
+
+
 @property (nonatomic, retain) id <YRTributeMessagesManager> delegate;
 @property (nonatomic, retain) NSMutableArray *tributeObjects;
-
-
-- (void)tributeMessagesFromOffset:(int)offset withRange:(int)range;
 
 @end
 

@@ -12,9 +12,10 @@
 
 #import "CorkboardContentView.h"
 #import "TributeViewController.h"
+#import "YRTributeMessages.h"
+#import "SVHTTPRequest.h"
 
-
-@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate, MFMailComposeViewControllerDelegate> {
+@interface YRCorkViewController : UIViewController <CorkboardPostDelegate, TributeViewControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate> {
     
     NSArray         *tributeObjects;
     
@@ -23,6 +24,6 @@
 - (void)reloadData;
 
 @property (nonatomic, retain) NSArray *tributeObjects;
-
+@property (nonatomic, retain) YRTributeMessages *messages;
 
 @end

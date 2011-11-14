@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-
 #import "YRTribute.h"
-#import "YRReportMessage.h"
-#import "YRImageDownloader.h"
-
 
 @protocol TributeViewControllerDelegate
 
@@ -21,16 +17,10 @@
 
 @end
 
-@interface TributeViewController : UIViewController <YRReportMessageDelegate, YRImageDownloaderDelegate> {
-    
-    BOOL presenting;
-    
-    YRTribute *aTribute;
-    
-    id <TributeViewControllerDelegate> delegate;
-}
+@interface TributeViewController : UIViewController
+
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
-@property (strong, nonatomic) IBOutlet UIButton *flagButton;
+@property (strong, nonatomic) IBOutlet UIButton *starButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *authorLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -40,7 +30,7 @@
 
 @property (nonatomic, retain) id <TributeViewControllerDelegate> delegate;
 
-- (void)setTribute:(YRTribute *)aTribute;
+- (void)setTribute:(YRTribute *)tribute;
 
 - (void)presentViewFromRect:(CGRect)fromRect inView:(UIView*)aView;
 

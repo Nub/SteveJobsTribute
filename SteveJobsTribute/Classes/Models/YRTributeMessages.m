@@ -11,9 +11,12 @@
 #import "YRTributeMessages.h"
 #import "NSString+Additions.h"
 
+#import "SVHTTPRequest.h"
+
 @interface YRTributeMessages () 
 
-- (NSData *)jsonHttpBodyWithOffset:(int)offset andRange:(int)range;
+- (NSDictionary *)tributeHttpParametersFromArray:(NSArray *)tributes;
+- (NSDictionary *)tributeHttpParametersFromOffset:(NSInteger)offset withRange:(NSInteger)range;
 
 @end
 
@@ -24,7 +27,141 @@
 
 
 
-- (void)tributeMessagesFromOffset:(int)offset withRange:(int)range {
+#pragma mark - Tributes from array
+- (void)tributesFromArray:(NSArray *)tributes {
+    
+    NSDictionary *httpParameters = [self tributeHttpParametersFromArray:tributes];
+    
+    [SVHTTPRequest POST:@"http://tribute.frequenciesapp.com/api/v2/"
+             parameters:httpParameters 
+             completion:^(NSObject *response) {
+                
+                 NSLog(@"%@", response);
+                 
+                 /*NSMutableArray *tributeArrayObjects = [[NSMutableArray alloc] init];
+                 
+                 
+                 for (NSDictionary *tributeJson in (NSDictionary *)response) {
+                     
+                     YRTribute *tribute = [[YRTribute alloc] init];
+                     
+                     tribute.mainText = [tributeJson objectForKey:@"mainText"];
+                     tribute.author = [tributeJson objectForKey:@"author"];
+                     tribute.header = [tributeJson objectForKey:@"header"];
+                     tribute.location = [tributeJson objectForKey:@"location"];
+                     
+                     
+                     tribute.databaseRow = [[tributeJson objectForKey:@"databaseRow"] intValue];
+                     
+    
+                     
+                     [tributeArrayObjects addObject:tribute];
+                 }*/
+
+                 
+             }];
+    
+    
+    
+}
+
+
+- (NSDictionary *)tributeHttpParametersFromArray:(NSArray *)tributes {
+    
+    NSMutableString *tributeString = [[NSMutableString alloc] init];
+    NSString *apiToken = [[[[NSBundle mainBundle] bundleIdentifier] reverse] MD5EncryptString];
+    
+    /* Format Array */
+    for (NSString *s in tributes)
+        [tributeString appendString:[NSString stringWithFormat:@"%@|", s]];
+    
+    
+    /* Remove the last 2 chars ", " */
+    tributeString = (NSMutableString *)[tributeString substringFrom:0 to:[tributeString length]-1];
+    
+    
+    
+    NSDictionary *dataObject = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                tributeString, @"tributeArray", nil];
+    
+    NSDictionary *jsonObject = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @"trbuteMessagesFromArray", @"method",
+                                apiToken, @"api_token",
+                                dataObject, @"data", nil];
+    
+    return jsonObject;
+    
+    
+}
+
+
+
+#pragma mark - Tributes from range
+- (void)tributesFromOffset:(NSInteger)offset withRange:(NSInteger)range {
+    
+    NSDictionary *httpParameters = [self tributeHttpParametersFromOffset:offset withRange:range];
+    
+    
+    //[self setTributeObjects:nil];
+    // self.tributeObjects = [NSMutableArray array];
+    
+    [SVHTTPRequest POST:@"http://tribute.frequenciesapp.com/api/v2/"
+             parameters:httpParameters 
+             completion:^(NSObject *response) {
+        
+                 
+                 for (NSDictionary *tributeJson in (NSDictionary *)response) {
+                     
+                     YRTribute *tribute = [[YRTribute alloc] init];
+                     
+                     tribute.mainText = [tributeJson objectForKey:@"mainText"];
+                     tribute.author = [tributeJson objectForKey:@"author"];
+                     tribute.header = [tributeJson objectForKey:@"header"];
+                     tribute.location = [tributeJson objectForKey:@"location"];
+                     
+                     
+                     tribute.databaseRow = [[tributeJson objectForKey:@"databaseRow"] intValue];
+                     
+                     
+                     if (self.tributeObjects == nil)
+                         self.tributeObjects = [[NSMutableArray alloc] init];
+                     
+                     
+                     [self.tributeObjects addObject:tribute];
+                 }
+                 
+                 
+                 
+                 [delegate didFinishLoadingTributes:self.tributeObjects];
+             
+             }];
+    
+}
+
+
+- (NSDictionary *)tributeHttpParametersFromOffset:(NSInteger)offset withRange:(NSInteger)range {
+      
+    NSString *apiToken = [[[[NSBundle mainBundle] bundleIdentifier] reverse] MD5EncryptString];
+         
+    NSDictionary *dataObject = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSNumber numberWithInteger:offset], @"offset",
+                                [NSNumber numberWithInteger:range], @"range", nil];
+    
+    NSDictionary *jsonObject = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @"trbuteMessagesFromRange", @"method",
+                                apiToken, @"api_token",
+                                dataObject, @"data", nil];
+    
+    return jsonObject;
+    
+}
+     
+     
+
+
+/*- (void)tributeMessagesFromOffset:(int)offset withRange:(int)range {
+
+    
     
     NSData *jsonHttpBody = [self jsonHttpBodyWithOffset:offset andRange:range];
     
@@ -56,7 +193,7 @@
                           nil];
     
     NSDictionary *json = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"TributeMessages", @"method",
+                          @"trbuteMessagesFromRange", @"method",
                           apiToken, @"api_token",
                           data, @"data",
                           nil];
@@ -93,42 +230,13 @@
         
         YRTribute *tribute = [[YRTribute alloc] init];
         
-        tribute.identifier = [[tributeJson objectForKey:@"tribute_id"] intValue];
-        
-        tribute.title = [tributeJson objectForKey:@"tribute_title"];
-        tribute.author = [tributeJson objectForKey:@"tribute_author"];
-        tribute.message = [tributeJson objectForKey:@"tribute_message"];
-        tribute.device = [tributeJson objectForKey:@"tribute_device"];
-        
-        tribute.imageUrl = [NSURL URLWithString:[tributeJson objectForKey:@"tribute_image_url"]];
-
-        
-        NSString *imageSizeAsString = [tributeJson objectForKey:@"tribute_image_size"];
-        if ([imageSizeAsString isKindOfClass:[NSNull class]]) {
-            
-            tribute.imageSize = CGSizeZero;
-            
-        }
-        else if ([imageSizeAsString containsString:@","]) {
-
-            
-            NSArray *imageSizes = [imageSizeAsString componentsSeparatedByString:@","]; 
-            tribute.imageSize = CGSizeMake([[imageSizes objectAtIndex:0] floatValue], [[imageSizes objectAtIndex:1] floatValue]);
-        
-        }
+        tribute.mainText = [tributeJson objectForKey:@"mainText"];
+        tribute.author = [tributeJson objectForKey:@"author"];
+        tribute.header = [tributeJson objectForKey:@"header"];
+        tribute.location = [tributeJson objectForKey:@"location"];
         
         
-        
-        NSString *dateAsString = [tributeJson objectForKey:@"tribute_posted"];
-        
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        NSDate *myDate = [df dateFromString: dateAsString];
-        tribute.posted = myDate;
-
-        
-        tribute.flagged = [[tributeJson objectForKey:@"tribute_flagged"] boolValue];
-        tribute.databaseRow = [[tributeJson objectForKey:@"tribute_database_row"] intValue];
+        tribute.databaseRow = [[tributeJson objectForKey:@"databaseRow"] intValue];
         
         
         if (self.tributeObjects == nil)
@@ -149,6 +257,6 @@
     [delegate didFailLoadingTributes:error];
     
 }
-
+*/
 
 @end

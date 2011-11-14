@@ -9,8 +9,8 @@
 #import "TributeViewController.h"
 #import "SVProgressHUD.h"
 #import "UIDevice-Hardware.h"
-#import "YRImageDownloader.h"
 
+#import "YRTributeMessages.h"
 
 #define kAnimationTime 0.5
 
@@ -18,33 +18,31 @@
     @private
     CGRect presentRect;
     
-    BOOL imageIsCurrentlyDownloading;    
+    YRTribute *aTribute;
     
+    id <TributeViewControllerDelegate> delegate;
 }
 
-- (void)flagTribute:(UIButton *)sender;
+- (void)starTribute:(UIButton *)sender;
 - (void)closeTribute:(UIButton *)sender;
-
-- (void)downloadImageFromTribute:(YRTribute *)aTribute;
-- (void)didFinishDownloadingImage:(UIImage *)image;
 
 @end
 
 @implementation TributeViewController
 @synthesize closeButton;
-@synthesize flagButton;
+@synthesize starButton;
 @synthesize titleLabel;
 @synthesize authorLabel;
 @synthesize imageView;
 @synthesize tributeTextView;
-
-@synthesize presenting, delegate;
+@synthesize presenting;
+@synthesize delegate;
 
 - (void)viewDidLoad{
     
     [closeButton addTarget:self action:@selector(closeTribute:) forControlEvents:UIControlEventTouchUpInside];
     
-    [flagButton addTarget:self action:@selector(flagTribute:) forControlEvents:UIControlEventTouchUpInside];
+    [starButton addTarget:self action:@selector(starTribute:) forControlEvents:UIControlEventTouchUpInside];
     
     imageView.layer.borderWidth = 10.f;
     imageView.layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -63,23 +61,19 @@
     [self setImageView:nil];
     [self setTributeTextView:nil];
     [self setCloseButton:nil];
-    [self setFlagButton:nil];
+    [self setStarButton:nil];
     [super viewDidUnload];
 }
 
 - (void)setTribute:(YRTribute *)tribute {
     
-    titleLabel.text = tribute.title;
+    aTribute = tribute;//store tribute
+    
+    titleLabel.text = tribute.header;
     authorLabel.text = tribute.author;
+    tributeTextView.text = tribute.mainText;
     
-    if (tribute.imageUrl) {
-        [self downloadImageFromTribute:tribute];
-    }else{
-        //TODO: resize textView to fill empty space
-    }
-    
-    tributeTextView.text = tribute.message;
-    
+    [self.view setNeedsLayout];
     
 }
 
@@ -162,50 +156,22 @@
     
 }
 
-- (void)flagTribute:(UIButton *)sender {
+- (void)starTribute:(UIButton *)sender {
     
-    YRReportMessage *reportMessage = [[YRReportMessage alloc] init];
-    [reportMessage setDelegate:self];
-    [reportMessage reportTribute:aTribute];
+    NSMutableArray *starredTributes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:kTributesArrayKey]];
     
-    [SVProgressHUD showInView:self.view status:@"Please wait.." networkIndicator:YES];
-    
-}
-
-- (void)didFinishReportingTribute {
-    
-    [SVProgressHUD dismissWithSuccess:@"Completed!"];
-    
-}
-
-- (void)didFailToReportTribute:(NSError *)error {
-    
-    [SVProgressHUD dismissWithError:[error localizedDescription]];
-    
-}
-
-
-
-- (void)downloadImageFromTribute:(YRTribute *)tribute {
-    
-    if (imageIsCurrentlyDownloading != YES) {
-        
-        YRImageDownloader *imageDownloader = [[YRImageDownloader alloc] init];
-        [imageDownloader setDelegate:self];
-        [imageDownloader startDownloadWithTribute:tribute];
-        
-        imageIsCurrentlyDownloading = YES;
+    if (!starredTributes) {
+        // Add instance if it does not exist.
+        starredTributes = [NSMutableArray array];
         
     }
     
-}
+    NSNumber *thisTributeID = [NSNumber numberWithInt:aTribute.databaseRow];
+    [starredTributes addObject:thisTributeID];
+        
+    // Update stored items
+    [[NSUserDefaults standardUserDefaults] setObject:starredTributes forKey:kTributesArrayKey];
 
-- (void)didFinishDownloadingImage:(UIImage *)image {
-    
-    imageView.image = image;
-    
-    imageIsCurrentlyDownloading = NO;
-    
 }
 
 @end

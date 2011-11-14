@@ -38,9 +38,9 @@
     /* Tribute Collector */
     YRTributeMessages *tributeMessages = [[YRTributeMessages alloc] init];
     [tributeMessages setDelegate:self];
-    [tributeMessages tributeMessagesFromOffset:0 withRange:20];
+    [tributeMessages tributesFromOffset:0 withRange:60];
     
-    
+    corkViewcontroller.messages = tributeMessages;
     /* Analytics */
     /*NSString *APIKey = [[[[NSBundle mainBundle] bundleIdentifier] reverse] MD5EncryptString];
     YRAnalytics *analytics = [[YRAnalytics alloc] initWithAPIKey:APIKey];
@@ -65,19 +65,6 @@
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

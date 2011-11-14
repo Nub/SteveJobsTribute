@@ -10,7 +10,7 @@
 
 @implementation YRTribute
 
-@synthesize title, author, message, image, imageUrl, imageSize, device, posted, flagged, databaseRow, identifier;
+@synthesize mainText, header, author, location, databaseRow;
 
 
 + (id)tributeWithDictionary:(NSDictionary *)dictionary {

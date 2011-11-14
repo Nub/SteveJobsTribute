@@ -39,6 +39,7 @@
 - (void)tributeVideoFinished:(MPMoviePlayerController *)finishedPlayer;
 
 - (void)addTribute:(UIBarButtonItem *)sender;
+- (void)segmentChanged:(UISegmentedControl*)segment;
 
 @end
 
@@ -64,12 +65,12 @@
 
 @implementation YRCorkViewController
 @synthesize tributeObjects;
-
+@synthesize messages;
 
 - (void)reloadData {
     
-    
     [corkboardContentView addPosts:self.tributeObjects];
+    postsScrollView.contentSize = corkboardContentView.bounds.size;
     
 }
 
@@ -85,7 +86,7 @@
     
     postsScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     postsScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cork-background"]];
-
+    postsScrollView.delegate = self;
     postsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     corkboardContentView = [[CorkboardContentView alloc] initWithFrame:self.view.frame];
@@ -181,11 +182,11 @@
         h = (deviceIsIPad)?1024:480;
     }
     
-    CGRect newContentFrame = CGRectMake(0, 0, w, h);
+    CGRect newContentFrame = CGRectMake(0, 0, w, h-64);
     
     postsScrollView.frame = newContentFrame;
     corkboardContentView.layoutOrientation = [[UIDevice currentDevice] orientation];
-    postsScrollView.contentSize = corkboardContentView.frame.size;
+    postsScrollView.contentSize = corkboardContentView.bounds.size;
     
     
     if ([self tributeVideoHasBeenPlayed] == NO) {
@@ -203,9 +204,12 @@
         
     }
     
+    [corkboardContentView.segmentControl addTarget:self
+                         action:@selector(segmentChanged:)
+               forControlEvents:UIControlEventValueChanged];
+    
     
 }
-
 
 - (void)viewDidAppear:(BOOL)animated {
        
@@ -245,7 +249,7 @@
     
 }
 
-#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate, MFMailComposeViewControllerDelegate
+#pragma mark - CorkboardPostDelegate, TributeViewControllerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewlDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
     
@@ -295,6 +299,23 @@
     //}
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    if (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.size.height - 10) {
+        
+        YRTribute *lastTribute = [self.tributeObjects lastObject];
+        
+        [messages tributesFromOffset:lastTribute.databaseRow withRange:60];
+        
+    }
+    
+}
+
+- (void)segmentChanged:(UISegmentedControl*)segment{
+    
+    
+    
+}
 
 #pragma mark - Private Methods
 - (void)tributeVideoFinished:(MPMoviePlayerController *)finishedPlayer {
@@ -368,25 +389,17 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
+    
+    // Only allow portrait on iPhone.
+    if (!deviceIsIPad && interfaceOrientation != UIInterfaceOrientationPortrait) {
+        return NO;
+    }
+    
     return YES;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     
-    CGFloat w,h;
-    
-    if (!UIInterfaceOrientationIsLandscape(fromInterfaceOrientation)) {
-        w = (deviceIsIPad)?1024:480;
-        h = (deviceIsIPad)?768:320;
-    }else{
-        w = (deviceIsIPad)?768:321;
-        h = (deviceIsIPad)?1024:480;
-    }
-    
-    CGRect newContentFrame = CGRectMake(0, 0, w, h);
-    
-    postsScrollView.frame = newContentFrame;
     corkboardContentView.layoutOrientation = [[UIDevice currentDevice] orientation];
     postsScrollView.contentSize = corkboardContentView.bounds.size;
     
